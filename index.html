@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura — AI Agent Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: #000;
+      color: #fff;
+      font-family: 'Manrope', sans-serif;
+    }
+
+    /* ── Hero Section ── */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      background: #000000;
+      overflow: hidden;
+    }
+
+    /* ── Background Video ── */
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      height: 120%;
+      object-fit: cover;
+      object-position: center bottom;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── Blurred Pill Element ── */
+    .hero-blur-pill {
+      position: absolute;
+      top: 215px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 801px;
+      height: 384px;
+      border-radius: 9999px;
+      background: #000000;
+      filter: blur(77.5px);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ── Content Layer ── */
+    .hero-content-layer {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 16px 120px;
+      height: 102px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .nav-logo svg {
+      display: block;
+      width: 134px;
+      height: 25px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 22px;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 4px 10px;
+      transition: opacity 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.75;
+    }
+
+    .nav-link-dropdown {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .nav-link-dropdown svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-signin {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 22px;
+      color: #171717;
+      background: #ffffff;
+      border: 1px solid #d4d4d4;
+      border-radius: 8px;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-signin:hover {
+      background: #f0f0f0;
+      transform: translateY(-1px);
+    }
+
+    .btn-getstarted-nav {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 22px;
+      color: #fafafa;
+      background: #7b39fc;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      cursor: pointer;
+      box-shadow: 0px 4px 16px rgba(23, 23, 23, 0.04);
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-getstarted-nav:hover {
+      background: #6a2be0;
+      transform: translateY(-1px);
+      box-shadow: 0px 6px 24px rgba(123, 57, 252, 0.25);
+    }
+
+    /* ── Hero Content ── */
+    .hero-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 871px;
+      margin: 162px auto 0;
+      gap: 24px;
+    }
+
+    .hero-heading-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .hero-headline-1 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 76px;
+      line-height: 1.15;
+      letter-spacing: -2px;
+      color: #ffffff;
+    }
+
+    .hero-headline-2 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 76px;
+      line-height: 1.15;
+      letter-spacing: -2px;
+      color: #ffffff;
+    }
+
+    .hero-subtitle {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 26px;
+      color: #f6f7f9;
+      opacity: 0.9;
+      max-width: 613px;
+      text-align: center;
+      margin-top: 6px;
+    }
+
+    /* ── CTA Buttons ── */
+    .hero-ctas {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .btn-cta-primary {
+      font-family: 'Cabin', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #ffffff;
+      background: #7b39fc;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 24px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-cta-primary:hover {
+      background: #6a2be0;
+      transform: translateY(-2px);
+      box-shadow: 0px 8px 32px rgba(123, 57, 252, 0.35);
+    }
+
+    .btn-cta-secondary {
+      font-family: 'Cabin', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #f6f7f9;
+      background: #2b2344;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 24px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-cta-secondary:hover {
+      background: #362b55;
+      transform: translateY(-2px);
+      box-shadow: 0px 8px 32px rgba(43, 35, 68, 0.4);
+    }
+
+    /* ── Dashboard Image ── */
+    .dashboard-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 80px;
+      padding-bottom: 40px;
+    }
+
+    .dashboard-outer {
+      width: 1163px;
+      max-width: 90vw;
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1.5px solid transparent;
+      padding: 22.5px;
+
+      /* Subtle border glow via box-shadow for that ethereal feel */
+      box-shadow:
+        inset 0 0 0 1.5px rgba(255, 255, 255, 0.08),
+        0 0 80px rgba(123, 57, 252, 0.06);
+    }
+
+    .dashboard-outer img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── Dashboard placeholder ── */
+    .dashboard-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 8px;
+      background: linear-gradient(
+        135deg,
+        rgba(123, 57, 252, 0.12) 0%,
+        rgba(43, 35, 68, 0.25) 40%,
+        rgba(0, 0, 0, 0.6) 100%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dashboard-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 39px,
+          rgba(255, 255, 255, 0.03) 39px,
+          rgba(255, 255, 255, 0.03) 40px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 39px,
+          rgba(255, 255, 255, 0.03) 39px,
+          rgba(255, 255, 255, 0.03) 40px
+        );
+    }
+
+    .dashboard-placeholder-text {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.3);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <section class="hero-section">
+    <!-- Background Video -->
+    <video
+      class="hero-video"
+      autoplay
+      loop
+      muted
+      playsinline
+      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260215_121759_424f8e9c-d8bd-4974-9567-52709dfb6842.mp4"
+    ></video>
+
+    <!-- Blurred Pill -->
+    <div class="hero-blur-pill"></div>
+
+    <!-- Content Layer -->
+    <div class="hero-content-layer">
+      <!-- Navbar -->
+      <nav class="navbar">
+        <div class="nav-left">
+          <!-- Logo SVG -->
+          <a href="#" class="nav-logo">
+            <svg width="134" height="25" viewBox="0 0 134 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Logomark -->
+              <rect x="0" y="2" width="21" height="21" rx="5" fill="white"/>
+              <rect x="4" y="6" width="6" height="6" rx="2" fill="black"/>
+              <rect x="11" y="6" width="6" height="6" rx="2" fill="black" opacity="0.5"/>
+              <rect x="4" y="13" width="6" height="6" rx="2" fill="black" opacity="0.5"/>
+              <rect x="11" y="13" width="6" height="6" rx="2" fill="black"/>
+              <!-- Logotype -->
+              <text x="27" y="18.5" fill="white" font-family="Inter, sans-serif" font-weight="700" font-size="14" letter-spacing="1.5">LOGOIPSUM</text>
+            </svg>
+          </a>
+
+          <!-- Nav Links -->
+          <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li>
+              <a href="#" class="nav-link-dropdown">
+                Services
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 9L12 15L18 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </li>
+            <li><a href="#">Reviews</a></li>
+            <li><a href="#">Contact us</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-right">
+          <button class="btn-signin">Sign In</button>
+          <button class="btn-getstarted-nav">Get Started</button>
+        </div>
+      </nav>
+
+      <!-- Hero Content -->
+      <div class="hero-center">
+        <div class="hero-heading-block">
+          <h1 class="hero-headline-1">Automate repetitive.</h1>
+          <h1 class="hero-headline-2">Focus on growth.</h1>
+          <p class="hero-subtitle">
+            The next-generation AI agent platform that handles lead generation, customer support, and data entry while you build.
+          </p>
+        </div>
+
+        <div class="hero-ctas">
+          <button class="btn-cta-primary">Get Started Free</button>
+          <button class="btn-cta-secondary">Watch 2min Demo</button>
+        </div>
+      </div>
+
+      <!-- Dashboard Image -->
+      <div class="dashboard-wrapper">
+        <div class="dashboard-outer">
+          <!-- Replace src below with your actual dashboard screenshot -->
+          <div class="dashboard-placeholder">
+            <span class="dashboard-placeholder-text">Dashboard Preview</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
