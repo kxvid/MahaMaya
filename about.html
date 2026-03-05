@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — MAHAKALA</title>
+  <meta name="description" content="MAHAKALA is a vertical AI growth agency. We bridge aesthetic excellence and technical infrastructure to build digital systems that scale." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Philosophy grid ── */
+    .philosophy-section { padding:var(--space-20) 0; position:relative; }
+    .philosophy-section::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:1px; background:linear-gradient(90deg,transparent,var(--border-default),transparent); }
+    .philosophy-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:var(--space-6); }
+    .philosophy-card { background:var(--surface-elevated); border:1px solid var(--border-default); border-radius:var(--radius-xl); padding:var(--space-10); transition:border-color .3s; }
+    .philosophy-card:hover { border-color:rgba(123,57,252,.15); }
+    .philosophy-num { font-family:var(--font-display); font-weight:700; font-size:32px; letter-spacing:-0.03em; background:linear-gradient(135deg,var(--accent-primary),rgba(123,57,252,.2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:var(--space-4); }
+    .philosophy-title { font-family:var(--font-display); font-weight:600; font-size:20px; color:var(--text-primary); margin-bottom:var(--space-3); letter-spacing:-0.02em; }
+    .philosophy-desc { font-size:15px; line-height:1.65; color:var(--text-secondary); }
+
+    /* ── Story ── */
+    .story-section { padding:var(--space-20) 0; position:relative; }
+    .story-section::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:1px; background:linear-gradient(90deg,transparent,var(--border-default),transparent); }
+    .story-content { max-width:720px; margin:0 auto; }
+    .story-content p { font-size:17px; line-height:1.75; color:var(--text-secondary); margin-bottom:var(--space-6); }
+    .story-content p:last-child { margin-bottom:0; }
+    .story-content strong { color:var(--text-primary); font-weight:600; }
+
+    /* ── Values ── */
+    .values-section { padding:var(--space-20) 0; position:relative; }
+    .values-section::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:1px; background:linear-gradient(90deg,transparent,var(--border-default),transparent); }
+    .values-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-6); }
+    .value-card { text-align:center; padding:var(--space-8) var(--space-6); }
+    .value-icon { width:56px; height:56px; border-radius:var(--radius-lg); background:var(--accent-subtle); border:1px solid var(--border-accent); display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-5); }
+    .value-icon svg { width:26px; height:26px; stroke:#7b39fc; fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+    .value-title { font-family:var(--font-display); font-weight:600; font-size:18px; color:var(--text-primary); margin-bottom:var(--space-3); }
+    .value-desc { font-size:14px; line-height:1.6; color:var(--text-secondary); }
+
+    /* ── CTA ── */
+    .cta-section { padding:var(--space-20) 0 var(--space-16); }
+    .cta-card { background:var(--surface-elevated); border:1px solid var(--border-default); border-radius:var(--radius-2xl); padding:var(--space-16) var(--space-10); text-align:center; position:relative; overflow:hidden; }
+    .cta-card::before { content:''; position:absolute; top:-200px; left:50%; transform:translateX(-50%); width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,rgba(123,57,252,.12),transparent 70%); filter:blur(80px); }
+    .cta-title { font-family:var(--font-display); font-weight:600; font-size:clamp(24px,3.5vw,36px); letter-spacing:-0.03em; color:var(--text-primary); position:relative; z-index:1; }
+    .cta-title span { font-family:var(--font-serif); font-style:italic; font-weight:400; }
+    .cta-sub { font-size:16px; color:var(--text-secondary); line-height:1.6; max-width:480px; margin:var(--space-4) auto var(--space-8); position:relative; z-index:1; }
+    .cta-buttons { display:flex; justify-content:center; gap:var(--space-4); position:relative; z-index:1; }
+
+    @media (max-width:1024px) { .philosophy-grid { grid-template-columns:1fr; } .values-grid { grid-template-columns:1fr; max-width:400px; margin:0 auto; } }
+    @media (max-width:768px) { .cta-card { padding:var(--space-12) var(--space-6); } .cta-buttons { flex-direction:column; align-items:center; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-mark"><svg viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="7" height="7" rx="1.5" fill="#050505"/><rect x="10" y="1" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="1" y="10" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="10" y="10" width="7" height="7" rx="1.5" fill="#050505"/></svg></div>
+        <span class="nav-logo-text">MAHAKALA</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="services-local.html">Local Services</a></li>
+        <li><a href="services-commerce.html">Commerce</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav-right"><a href="contact.html" class="btn-primary-sm">Book a Call</a></div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+    <div class="container">
+      <div class="page-hero-content">
+        <p class="page-hero-label">About</p>
+        <h1 class="page-hero-title">The Art of<span class="page-hero-title-accent">Intelligence.</span></h1>
+        <p class="page-hero-desc">MAHAKALA is a vertical AI growth agency. We bridge the gap between aesthetic excellence and technical infrastructure — transforming static businesses into automated, self-scaling digital entities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="story-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title">Why we <span class="section-title-accent">exist.</span></h2>
+      </div>
+      <div class="story-content reveal">
+        <p>Most agencies sell websites. We saw a different problem. <strong>Businesses don't need websites — they need systems.</strong> Systems that capture demand, qualify leads, close sales, and compound over time without manual intervention.</p>
+        <p>We started MAHAKALA after watching premium businesses — clinics with $5,000 average customer lifetime values, boutique brands with cult followings — lose revenue to static websites that close at 5 PM. Their front desks were overwhelmed. Their Shopify themes were leaking conversions. Their support inboxes were drowning.</p>
+        <p>So we built something different. <strong>Proprietary growth systems</strong> — bespoke web architecture fused with AI automation, managed entirely by us. No CMS access for clients to break. No template constraints. Just infrastructure that performs, secured by people who obsess over the details.</p>
+        <p>The name MAHAKALA comes from the Sanskrit concept of "Great Time" — the force that transforms and dissolves. We dissolve the friction between a business and its growth. <strong>The AKSHA philosophy</strong> guides everything we build: architectural precision, aesthetic excellence, and relentless efficiency.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="philosophy-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">The AKSHA Philosophy</p>
+        <h2 class="section-title">Four principles. <span class="section-title-accent">Zero compromise.</span></h2>
+      </div>
+      <div class="philosophy-grid reveal">
+        <div class="philosophy-card">
+          <div class="philosophy-num">01</div>
+          <h3 class="philosophy-title">Architectural Precision</h3>
+          <p class="philosophy-desc">Every element exists for a reason. We don't decorate — we engineer. From the database schema to the button radius, every decision serves performance and conversion.</p>
+        </div>
+        <div class="philosophy-card">
+          <div class="philosophy-num">02</div>
+          <h3 class="philosophy-title">Aesthetic Excellence</h3>
+          <p class="philosophy-desc">Premium brands deserve premium digital presence. Our design language — dark, architectural, cyber-elegant — signals that your business operates at a different level.</p>
+        </div>
+        <div class="philosophy-card">
+          <div class="philosophy-num">03</div>
+          <h3 class="philosophy-title">Controlled Environments</h3>
+          <p class="philosophy-desc">We don't hand over the keys. We manage the infrastructure so that performance, security, and SEO integrity are guaranteed — not hoped for.</p>
+        </div>
+        <div class="philosophy-card">
+          <div class="philosophy-num">04</div>
+          <h3 class="philosophy-title">Compounding Growth</h3>
+          <p class="philosophy-desc">Every system we build is designed to get better over time. AI models train on your data. SEO compounds. Automation frees up more of your time each month.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="values-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">What We Stand For</p>
+        <h2 class="section-title">Infrastructure over <span class="section-title-accent">decoration.</span></h2>
+      </div>
+      <div class="values-grid reveal">
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="value-title">Ownership</h3>
+          <p class="value-desc">We treat your business like our own. Your growth is our growth. We don't disappear after launch — we optimize, iterate, and compound.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="value-title">Speed</h3>
+          <p class="value-desc">Fast builds. Fast load times. Fast support. We respect your time and your customers' attention spans. Every millisecond matters.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <h3 class="value-title">Transparency</h3>
+          <p class="value-desc">Clear pricing. Honest timelines. No upsells disguised as "recommendations." You always know exactly what you're paying for and why.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card reveal">
+        <h2 class="cta-title">Ready to work <span>together?</span></h2>
+        <p class="cta-sub">Book a discovery call. We'll learn about your business and show you what a MAHAKALA growth system looks like for your vertical.</p>
+        <div class="cta-buttons">
+          <a href="contact.html" class="btn-primary">Book Discovery Call</a>
+          <a href="index.html#pricing" class="btn-ghost">View Pricing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo-mark"><svg viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="7" height="7" rx="1.5" fill="#050505"/><rect x="10" y="1" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="1" y="10" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="10" y="10" width="7" height="7" rx="1.5" fill="#050505"/></svg></div>
+          <span class="footer-name">MAHAKALA</span>
+          <span class="footer-copy">The Art of Intelligence.</span>
+        </div>
+        <ul class="footer-links">
+          <li><a href="services-local.html">Local Services</a></li>
+          <li><a href="services-commerce.html">Commerce</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

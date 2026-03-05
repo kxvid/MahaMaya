@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Commerce Engine — MAHAKALA</title>
+  <meta name="description" content="Custom e-commerce architecture for boutique DTC brands. Headless builds, Stripe API integrations, AI personal shoppers, and algorithmic cart recovery." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .features-section { padding:var(--space-20) 0; position:relative; }
+    .features-section::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:1px; background:linear-gradient(90deg,transparent,var(--border-default),transparent); }
+    .features-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-6); }
+    .feature-card { background:var(--surface-elevated); border:1px solid var(--border-default); border-radius:var(--radius-xl); padding:var(--space-8); transition:border-color .3s; }
+    .feature-card:hover { border-color:rgba(201,168,76,.2); }
+    .feature-icon { width:44px; height:44px; border-radius:var(--radius-md); background:var(--accent-gold-subtle); border:1px solid rgba(201,168,76,.2); display:flex; align-items:center; justify-content:center; margin-bottom:var(--space-5); }
+    .feature-icon svg { width:22px; height:22px; stroke:#c9a84c; fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+    .feature-title { font-family:var(--font-display); font-weight:600; font-size:18px; color:var(--text-primary); margin-bottom:var(--space-3); letter-spacing:-0.02em; }
+    .feature-desc { font-size:14px; line-height:1.65; color:var(--text-secondary); }
+
+    .icp-section { padding:var(--space-20) 0; position:relative; }
+    .icp-section::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:1px; background:linear-gradient(90deg,transparent,var(--border-default),transparent); }
+    .icp-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-6); }
+    .icp-card { background:var(--surface-elevated); border:1px solid var(--border-default); border-radius:var(--radius-xl); padding:var(--space-8); text-align:center; transition:border-color .3s; }
+    .icp-card:hover { border-color:rgba(201,168,76,.15); }
+    .icp-emoji { font-size:36px; margin-bottom:var(--space-4); display:block; }
+    .icp-name { font-family:var(--font-display); font-weight:600; font-size:16px; color:var(--text-primary); margin-bottom:var(--space-2); }
+    .icp-desc { font-size:14px; color:var(--text-secondary); line-height:1.5; }
+
+    .pitch-section { padding:var(--space-20) 0; position:relative; }
+    .pitch-section::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:1px; background:linear-gradient(90deg,transparent,var(--border-default),transparent); }
+    .pitch-card { background:var(--surface-elevated); border:1px solid rgba(201,168,76,.25); border-radius:var(--radius-2xl); padding:var(--space-12) var(--space-10); max-width:800px; margin:0 auto; position:relative; overflow:hidden; }
+    .pitch-card::before { content:''; position:absolute; top:-100px; right:-100px; width:400px; height:400px; border-radius:50%; background:radial-gradient(circle,rgba(201,168,76,.06),transparent 70%); filter:blur(60px); }
+    .pitch-label { font-family:var(--font-body); font-weight:600; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent-gold); margin-bottom:var(--space-4); position:relative; }
+    .pitch-title { font-family:var(--font-display); font-weight:600; font-size:clamp(20px,3vw,28px); letter-spacing:-0.02em; color:var(--text-primary); margin-bottom:var(--space-5); line-height:1.3; position:relative; }
+    .pitch-body { font-size:16px; line-height:1.7; color:var(--text-secondary); position:relative; }
+
+    .cta-section { padding:var(--space-20) 0 var(--space-16); }
+    .cta-card { background:var(--surface-elevated); border:1px solid var(--border-default); border-radius:var(--radius-2xl); padding:var(--space-16) var(--space-10); text-align:center; position:relative; overflow:hidden; }
+    .cta-card::before { content:''; position:absolute; top:-200px; left:50%; transform:translateX(-50%); width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,rgba(201,168,76,.08),transparent 70%); filter:blur(80px); }
+    .cta-title { font-family:var(--font-display); font-weight:600; font-size:clamp(24px,3.5vw,36px); letter-spacing:-0.03em; color:var(--text-primary); position:relative; z-index:1; }
+    .cta-title span { font-family:var(--font-serif); font-style:italic; font-weight:400; }
+    .cta-sub { font-size:16px; color:var(--text-secondary); line-height:1.6; max-width:480px; margin:var(--space-4) auto var(--space-8); position:relative; z-index:1; }
+    .cta-buttons { display:flex; justify-content:center; gap:var(--space-4); position:relative; z-index:1; }
+
+    @media (max-width:1024px) { .features-grid, .icp-grid { grid-template-columns:1fr; max-width:480px; margin:0 auto; } }
+    @media (max-width:768px) { .pitch-card { padding:var(--space-8) var(--space-6); } .cta-card { padding:var(--space-12) var(--space-6); } .cta-buttons { flex-direction:column; align-items:center; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-mark"><svg viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="7" height="7" rx="1.5" fill="#050505"/><rect x="10" y="1" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="1" y="10" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="10" y="10" width="7" height="7" rx="1.5" fill="#050505"/></svg></div>
+        <span class="nav-logo-text">MAHAKALA</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="services-local.html">Local Services</a></li>
+        <li><a href="services-commerce.html" class="active">Commerce</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav-right"><a href="contact.html" class="btn-primary-sm">Book a Call</a></div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-bg">
+      <div class="orb orb-1" style="background:radial-gradient(circle,rgba(201,168,76,.4) 0%,transparent 70%)"></div>
+      <div class="orb orb-2" style="background:radial-gradient(circle,rgba(201,168,76,.2) 0%,transparent 70%)"></div>
+    </div>
+    <div class="container">
+      <div class="page-hero-content">
+        <p class="page-hero-label" style="color:var(--accent-gold)">Track B</p>
+        <h1 class="page-hero-title">The Commerce<span class="page-hero-title-accent" style="background:linear-gradient(135deg,#fff 30%,#e8d5a0 70%,#c9a84c 100%);-webkit-background-clip:text;background-clip:text">Engine.</span></h1>
+        <p class="page-hero-desc">Custom e-commerce architecture for boutique DTC brands. Not templates. Not themes. Bespoke digital storefronts engineered for conversion, security, and scale.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label" style="color:var(--accent-gold)">Capabilities</p>
+        <h2 class="section-title">Beyond Shopify. <span class="section-title-accent">Beyond templates.</span></h2>
+      </div>
+      <div class="features-grid reveal">
+        <div class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <h3 class="feature-title">Headless Architecture</h3>
+          <p class="feature-desc">Decoupled frontend and backend for ultimate speed and flexibility. Lightning-fast page loads, custom UI, and no platform lock-in.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+          <h3 class="feature-title">Payment API Integrations</h3>
+          <p class="feature-desc">Direct Stripe, PayPal, and Apple Pay integrations. No third-party checkout redirects. Secure, PCI-compliant, and optimized for conversion.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          <h3 class="feature-title">AI Personal Shopper</h3>
+          <p class="feature-desc">Chatbot trained on your real-time inventory. Guides customers to the right product, answers sizing questions, and suggests complementary items.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <h3 class="feature-title">Cart Recovery Sequences</h3>
+          <p class="feature-desc">AI-driven SMS and email flows triggered by abandonment. Personalized messaging based on cart contents, browse history, and customer segment.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+          <h3 class="feature-title">Automated Support</h3>
+          <p class="feature-desc">"Where's my order?" handled automatically via shipping API data. Returns, exchanges, and FAQs — resolved without a human touching a ticket.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3 class="feature-title">Zero-Downtime Hosting</h3>
+          <p class="feature-desc">Managed infrastructure built for traffic spikes during product drops. Auto-scaling, edge caching, and continuous security patching.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="icp-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label" style="color:var(--accent-gold)">Ideal Clients</p>
+        <h2 class="section-title">Built for <span class="section-title-accent">boutique brands.</span></h2>
+        <p class="section-subtitle">Low conversion rates. High cart abandonment. Overwhelmed by support tickets. Tired of generic templates. Sound familiar?</p>
+      </div>
+      <div class="icp-grid reveal">
+        <div class="icp-card">
+          <span class="icp-emoji" role="img" aria-label="shirt">&#128085;</span>
+          <h3 class="icp-name">Streetwear &amp; Apparel</h3>
+          <p class="icp-desc">Brands doing frequent drops that need custom backend architecture to handle traffic spikes and hype-driven launches.</p>
+        </div>
+        <div class="icp-card">
+          <span class="icp-emoji" role="img" aria-label="vintage">&#128190;</span>
+          <h3 class="icp-name">Tech &amp; Vintage Resellers</h3>
+          <p class="icp-desc">High visual identity requirements. Unique inventory that needs a shopping experience as curated as the product selection.</p>
+        </div>
+        <div class="icp-card">
+          <span class="icp-emoji" role="img" aria-label="jewelry">&#128142;</span>
+          <h3 class="icp-name">Artisanal &amp; High-Ticket</h3>
+          <p class="icp-desc">Custom jewelry, boutique cosmetics, specialty home goods. High-trust buying processes that need consultation, not just a cart.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pitch-section">
+    <div class="container">
+      <div class="pitch-card reveal">
+        <p class="pitch-label">The Commerce Engine Pitch</p>
+        <h3 class="pitch-title">You have a great product. But you're losing 70% of your buyers at checkout, and you're spending 3 hours a day answering shipping emails.</h3>
+        <p class="pitch-body">We build custom commerce infrastructure with direct Stripe API integrations and deploy an AI concierge that recovers abandoned carts and handles customer service automatically. Your product deserves infrastructure that converts — not a template that leaks revenue.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card reveal">
+        <h2 class="cta-title">Ready to build your <span>commerce engine?</span></h2>
+        <p class="cta-sub">Book a discovery call. We'll audit your current setup and show you where revenue is leaking.</p>
+        <div class="cta-buttons">
+          <a href="contact.html" class="btn-primary">Book Discovery Call</a>
+          <a href="index.html#pricing" class="btn-ghost">View Pricing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo-mark"><svg viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="7" height="7" rx="1.5" fill="#050505"/><rect x="10" y="1" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="1" y="10" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="10" y="10" width="7" height="7" rx="1.5" fill="#050505"/></svg></div>
+          <span class="footer-name">MAHAKALA</span>
+          <span class="footer-copy">The Art of Intelligence.</span>
+        </div>
+        <ul class="footer-links">
+          <li><a href="services-local.html">Local Services</a></li>
+          <li><a href="services-commerce.html">Commerce</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

@@ -4,66 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MAHAKALA — The Art of Intelligence</title>
-  <meta name="description" content="MAHAKALA is a vertical AI growth studio that builds proprietary growth systems — high-end web design, API integrations, and vertically integrated AI." />
+  <meta name="description" content="MAHAKALA is an AI growth agency that builds proprietary growth systems — high-end web design, API integrations, and vertically integrated AI." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    :root {
-      /* Core */
-      --color-black: #050505;
-      --color-white: #fafafa;
-
-      /* Surfaces */
-      --surface-primary: #050505;
-      --surface-elevated: #0a0a0a;
-      --surface-overlay: #111111;
-      --surface-subtle: rgba(255,255,255,0.03);
-
-      /* Borders */
-      --border-default: rgba(255,255,255,0.08);
-      --border-hover: rgba(255,255,255,0.16);
-      --border-accent: rgba(123,57,252,0.3);
-
-      /* Accent Purple */
-      --accent-primary: #7b39fc;
-      --accent-primary-hover: #8b4dff;
-      --accent-glow: rgba(123,57,252,0.4);
-      --accent-subtle: rgba(123,57,252,0.08);
-
-      /* Accent Gold */
-      --accent-gold: #c9a84c;
-      --accent-gold-subtle: rgba(201,168,76,0.12);
-
-      /* Text */
-      --text-primary: #fafafa;
-      --text-secondary: rgba(255,255,255,0.55);
-      --text-muted: rgba(255,255,255,0.35);
-      --text-accent: #c4a1ff;
-
-      /* Fonts */
-      --font-display: 'Inter', sans-serif;
-      --font-serif: 'Instrument Serif', serif;
-      --font-body: 'Manrope', sans-serif;
-
-      /* Spacing */
-      --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
-      --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px;
-      --space-12: 48px; --space-16: 64px; --space-20: 80px;
-
-      /* Radius */
-      --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px;
-      --radius-xl: 20px; --radius-full: 9999px;
-    }
-
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
-    body { background: var(--surface-primary); color: var(--text-primary); font-family: var(--font-body); overflow-x: hidden; }
-
-    /* ── Layout ── */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-6); }
-
-    /* ── Animated Background ── */
+    /* ── Animated Background (homepage only) ── */
     .hero-section { position: relative; width: 100%; min-height: 100vh; overflow: hidden; }
     .hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
     .hero-bg .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.45; will-change: transform; }
@@ -71,45 +18,24 @@
     .orb-2 { width: 600px; height: 600px; background: radial-gradient(circle, #4f1dba 0%, transparent 70%); top: 10%; right: -15%; animation: float-2 18s ease-in-out infinite; }
     .orb-3 { width: 500px; height: 500px; background: radial-gradient(circle, #2d1a6e 0%, transparent 70%); bottom: -10%; left: 30%; animation: float-3 16s ease-in-out infinite; }
     .orb-4 { width: 350px; height: 350px; background: radial-gradient(circle, #a855f7 0%, transparent 70%); top: 40%; left: 50%; opacity: 0.25; animation: float-4 20s ease-in-out infinite; }
-
     @keyframes float-1 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(80px,40px) scale(1.1)} 66%{transform:translate(-30px,80px) scale(.95)} }
     @keyframes float-2 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(-60px,50px) scale(.9)} 66%{transform:translate(40px,-30px) scale(1.08)} }
     @keyframes float-3 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(50px,-60px) scale(1.05)} 66%{transform:translate(-40px,-20px) scale(.92)} }
     @keyframes float-4 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-80px,60px) scale(1.15)} }
-
     .hero-bg::after { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); background-size:200px; opacity:.4; pointer-events:none; }
     .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px); background-size:64px 64px; mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 20%,transparent 70%); -webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 20%,transparent 70%); z-index:1; }
     .hero-content-layer { position: relative; z-index: 2; }
 
-    /* ── Navbar ── */
-    .navbar { max-width:1200px; margin:0 auto; padding:var(--space-5) var(--space-6); display:flex; align-items:center; justify-content:space-between; }
-    .nav-left { display:flex; align-items:center; gap:var(--space-16); }
-    .nav-logo { text-decoration:none; display:flex; align-items:center; gap:var(--space-3); }
-    .nav-logo-mark { width:32px; height:32px; border-radius:var(--radius-sm); background:var(--text-primary); display:flex; align-items:center; justify-content:center; }
-    .nav-logo-mark svg { width:18px; height:18px; }
-    .nav-logo-text { font-family:var(--font-display); font-weight:700; font-size:15px; letter-spacing:0.15em; color:var(--text-primary); }
-    .nav-links { display:flex; align-items:center; gap:var(--space-1); list-style:none; }
-    .nav-links a { font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-secondary); text-decoration:none; padding:var(--space-2) var(--space-3); border-radius:var(--radius-sm); transition:color .2s,background .2s; }
-    .nav-links a:hover { color:var(--text-primary); background:rgba(255,255,255,0.06); }
-    .nav-right { display:flex; align-items:center; gap:var(--space-3); }
-    .btn-primary-sm { font-family:var(--font-body); font-weight:600; font-size:14px; color:#fff; background:var(--accent-primary); border:none; border-radius:var(--radius-sm); padding:var(--space-2) var(--space-5); cursor:pointer; transition:all .25s; }
-    .btn-primary-sm:hover { background:var(--accent-primary-hover); box-shadow:0 0 24px var(--accent-glow); transform:translateY(-1px); }
-
-    /* ── Hero Content ── */
+    /* Hero content */
     .hero-center { display:flex; flex-direction:column; align-items:center; max-width:880px; margin:0 auto; padding:140px var(--space-6) 0; gap:var(--space-8); }
     .hero-badge { display:inline-flex; align-items:center; gap:var(--space-2); padding:6px 16px 6px 10px; border-radius:var(--radius-full); border:1px solid var(--border-accent); background:var(--accent-subtle); font-family:var(--font-body); font-weight:600; font-size:13px; color:var(--text-accent); letter-spacing:0.02em; animation:fade-up .8s ease both; }
     .hero-badge-dot { width:8px; height:8px; border-radius:50%; background:var(--accent-primary); box-shadow:0 0 12px var(--accent-primary); animation:pulse-dot 2s ease-in-out infinite; }
     @keyframes pulse-dot { 0%,100%{opacity:1;box-shadow:0 0 12px var(--accent-primary)} 50%{opacity:.5;box-shadow:0 0 6px var(--accent-primary)} }
-
     .hero-heading { text-align:center; animation:fade-up .8s ease .1s both; }
     .hero-h1 { font-family:var(--font-display); font-weight:600; font-size:clamp(40px,6vw,76px); line-height:1.05; letter-spacing:-0.03em; color:var(--text-primary); }
     .hero-h1-accent { font-family:var(--font-serif); font-style:italic; font-weight:400; font-size:clamp(40px,6vw,76px); line-height:1.1; letter-spacing:-0.02em; display:block; background:linear-gradient(135deg,#fff 30%,#c4a1ff 70%,#7b39fc 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
     .hero-sub { font-family:var(--font-body); font-weight:400; font-size:18px; line-height:1.6; color:var(--text-secondary); max-width:580px; text-align:center; margin-top:var(--space-5); animation:fade-up .8s ease .2s both; }
     .hero-ctas { display:flex; align-items:center; gap:var(--space-4); animation:fade-up .8s ease .3s both; }
-    .btn-primary { font-family:var(--font-body); font-weight:600; font-size:15px; color:#fff; background:var(--accent-primary); border:none; border-radius:var(--radius-md); padding:16px 32px; cursor:pointer; transition:all .25s; }
-    .btn-primary:hover { background:var(--accent-primary-hover); box-shadow:0 0 40px var(--accent-glow),0 8px 32px rgba(123,57,252,.25); transform:translateY(-2px); }
-    .btn-ghost { font-family:var(--font-body); font-weight:600; font-size:15px; color:rgba(255,255,255,.8); background:var(--surface-subtle); border:1px solid var(--border-default); border-radius:var(--radius-md); padding:16px 32px; cursor:pointer; transition:all .25s; }
-    .btn-ghost:hover { color:#fff; background:rgba(255,255,255,.1); border-color:var(--border-hover); transform:translateY(-2px); }
 
     /* Dashboard preview */
     .dashboard-wrapper { display:flex; justify-content:center; margin-top:var(--space-20); padding:0 var(--space-6) var(--space-20); animation:fade-up .8s ease .5s both; }
@@ -119,19 +45,17 @@
     .dashboard-placeholder::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px); background-size:48px 48px; }
     .dashboard-placeholder-text { font-family:var(--font-body); font-weight:500; font-size:13px; color:var(--text-muted); letter-spacing:3px; text-transform:uppercase; z-index:1; }
 
-    @keyframes fade-up { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    /* ── Metrics ── */
+    .metrics-section { padding:var(--space-16) 0; position:relative; }
+    .metrics-section::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:1px; background:linear-gradient(90deg,transparent,var(--border-default),transparent); }
+    .metrics-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:var(--space-6); }
+    .metric-card { text-align:center; padding:var(--space-8) var(--space-4); }
+    .metric-value { font-family:var(--font-display); font-weight:700; font-size:48px; letter-spacing:-0.03em; background:linear-gradient(135deg,#fff 40%,var(--accent-primary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:var(--space-2); }
+    .metric-label { font-size:14px; color:var(--text-muted); line-height:1.4; }
 
-    /* ═══════════════════════════════════════════
-       SERVICES SECTION
-    ═══════════════════════════════════════════ */
+    /* ── Services ── */
     .services-section { padding:var(--space-20) 0; position:relative; }
     .services-section::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:1px; background:linear-gradient(90deg,transparent,var(--border-default),transparent); }
-    .section-header { text-align:center; margin-bottom:var(--space-16); }
-    .section-label { font-family:var(--font-body); font-weight:600; font-size:var(--space-3); letter-spacing:0.15em; text-transform:uppercase; color:var(--text-accent); margin-bottom:var(--space-4); }
-    .section-title { font-family:var(--font-display); font-weight:600; font-size:clamp(28px,4vw,48px); letter-spacing:-0.03em; line-height:1.1; color:var(--text-primary); }
-    .section-title-accent { font-family:var(--font-serif); font-style:italic; font-weight:400; }
-    .section-subtitle { font-size:18px; color:var(--text-secondary); line-height:1.6; max-width:600px; margin:var(--space-4) auto 0; }
-
     .services-grid { display:grid; grid-template-columns:1fr 1fr; gap:var(--space-6); }
     .service-card { background:var(--surface-elevated); border:1px solid var(--border-default); border-radius:var(--radius-xl); padding:var(--space-10); position:relative; overflow:hidden; transition:border-color .3s,box-shadow .3s; }
     .service-card:hover { border-color:rgba(123,57,252,.2); box-shadow:0 0 60px rgba(123,57,252,.06); }
@@ -139,37 +63,47 @@
     .service-card:hover::before { opacity:1; }
     .service-card--local::before { background:radial-gradient(circle,rgba(123,57,252,.15),transparent 70%); }
     .service-card--ecom::before { background:radial-gradient(circle,rgba(201,168,76,.12),transparent 70%); }
-
     .service-icon { width:48px; height:48px; border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; margin-bottom:var(--space-6); }
     .service-icon--purple { background:var(--accent-subtle); border:1px solid var(--border-accent); }
     .service-icon--gold { background:var(--accent-gold-subtle); border:1px solid rgba(201,168,76,.2); }
     .service-icon svg { width:24px; height:24px; }
-
     .service-label { font-family:var(--font-body); font-weight:600; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:var(--space-3); }
     .service-title { font-family:var(--font-display); font-weight:600; font-size:24px; letter-spacing:-0.02em; color:var(--text-primary); margin-bottom:var(--space-3); }
     .service-desc { font-size:15px; line-height:1.6; color:var(--text-secondary); margin-bottom:var(--space-8); }
-    .service-features { list-style:none; display:flex; flex-direction:column; gap:var(--space-3); }
+    .service-features { list-style:none; display:flex; flex-direction:column; gap:var(--space-3); margin-bottom:var(--space-8); }
     .service-features li { display:flex; align-items:flex-start; gap:var(--space-3); font-size:14px; color:var(--text-secondary); line-height:1.5; }
     .service-features li::before { content:''; width:6px; height:6px; border-radius:50%; margin-top:7px; flex-shrink:0; }
     .service-card--local .service-features li::before { background:var(--accent-primary); box-shadow:0 0 8px var(--accent-glow); }
     .service-card--ecom .service-features li::before { background:var(--accent-gold); box-shadow:0 0 8px rgba(201,168,76,.3); }
+    .service-card-link { font-family:var(--font-body); font-weight:600; font-size:14px; color:var(--text-accent); text-decoration:none; display:inline-flex; align-items:center; gap:var(--space-2); transition:gap .2s; }
+    .service-card-link:hover { gap:var(--space-3); }
+    .service-card-link svg { width:16px; height:16px; }
 
-    /* ═══════════════════════════════════════════
-       PRICING SECTION
-    ═══════════════════════════════════════════ */
+    /* ── Testimonials ── */
+    .testimonials-section { padding:var(--space-20) 0; position:relative; }
+    .testimonials-section::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:1px; background:linear-gradient(90deg,transparent,var(--border-default),transparent); }
+    .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-6); }
+    .testimonial-card { background:var(--surface-elevated); border:1px solid var(--border-default); border-radius:var(--radius-xl); padding:var(--space-8); transition:border-color .3s; }
+    .testimonial-card:hover { border-color:rgba(255,255,255,.12); }
+    .testimonial-stars { display:flex; gap:2px; margin-bottom:var(--space-5); }
+    .testimonial-stars svg { width:16px; height:16px; fill:var(--accent-gold); }
+    .testimonial-quote { font-size:15px; line-height:1.65; color:var(--text-secondary); margin-bottom:var(--space-6); font-style:italic; }
+    .testimonial-author { display:flex; align-items:center; gap:var(--space-3); }
+    .testimonial-avatar { width:40px; height:40px; border-radius:50%; background:var(--accent-subtle); border:1px solid var(--border-accent); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:700; font-size:14px; color:var(--accent-primary); }
+    .testimonial-name { font-family:var(--font-display); font-weight:600; font-size:14px; color:var(--text-primary); }
+    .testimonial-role { font-size:13px; color:var(--text-muted); }
+
+    /* ── Pricing ── */
     .pricing-section { padding:var(--space-20) 0; position:relative; }
     .pricing-section::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:1px; background:linear-gradient(90deg,transparent,var(--border-default),transparent); }
-
     .pricing-track { margin-bottom:var(--space-16); }
     .pricing-track:last-child { margin-bottom:0; }
     .pricing-track-label { font-family:var(--font-body); font-weight:600; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:var(--space-6); text-align:center; }
     .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-5); }
-
     .pricing-card { background:var(--surface-elevated); border:1px solid var(--border-default); border-radius:var(--radius-xl); padding:var(--space-8); display:flex; flex-direction:column; transition:border-color .3s,transform .3s,box-shadow .3s; }
     .pricing-card:hover { border-color:rgba(255,255,255,.12); transform:translateY(-4px); }
     .pricing-card--featured { border-color:var(--border-accent); position:relative; }
     .pricing-card--featured::after { content:'POPULAR'; position:absolute; top:var(--space-4); right:var(--space-4); font-family:var(--font-body); font-weight:700; font-size:10px; letter-spacing:0.1em; color:var(--accent-primary); background:var(--accent-subtle); border:1px solid var(--border-accent); border-radius:var(--radius-full); padding:4px 12px; }
-
     .pricing-name { font-family:var(--font-display); font-weight:600; font-size:20px; letter-spacing:-0.02em; color:var(--text-primary); margin-bottom:var(--space-2); }
     .pricing-desc { font-size:14px; color:var(--text-muted); line-height:1.5; margin-bottom:var(--space-6); min-height:42px; }
     .pricing-amount { display:flex; align-items:baseline; gap:var(--space-1); margin-bottom:var(--space-1); }
@@ -180,15 +114,13 @@
     .pricing-features { list-style:none; display:flex; flex-direction:column; gap:var(--space-3); margin-bottom:var(--space-8); flex:1; }
     .pricing-features li { font-size:14px; color:var(--text-secondary); line-height:1.5; padding-left:var(--space-6); position:relative; }
     .pricing-features li::before { content:''; position:absolute; left:0; top:6px; width:14px; height:14px; border-radius:50%; border:1.5px solid rgba(123,57,252,.4); background:rgba(123,57,252,.1); }
-    .pricing-btn { font-family:var(--font-body); font-weight:600; font-size:14px; padding:14px; border-radius:var(--radius-md); cursor:pointer; text-align:center; transition:all .25s; width:100%; }
+    .pricing-btn { font-family:var(--font-body); font-weight:600; font-size:14px; padding:14px; border-radius:var(--radius-md); cursor:pointer; text-align:center; transition:all .25s; width:100%; text-decoration:none; display:block; }
     .pricing-btn--primary { color:#fff; background:var(--accent-primary); border:none; }
     .pricing-btn--primary:hover { background:var(--accent-primary-hover); box-shadow:0 0 32px var(--accent-glow); transform:translateY(-2px); }
     .pricing-btn--ghost { color:rgba(255,255,255,.8); background:transparent; border:1px solid var(--border-default); }
     .pricing-btn--ghost:hover { color:#fff; border-color:var(--border-hover); background:rgba(255,255,255,.04); transform:translateY(-2px); }
 
-    /* ═══════════════════════════════════════════
-       PROCESS SECTION
-    ═══════════════════════════════════════════ */
+    /* ── Process ── */
     .process-section { padding:var(--space-20) 0; position:relative; }
     .process-section::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:1px; background:linear-gradient(90deg,transparent,var(--border-default),transparent); }
     .process-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-6); }
@@ -197,9 +129,20 @@
     .process-step-title { font-family:var(--font-display); font-weight:600; font-size:18px; color:var(--text-primary); margin-bottom:var(--space-3); }
     .process-step-desc { font-size:14px; color:var(--text-secondary); line-height:1.6; }
 
-    /* ═══════════════════════════════════════════
-       CTA SECTION
-    ═══════════════════════════════════════════ */
+    /* ── FAQ ── */
+    .faq-section { padding:var(--space-20) 0; position:relative; }
+    .faq-section::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:1px; background:linear-gradient(90deg,transparent,var(--border-default),transparent); }
+    .faq-grid { max-width:720px; margin:0 auto; display:flex; flex-direction:column; gap:var(--space-4); }
+    .faq-item { background:var(--surface-elevated); border:1px solid var(--border-default); border-radius:var(--radius-lg); overflow:hidden; transition:border-color .3s; }
+    .faq-item.open { border-color:var(--border-accent); }
+    .faq-question { width:100%; padding:var(--space-5) var(--space-6); display:flex; justify-content:space-between; align-items:center; background:none; border:none; cursor:pointer; text-align:left; }
+    .faq-question span { font-family:var(--font-display); font-weight:600; font-size:16px; color:var(--text-primary); }
+    .faq-question svg { width:20px; height:20px; stroke:var(--text-muted); flex-shrink:0; transition:transform .3s; }
+    .faq-item.open .faq-question svg { transform:rotate(45deg); }
+    .faq-answer { padding:0 var(--space-6) var(--space-5); font-size:15px; line-height:1.65; color:var(--text-secondary); display:none; }
+    .faq-item.open .faq-answer { display:block; }
+
+    /* ── CTA ── */
     .cta-section { padding:var(--space-20) 0 var(--space-16); }
     .cta-card { background:var(--surface-elevated); border:1px solid var(--border-default); border-radius:var(--radius-2xl); padding:var(--space-20) var(--space-10); text-align:center; position:relative; overflow:hidden; }
     .cta-card::before { content:''; position:absolute; top:-200px; left:50%; transform:translateX(-50%); width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,rgba(123,57,252,.12),transparent 70%); filter:blur(80px); }
@@ -208,45 +151,24 @@
     .cta-sub { font-size:16px; color:var(--text-secondary); line-height:1.6; max-width:480px; margin:var(--space-4) auto var(--space-8); position:relative; z-index:1; }
     .cta-buttons { display:flex; justify-content:center; gap:var(--space-4); position:relative; z-index:1; }
 
-    /* ═══════════════════════════════════════════
-       FOOTER
-    ═══════════════════════════════════════════ */
-    .footer { padding:var(--space-12) 0 var(--space-8); border-top:1px solid var(--border-default); }
-    .footer-inner { display:flex; justify-content:space-between; align-items:center; }
-    .footer-brand { display:flex; align-items:center; gap:var(--space-3); }
-    .footer-logo-mark { width:24px; height:24px; border-radius:6px; background:var(--text-primary); display:flex; align-items:center; justify-content:center; }
-    .footer-logo-mark svg { width:14px; height:14px; }
-    .footer-name { font-family:var(--font-display); font-weight:700; font-size:13px; letter-spacing:0.12em; color:var(--text-primary); }
-    .footer-copy { font-size:13px; color:var(--text-muted); }
-    .footer-links { display:flex; gap:var(--space-6); list-style:none; }
-    .footer-links a { font-size:13px; color:var(--text-muted); text-decoration:none; transition:color .2s; }
-    .footer-links a:hover { color:var(--text-primary); }
-
-    /* ═══════════════════════════════════════════
-       RESPONSIVE
-    ═══════════════════════════════════════════ */
+    /* ── Homepage responsive ── */
     @media (max-width:1024px) {
       .services-grid { grid-template-columns:1fr; }
       .pricing-grid { grid-template-columns:1fr; max-width:420px; margin:0 auto; }
       .process-grid { grid-template-columns:1fr; max-width:480px; margin:0 auto; }
+      .testimonials-grid { grid-template-columns:1fr; max-width:480px; margin:0 auto; }
+      .metrics-grid { grid-template-columns:repeat(2,1fr); }
     }
     @media (max-width:768px) {
-      .navbar { padding:var(--space-4) var(--space-5); }
-      .nav-links { display:none; }
-      .nav-left { gap:0; }
       .hero-center { padding:100px var(--space-5) 0; gap:var(--space-6); }
       .hero-sub { font-size:16px; }
       .hero-ctas { flex-direction:column; width:100%; max-width:320px; }
-      .btn-primary, .btn-ghost { width:100%; text-align:center; }
       .dashboard-wrapper { margin-top:var(--space-12); padding-bottom:var(--space-12); }
-      .footer-inner { flex-direction:column; gap:var(--space-6); text-align:center; }
       .cta-card { padding:var(--space-12) var(--space-6); }
       .cta-buttons { flex-direction:column; align-items:center; }
+      .metrics-grid { grid-template-columns:1fr 1fr; }
+      .metric-value { font-size:36px; }
     }
-
-    /* ── Scroll animations ── */
-    .reveal { opacity:0; transform:translateY(32px); transition:opacity .7s ease,transform .7s ease; }
-    .reveal.visible { opacity:1; transform:translateY(0); }
   </style>
 </head>
 <body>
@@ -265,7 +187,7 @@
     <div class="hero-content-layer">
       <nav class="navbar">
         <div class="nav-left">
-          <a href="#" class="nav-logo">
+          <a href="index.html" class="nav-logo">
             <div class="nav-logo-mark">
               <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="1" y="1" width="7" height="7" rx="1.5" fill="#050505"/>
@@ -278,15 +200,15 @@
           </a>
 
           <ul class="nav-links">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#process">Process</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="services-local.html">Local Services</a></li>
+            <li><a href="services-commerce.html">Commerce</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
 
         <div class="nav-right">
-          <button class="btn-primary-sm" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book a Call</button>
+          <a href="contact.html" class="btn-primary-sm">Book a Call</a>
         </div>
       </nav>
 
@@ -304,8 +226,8 @@
         </div>
 
         <div class="hero-ctas">
-          <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book Discovery Call</button>
-          <button class="btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">See How It Works</button>
+          <a href="contact.html" class="btn-primary">Book Discovery Call</a>
+          <a href="#services" class="btn-ghost">See How It Works</a>
         </div>
       </div>
 
@@ -314,6 +236,32 @@
           <div class="dashboard-placeholder">
             <span class="dashboard-placeholder-text">Client Project Preview</span>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       METRICS
+  ═══════════════════════════════════════════ -->
+  <section class="metrics-section">
+    <div class="container">
+      <div class="metrics-grid reveal">
+        <div class="metric-card">
+          <div class="metric-value">3x</div>
+          <div class="metric-label">Average lead increase<br>within 90 days</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">24/7</div>
+          <div class="metric-label">AI concierge coverage<br>zero missed leads</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">70%</div>
+          <div class="metric-label">Cart recovery rate<br>via AI sequences</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">&lt;2s</div>
+          <div class="metric-label">Page load times<br>on managed hosting</div>
         </div>
       </div>
     </div>
@@ -331,7 +279,6 @@
       </div>
 
       <div class="services-grid">
-        <!-- Track A -->
         <div class="service-card service-card--local reveal">
           <div class="service-icon service-icon--purple">
             <svg viewBox="0 0 24 24" fill="none" stroke="#7b39fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -348,9 +295,12 @@
             <li>AI-driven content engine for SEO scaling</li>
             <li>A/B testing and conversion analytics</li>
           </ul>
+          <a href="services-local.html" class="service-card-link">
+            Learn more
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </a>
         </div>
 
-        <!-- Track B -->
         <div class="service-card service-card--ecom reveal">
           <div class="service-icon service-icon--gold">
             <svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -367,6 +317,78 @@
             <li>Automated support — shipping, returns, FAQs</li>
             <li>Algorithmic abandoned cart recovery</li>
           </ul>
+          <a href="services-commerce.html" class="service-card-link">
+            Learn more
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       TESTIMONIALS
+  ═══════════════════════════════════════════ -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Client Results</p>
+        <h2 class="section-title">Built for growth. <span class="section-title-accent">Proven in practice.</span></h2>
+      </div>
+
+      <div class="testimonials-grid reveal">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+          </div>
+          <p class="testimonial-quote">"We were losing 40% of our leads after hours. MAHAKALA's AI concierge now captures every single one. Our booking rate tripled in the first quarter."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">DR</div>
+            <div>
+              <div class="testimonial-name">Dr. Rachel Kim</div>
+              <div class="testimonial-role">Elevate Aesthetics &amp; Wellness</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+          </div>
+          <p class="testimonial-quote">"Our abandoned cart rate dropped from 72% to under 30%. The AI recovery sequences pay for themselves ten times over every month."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MJ</div>
+            <div>
+              <div class="testimonial-name">Marcus Johnson</div>
+              <div class="testimonial-role">Founder, Measure Joy</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
+          </div>
+          <p class="testimonial-quote">"They didn't just build us a website. They built an entire digital infrastructure. Our DEXA bookings run on autopilot now."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AS</div>
+            <div>
+              <div class="testimonial-name">Alex Stern</div>
+              <div class="testimonial-role">Operations Director, DexaFit OC</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -383,17 +405,13 @@
         <p class="section-subtitle">No hidden fees. No CMS access to break. We build it, we manage it, we guarantee performance.</p>
       </div>
 
-      <!-- Track A Pricing -->
       <div class="pricing-track reveal">
         <p class="pricing-track-label">Track A — Local Services</p>
         <div class="pricing-grid">
           <div class="pricing-card">
             <h3 class="pricing-name">The Foundation</h3>
             <p class="pricing-desc">Bespoke landing page with premium hosting and hands-free maintenance.</p>
-            <div class="pricing-amount">
-              <span class="pricing-dollar">$299</span>
-              <span class="pricing-period">/mo</span>
-            </div>
+            <div class="pricing-amount"><span class="pricing-dollar">$299</span><span class="pricing-period">/mo</span></div>
             <p class="pricing-setup">$1,500 setup fee</p>
             <div class="pricing-divider"></div>
             <ul class="pricing-features">
@@ -402,16 +420,12 @@
               <li>Hands-free maintenance</li>
               <li>Foundational local SEO</li>
             </ul>
-            <button class="pricing-btn pricing-btn--ghost">Book a Call</button>
+            <a href="contact.html" class="pricing-btn pricing-btn--ghost">Book a Call</a>
           </div>
-
           <div class="pricing-card pricing-card--featured">
             <h3 class="pricing-name">The Intelligence</h3>
             <p class="pricing-desc">AI concierge that captures and qualifies leads around the clock.</p>
-            <div class="pricing-amount">
-              <span class="pricing-dollar">$599</span>
-              <span class="pricing-period">/mo</span>
-            </div>
+            <div class="pricing-amount"><span class="pricing-dollar">$599</span><span class="pricing-period">/mo</span></div>
             <p class="pricing-setup">$2,500 setup fee</p>
             <div class="pricing-divider"></div>
             <ul class="pricing-features">
@@ -421,16 +435,12 @@
               <li>CRM &amp; email webhooks</li>
               <li>After-hours lead capture</li>
             </ul>
-            <button class="pricing-btn pricing-btn--primary">Book a Call</button>
+            <a href="contact.html" class="pricing-btn pricing-btn--primary">Book a Call</a>
           </div>
-
           <div class="pricing-card">
             <h3 class="pricing-name">Infinite Growth</h3>
             <p class="pricing-desc">Full AI-driven content engine with automated outreach and analytics.</p>
-            <div class="pricing-amount">
-              <span class="pricing-dollar">$1,299</span>
-              <span class="pricing-period">+/mo</span>
-            </div>
+            <div class="pricing-amount"><span class="pricing-dollar">$1,299</span><span class="pricing-period">+/mo</span></div>
             <p class="pricing-setup">$4,500+ setup fee</p>
             <div class="pricing-divider"></div>
             <ul class="pricing-features">
@@ -440,21 +450,18 @@
               <li>A/B testing &amp; analytics</li>
               <li>Dedicated growth strategist</li>
             </ul>
-            <button class="pricing-btn pricing-btn--ghost">Contact Us</button>
+            <a href="contact.html" class="pricing-btn pricing-btn--ghost">Contact Us</a>
           </div>
         </div>
       </div>
 
-      <!-- Track B Pricing -->
       <div class="pricing-track reveal">
         <p class="pricing-track-label">Track B — Commerce Engine</p>
         <div class="pricing-grid">
           <div class="pricing-card">
             <h3 class="pricing-name">Custom Build</h3>
             <p class="pricing-desc">Fully custom e-commerce architecture tailored to your brand.</p>
-            <div class="pricing-amount">
-              <span class="pricing-dollar">$5k–12k+</span>
-            </div>
+            <div class="pricing-amount"><span class="pricing-dollar">$5k–12k+</span></div>
             <p class="pricing-setup">One-time build fee</p>
             <div class="pricing-divider"></div>
             <ul class="pricing-features">
@@ -463,16 +470,12 @@
               <li>High-conversion UI/UX</li>
               <li>Brand-specific design system</li>
             </ul>
-            <button class="pricing-btn pricing-btn--ghost">Discuss Your Project</button>
+            <a href="contact.html" class="pricing-btn pricing-btn--ghost">Discuss Your Project</a>
           </div>
-
           <div class="pricing-card pricing-card--featured">
             <h3 class="pricing-name">AI Commerce Sub</h3>
             <p class="pricing-desc">Managed AI infrastructure — personal shoppers, support bots, and cart recovery.</p>
-            <div class="pricing-amount">
-              <span class="pricing-dollar">$899</span>
-              <span class="pricing-period">–$2,500+/mo</span>
-            </div>
+            <div class="pricing-amount"><span class="pricing-dollar">$899</span><span class="pricing-period">–$2,500+/mo</span></div>
             <p class="pricing-setup">Requires custom build</p>
             <div class="pricing-divider"></div>
             <ul class="pricing-features">
@@ -482,15 +485,12 @@
               <li>Zero-downtime hosting</li>
               <li>Catalog management</li>
             </ul>
-            <button class="pricing-btn pricing-btn--primary">Book a Call</button>
+            <a href="contact.html" class="pricing-btn pricing-btn--primary">Book a Call</a>
           </div>
-
           <div class="pricing-card">
             <h3 class="pricing-name">Full Stack</h3>
             <p class="pricing-desc">Custom build + ongoing AI commerce subscription. The complete engine.</p>
-            <div class="pricing-amount">
-              <span class="pricing-dollar">Custom</span>
-            </div>
+            <div class="pricing-amount"><span class="pricing-dollar">Custom</span></div>
             <p class="pricing-setup">Build + monthly retainer</p>
             <div class="pricing-divider"></div>
             <ul class="pricing-features">
@@ -500,7 +500,7 @@
               <li>Custom API integrations</li>
               <li>Dedicated infrastructure team</li>
             </ul>
-            <button class="pricing-btn pricing-btn--ghost">Let's Talk</button>
+            <a href="contact.html" class="pricing-btn pricing-btn--ghost">Let's Talk</a>
           </div>
         </div>
       </div>
@@ -516,7 +516,6 @@
         <p class="section-label">How It Works</p>
         <h2 class="section-title">Three phases. <span class="section-title-accent">Zero friction.</span></h2>
       </div>
-
       <div class="process-grid reveal">
         <div class="process-step">
           <div class="process-num">01</div>
@@ -538,6 +537,62 @@
   </section>
 
   <!-- ═══════════════════════════════════════════
+       FAQ
+  ═══════════════════════════════════════════ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Questions</p>
+        <h2 class="section-title">Common <span class="section-title-accent">questions.</span></h2>
+      </div>
+      <div class="faq-grid reveal">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Why can't I edit my own website?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">Because we guarantee performance, SEO integrity, and security. Giving CMS access introduces risk — broken layouts, slow load times, security vulnerabilities. We handle all updates for you, typically within 24 hours of a request.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What does the AI concierge actually do?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">It's a custom-trained chatbot that lives on your site. It answers questions about your services using a knowledge base we build from your business data, captures lead information (name, email, service interest), and pushes it directly to your CRM or inbox — 24/7, including after hours.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How long does a typical build take?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">Track A (local services) builds typically launch in 2-3 weeks. Track B (e-commerce) custom builds take 4-8 weeks depending on complexity. AI training and integrations run in parallel with the design build.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What if I already have a website?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">We'll audit it during the discovery call. In most cases, we rebuild from scratch on our managed infrastructure — this gives us full control over performance, security, and AI integration. We migrate your content and improve on it.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What happens if I want to cancel?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">You own your content and data. If you cancel, we export everything and help you transition. The custom code and AI models are part of our managed service, but your business data, leads, and content are always yours.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Do you work with businesses outside of LA/OC?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">Yes. While we started in the San Gabriel Valley and Orange County area, our services are fully remote. We work with premium local services and DTC brands nationwide. The discovery call and all communication happen over video.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
        CTA
   ═══════════════════════════════════════════ -->
   <section class="cta-section" id="contact">
@@ -546,8 +601,8 @@
         <h2 class="cta-title">Stop leaking revenue.<br><span>Start building infrastructure.</span></h2>
         <p class="cta-sub">Book a free discovery call. We'll audit your digital presence and map every revenue leak — no obligation.</p>
         <div class="cta-buttons">
-          <button class="btn-primary">Book Free Discovery Call</button>
-          <button class="btn-ghost">See Our Work</button>
+          <a href="contact.html" class="btn-primary">Book Free Discovery Call</a>
+          <a href="about.html" class="btn-ghost">Learn About Us</a>
         </div>
       </div>
     </div>
@@ -572,17 +627,17 @@
           <span class="footer-copy">The Art of Intelligence.</span>
         </div>
         <ul class="footer-links">
-          <li><a href="#services">Services</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#">Privacy</a></li>
+          <li><a href="services-local.html">Local Services</a></li>
+          <li><a href="services-commerce.html">Commerce</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
     </div>
   </footer>
 
-  <!-- Scroll reveal -->
   <script>
+    // Scroll reveal
     const revealEls = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -593,6 +648,16 @@
       });
     }, { threshold: 0.15 });
     revealEls.forEach(el => observer.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
   </script>
 </body>
 </html>
