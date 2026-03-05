@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
   <style>
@@ -22,49 +22,123 @@
     html {
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
     }
 
     body {
-      background: #000;
+      background: #050505;
       color: #fff;
       font-family: 'Manrope', sans-serif;
+      overflow-x: hidden;
     }
 
-    /* ── Hero Section ── */
+    /* ── Animated Mesh Background ── */
     .hero-section {
       position: relative;
       width: 100%;
-      background: #000000;
+      min-height: 100vh;
+      background: #050505;
       overflow: hidden;
     }
 
-    /* ── Background Video ── */
-    .hero-video {
+    .hero-bg {
       position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 120%;
-      height: 120%;
-      object-fit: cover;
-      object-position: center bottom;
+      inset: 0;
       z-index: 0;
+      overflow: hidden;
+    }
+
+    /* Animated gradient orbs */
+    .hero-bg .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.5;
+      will-change: transform;
+    }
+
+    .orb-1 {
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, #7b39fc 0%, transparent 70%);
+      top: -15%;
+      left: -10%;
+      animation: float-1 14s ease-in-out infinite;
+    }
+
+    .orb-2 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, #4f1dba 0%, transparent 70%);
+      top: 10%;
+      right: -15%;
+      animation: float-2 18s ease-in-out infinite;
+    }
+
+    .orb-3 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, #2d1a6e 0%, transparent 70%);
+      bottom: -10%;
+      left: 30%;
+      animation: float-3 16s ease-in-out infinite;
+    }
+
+    .orb-4 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, #a855f7 0%, transparent 70%);
+      top: 40%;
+      left: 50%;
+      opacity: 0.3;
+      animation: float-4 20s ease-in-out infinite;
+    }
+
+    @keyframes float-1 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(80px, 40px) scale(1.1); }
+      66% { transform: translate(-30px, 80px) scale(0.95); }
+    }
+
+    @keyframes float-2 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(-60px, 50px) scale(0.9); }
+      66% { transform: translate(40px, -30px) scale(1.08); }
+    }
+
+    @keyframes float-3 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(50px, -60px) scale(1.05); }
+      66% { transform: translate(-40px, -20px) scale(0.92); }
+    }
+
+    @keyframes float-4 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-80px, 60px) scale(1.15); }
+    }
+
+    /* Noise texture overlay */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      opacity: 0.4;
       pointer-events: none;
     }
 
-    /* ── Blurred Pill Element ── */
-    .hero-blur-pill {
+    /* Subtle grid */
+    .hero-grid {
       position: absolute;
-      top: 215px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 801px;
-      height: 384px;
-      border-radius: 9999px;
-      background: #000000;
-      filter: blur(77.5px);
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse 60% 50% at 50% 40%, black 20%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 40%, black 20%, transparent 70%);
       z-index: 1;
-      pointer-events: none;
     }
 
     /* ── Content Layer ── */
@@ -75,12 +149,10 @@
 
     /* ── Navbar ── */
     .navbar {
-      max-width: 1440px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 16px 120px;
-      height: 102px;
+      padding: 20px 48px;
       display: flex;
-      flex-direction: row;
       align-items: center;
       justify-content: space-between;
     }
@@ -88,7 +160,7 @@
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 80px;
+      gap: 64px;
     }
 
     .nav-logo svg {
@@ -100,7 +172,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 4px;
       list-style: none;
     }
 
@@ -109,26 +181,29 @@
       font-weight: 500;
       font-size: 14px;
       line-height: 22px;
-      color: #ffffff;
+      color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
-      padding: 4px 10px;
-      transition: opacity 0.2s ease;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: color 0.2s ease, background 0.2s ease;
     }
 
     .nav-links a:hover {
-      opacity: 0.75;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.06);
     }
 
     .nav-link-dropdown {
       display: flex;
       align-items: center;
-      gap: 3px;
+      gap: 2px;
     }
 
     .nav-link-dropdown svg {
-      width: 24px;
-      height: 24px;
+      width: 18px;
+      height: 18px;
       flex-shrink: 0;
+      opacity: 0.5;
     }
 
     .nav-right {
@@ -142,18 +217,19 @@
       font-weight: 600;
       font-size: 14px;
       line-height: 22px;
-      color: #171717;
-      background: #ffffff;
-      border: 1px solid #d4d4d4;
-      border-radius: 8px;
-      padding: 8px 16px;
+      color: rgba(255, 255, 255, 0.8);
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 8px 20px;
       cursor: pointer;
-      transition: background 0.2s ease, transform 0.15s ease;
+      transition: all 0.2s ease;
     }
 
     .btn-signin:hover {
-      background: #f0f0f0;
-      transform: translateY(-1px);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.06);
     }
 
     .btn-getstarted-nav {
@@ -161,20 +237,19 @@
       font-weight: 600;
       font-size: 14px;
       line-height: 22px;
-      color: #fafafa;
+      color: #fff;
       background: #7b39fc;
       border: none;
-      border-radius: 8px;
-      padding: 8px 16px;
+      border-radius: 10px;
+      padding: 8px 20px;
       cursor: pointer;
-      box-shadow: 0px 4px 16px rgba(23, 23, 23, 0.04);
-      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      transition: all 0.25s ease;
     }
 
     .btn-getstarted-nav:hover {
-      background: #6a2be0;
+      background: #8b4dff;
+      box-shadow: 0 0 24px rgba(123, 57, 252, 0.4);
       transform: translateY(-1px);
-      box-shadow: 0px 6px 24px rgba(123, 57, 252, 0.25);
     }
 
     /* ── Hero Content ── */
@@ -182,48 +257,84 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      max-width: 871px;
-      margin: 162px auto 0;
-      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 140px 24px 0;
+      gap: 32px;
+    }
+
+    /* Badge pill */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px 6px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(123, 57, 252, 0.3);
+      background: rgba(123, 57, 252, 0.08);
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      color: #c4a1ff;
+      letter-spacing: 0.02em;
+      animation: fade-in-up 0.8s ease both;
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #7b39fc;
+      box-shadow: 0 0 12px #7b39fc;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; box-shadow: 0 0 12px #7b39fc; }
+      50% { opacity: 0.6; box-shadow: 0 0 6px #7b39fc; }
     }
 
     .hero-heading-block {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 0;
       text-align: center;
+      animation: fade-in-up 0.8s ease 0.1s both;
     }
 
     .hero-headline-1 {
       font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      font-size: 76px;
-      line-height: 1.15;
-      letter-spacing: -2px;
-      color: #ffffff;
+      font-weight: 600;
+      font-size: clamp(40px, 6vw, 80px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: #fff;
     }
 
     .hero-headline-2 {
       font-family: 'Instrument Serif', serif;
       font-style: italic;
       font-weight: 400;
-      font-size: 76px;
-      line-height: 1.15;
-      letter-spacing: -2px;
-      color: #ffffff;
+      font-size: clamp(40px, 6vw, 80px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #fff 30%, #c4a1ff 70%, #7b39fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .hero-subtitle {
       font-family: 'Manrope', sans-serif;
       font-weight: 400;
       font-size: 18px;
-      line-height: 26px;
-      color: #f6f7f9;
-      opacity: 0.9;
-      max-width: 613px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.55);
+      max-width: 560px;
       text-align: center;
-      margin-top: 6px;
+      margin-top: 20px;
+      animation: fade-in-up 0.8s ease 0.2s both;
     }
 
     /* ── CTA Buttons ── */
@@ -231,47 +342,50 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 22px;
+      gap: 16px;
+      animation: fade-in-up 0.8s ease 0.3s both;
     }
 
     .btn-cta-primary {
-      font-family: 'Cabin', sans-serif;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 1.7;
-      color: #ffffff;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 1;
+      color: #fff;
       background: #7b39fc;
       border: none;
-      border-radius: 10px;
-      padding: 14px 24px;
+      border-radius: 12px;
+      padding: 16px 32px;
       cursor: pointer;
-      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      transition: all 0.25s ease;
+      position: relative;
     }
 
     .btn-cta-primary:hover {
-      background: #6a2be0;
+      background: #8b4dff;
+      box-shadow: 0 0 40px rgba(123, 57, 252, 0.45), 0 8px 32px rgba(123, 57, 252, 0.25);
       transform: translateY(-2px);
-      box-shadow: 0px 8px 32px rgba(123, 57, 252, 0.35);
     }
 
     .btn-cta-secondary {
-      font-family: 'Cabin', sans-serif;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 1.7;
-      color: #f6f7f9;
-      background: #2b2344;
-      border: none;
-      border-radius: 10px;
-      padding: 14px 24px;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 1;
+      color: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 16px 32px;
       cursor: pointer;
-      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      transition: all 0.25s ease;
     }
 
     .btn-cta-secondary:hover {
-      background: #362b55;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
       transform: translateY(-2px);
-      box-shadow: 0px 8px 32px rgba(43, 35, 68, 0.4);
     }
 
     /* ── Dashboard Image ── */
@@ -279,43 +393,58 @@
       display: flex;
       justify-content: center;
       margin-top: 80px;
-      padding-bottom: 40px;
+      padding: 0 24px 80px;
+      animation: fade-in-up 0.8s ease 0.5s both;
     }
 
     .dashboard-outer {
-      width: 1163px;
-      max-width: 90vw;
-      border-radius: 24px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1.5px solid transparent;
-      padding: 22.5px;
+      width: 1100px;
+      max-width: 100%;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 12px;
+      position: relative;
+    }
 
-      /* Subtle border glow via box-shadow for that ethereal feel */
-      box-shadow:
-        inset 0 0 0 1.5px rgba(255, 255, 255, 0.08),
-        0 0 80px rgba(123, 57, 252, 0.06);
+    /* Glow behind dashboard */
+    .dashboard-outer::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 21px;
+      background: linear-gradient(
+        135deg,
+        rgba(123, 57, 252, 0.2) 0%,
+        transparent 40%,
+        transparent 60%,
+        rgba(168, 85, 247, 0.15) 100%
+      );
+      z-index: -1;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      padding: 1px;
     }
 
     .dashboard-outer img {
       width: 100%;
       height: auto;
-      border-radius: 8px;
+      border-radius: 12px;
       object-fit: cover;
       display: block;
     }
 
-    /* ── Dashboard placeholder ── */
     .dashboard-placeholder {
       width: 100%;
       aspect-ratio: 16 / 9;
-      border-radius: 8px;
+      border-radius: 12px;
       background: linear-gradient(
-        135deg,
-        rgba(123, 57, 252, 0.12) 0%,
-        rgba(43, 35, 68, 0.25) 40%,
-        rgba(0, 0, 0, 0.6) 100%
+        160deg,
+        rgba(123, 57, 252, 0.08) 0%,
+        rgba(20, 15, 35, 0.6) 40%,
+        rgba(5, 5, 5, 0.8) 100%
       );
       display: flex;
       align-items: center;
@@ -328,69 +457,103 @@
       content: '';
       position: absolute;
       inset: 0;
-      background:
-        repeating-linear-gradient(
-          0deg,
-          transparent,
-          transparent 39px,
-          rgba(255, 255, 255, 0.03) 39px,
-          rgba(255, 255, 255, 0.03) 40px
-        ),
-        repeating-linear-gradient(
-          90deg,
-          transparent,
-          transparent 39px,
-          rgba(255, 255, 255, 0.03) 39px,
-          rgba(255, 255, 255, 0.03) 40px
-        );
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
     }
 
     .dashboard-placeholder-text {
       font-family: 'Manrope', sans-serif;
       font-weight: 500;
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.3);
-      letter-spacing: 2px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.2);
+      letter-spacing: 3px;
       text-transform: uppercase;
       z-index: 1;
+    }
+
+    /* ── Fade-in Animation ── */
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 16px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-left {
+        gap: 0;
+      }
+
+      .hero-center {
+        padding: 100px 20px 0;
+        gap: 24px;
+      }
+
+      .hero-subtitle {
+        font-size: 16px;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .btn-cta-primary,
+      .btn-cta-secondary {
+        width: 100%;
+        text-align: center;
+      }
+
+      .dashboard-wrapper {
+        margin-top: 48px;
+        padding-bottom: 48px;
+      }
     }
   </style>
 </head>
 <body>
   <section class="hero-section">
-    <!-- Background Video -->
-    <video
-      class="hero-video"
-      autoplay
-      loop
-      muted
-      playsinline
-      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260215_121759_424f8e9c-d8bd-4974-9567-52709dfb6842.mp4"
-    ></video>
-
-    <!-- Blurred Pill -->
-    <div class="hero-blur-pill"></div>
+    <!-- Animated Background -->
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="orb orb-4"></div>
+    </div>
+    <div class="hero-grid"></div>
 
     <!-- Content Layer -->
     <div class="hero-content-layer">
       <!-- Navbar -->
       <nav class="navbar">
         <div class="nav-left">
-          <!-- Logo SVG -->
           <a href="#" class="nav-logo">
             <svg width="134" height="25" viewBox="0 0 134 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Logomark -->
               <rect x="0" y="2" width="21" height="21" rx="5" fill="white"/>
               <rect x="4" y="6" width="6" height="6" rx="2" fill="black"/>
               <rect x="11" y="6" width="6" height="6" rx="2" fill="black" opacity="0.5"/>
               <rect x="4" y="13" width="6" height="6" rx="2" fill="black" opacity="0.5"/>
               <rect x="11" y="13" width="6" height="6" rx="2" fill="black"/>
-              <!-- Logotype -->
               <text x="27" y="18.5" fill="white" font-family="Inter, sans-serif" font-weight="700" font-size="14" letter-spacing="1.5">LOGOIPSUM</text>
             </svg>
           </a>
 
-          <!-- Nav Links -->
           <ul class="nav-links">
             <li><a href="#">Home</a></li>
             <li>
@@ -414,6 +577,11 @@
 
       <!-- Hero Content -->
       <div class="hero-center">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Now in Public Beta
+        </div>
+
         <div class="hero-heading-block">
           <h1 class="hero-headline-1">Automate repetitive.</h1>
           <h1 class="hero-headline-2">Focus on growth.</h1>
@@ -431,7 +599,6 @@
       <!-- Dashboard Image -->
       <div class="dashboard-wrapper">
         <div class="dashboard-outer">
-          <!-- Replace src below with your actual dashboard screenshot -->
           <div class="dashboard-placeholder">
             <span class="dashboard-placeholder-text">Dashboard Preview</span>
           </div>
