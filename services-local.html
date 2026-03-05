@@ -60,6 +60,7 @@
   </style>
 </head>
 <body>
+  <div class="navbar-wrap">
   <nav class="navbar">
     <div class="nav-left">
       <a href="index.html" class="nav-logo">
@@ -79,6 +80,7 @@
       <a href="contact.html" class="btn-primary-sm">Book a Call</a>
     </div>
   </nav>
+  </div>
 
   <!-- Page Hero -->
   <section class="page-hero">
@@ -233,6 +235,11 @@
       entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
     }, { threshold: 0.15 });
     revealEls.forEach(el => observer.observe(el));
+
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (navbar) { if (window.scrollY > 40) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); }
+    });
   </script>
 </body>
 </html>
