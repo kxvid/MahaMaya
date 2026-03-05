@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Measure Joy — Case Study — MAHAKALA</title>
+  <meta name="description" content="How Measure Joy escaped eBay seller fees and Shopify costs by partnering with MAHAKALA to build a custom commerce engine for their curated Y2K camera business." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Case study layout ── */
+    .case-meta { display:flex; gap:var(--space-8); margin-top:var(--space-8); flex-wrap:wrap; }
+    .case-meta-item { display:flex; flex-direction:column; gap:2px; }
+    .case-meta-label { font-family:var(--font-body); font-weight:600; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); }
+    .case-meta-value { font-family:var(--font-display); font-weight:600; font-size:15px; color:var(--text-primary); }
+
+    /* ── Challenge / Solution / Result blocks ── */
+    .case-section { padding:var(--space-20) 0; position:relative; }
+    .case-section::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:1px; background:linear-gradient(90deg,transparent,var(--border-default),transparent); }
+    .case-content { max-width:760px; margin:0 auto; }
+    .case-content p { font-size:17px; line-height:1.75; color:var(--text-secondary); margin-bottom:var(--space-6); }
+    .case-content p:last-child { margin-bottom:0; }
+    .case-content strong { color:var(--text-primary); font-weight:600; }
+
+    /* ── Problem cards ── */
+    .problem-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-6); margin-top:var(--space-10); }
+    .problem-card { background:var(--surface-elevated); border:1px solid var(--border-default); border-radius:var(--radius-xl); padding:var(--space-8); transition:border-color .3s; }
+    .problem-card:hover { border-color:rgba(255,255,255,.12); }
+    .problem-icon { font-size:32px; margin-bottom:var(--space-4); display:block; }
+    .problem-title { font-family:var(--font-display); font-weight:600; font-size:18px; color:var(--text-primary); margin-bottom:var(--space-3); letter-spacing:-0.02em; }
+    .problem-desc { font-size:14px; line-height:1.65; color:var(--text-secondary); }
+
+    /* ── Results metrics ── */
+    .results-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:var(--space-6); margin-top:var(--space-10); }
+    .result-card { text-align:center; padding:var(--space-8) var(--space-4); background:var(--surface-elevated); border:1px solid var(--border-default); border-radius:var(--radius-xl); transition:border-color .3s; }
+    .result-card:hover { border-color:rgba(201,168,76,.2); }
+    .result-value { font-family:var(--font-display); font-weight:700; font-size:40px; letter-spacing:-0.03em; background:linear-gradient(135deg,#fff 40%,var(--accent-gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:var(--space-2); }
+    .result-label { font-size:14px; color:var(--text-muted); line-height:1.4; }
+
+    /* ── Solution features ── */
+    .solution-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:var(--space-6); margin-top:var(--space-10); }
+    .solution-card { background:var(--surface-elevated); border:1px solid var(--border-default); border-radius:var(--radius-xl); padding:var(--space-8); transition:border-color .3s; }
+    .solution-card:hover { border-color:rgba(201,168,76,.2); }
+    .solution-icon { width:44px; height:44px; border-radius:var(--radius-md); background:var(--accent-gold-subtle); border:1px solid rgba(201,168,76,.2); display:flex; align-items:center; justify-content:center; margin-bottom:var(--space-5); }
+    .solution-icon svg { width:22px; height:22px; stroke:#c9a84c; fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+    .solution-title { font-family:var(--font-display); font-weight:600; font-size:18px; color:var(--text-primary); margin-bottom:var(--space-3); letter-spacing:-0.02em; }
+    .solution-desc { font-size:14px; line-height:1.65; color:var(--text-secondary); }
+
+    /* ── Quote block ── */
+    .case-quote { margin:var(--space-16) auto; max-width:680px; text-align:center; position:relative; }
+    .case-quote::before { content:'\201C'; position:absolute; top:-40px; left:50%; transform:translateX(-50%); font-family:var(--font-serif); font-size:120px; color:rgba(201,168,76,.15); line-height:1; pointer-events:none; }
+    .case-quote blockquote { font-family:var(--font-serif); font-style:italic; font-size:clamp(20px,3vw,28px); line-height:1.5; color:var(--text-primary); margin-bottom:var(--space-5); position:relative; }
+    .case-quote cite { font-family:var(--font-body); font-style:normal; font-size:14px; color:var(--text-muted); }
+    .case-quote cite strong { color:var(--text-secondary); font-weight:600; }
+
+    /* ── Timeline ── */
+    .timeline { max-width:600px; margin:var(--space-10) auto 0; display:flex; flex-direction:column; gap:0; }
+    .timeline-item { display:grid; grid-template-columns:80px 24px 1fr; gap:var(--space-4); align-items:start; padding-bottom:var(--space-8); position:relative; }
+    .timeline-item:last-child { padding-bottom:0; }
+    .timeline-week { font-family:var(--font-display); font-weight:700; font-size:13px; color:var(--accent-gold); text-align:right; padding-top:2px; }
+    .timeline-dot-col { display:flex; flex-direction:column; align-items:center; position:relative; }
+    .timeline-dot { width:12px; height:12px; border-radius:50%; background:var(--accent-gold); box-shadow:0 0 12px rgba(201,168,76,.3); flex-shrink:0; }
+    .timeline-line { width:2px; background:rgba(201,168,76,.15); flex:1; margin-top:var(--space-2); min-height:40px; }
+    .timeline-item:last-child .timeline-line { display:none; }
+    .timeline-content-title { font-family:var(--font-display); font-weight:600; font-size:15px; color:var(--text-primary); margin-bottom:2px; }
+    .timeline-content-desc { font-size:14px; color:var(--text-secondary); line-height:1.5; }
+
+    /* ── CTA ── */
+    .cta-section { padding:var(--space-20) 0 var(--space-16); }
+    .cta-card { background:var(--surface-elevated); border:1px solid var(--border-default); border-radius:var(--radius-2xl); padding:var(--space-16) var(--space-10); text-align:center; position:relative; overflow:hidden; }
+    .cta-card::before { content:''; position:absolute; top:-200px; left:50%; transform:translateX(-50%); width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,rgba(201,168,76,.08),transparent 70%); filter:blur(80px); }
+    .cta-title { font-family:var(--font-display); font-weight:600; font-size:clamp(24px,3.5vw,36px); letter-spacing:-0.03em; color:var(--text-primary); position:relative; z-index:1; }
+    .cta-title span { font-family:var(--font-serif); font-style:italic; font-weight:400; }
+    .cta-sub { font-size:16px; color:var(--text-secondary); line-height:1.6; max-width:480px; margin:var(--space-4) auto var(--space-8); position:relative; z-index:1; }
+    .cta-buttons { display:flex; justify-content:center; gap:var(--space-4); position:relative; z-index:1; }
+
+    @media (max-width:1024px) {
+      .problem-grid { grid-template-columns:1fr; max-width:480px; margin:var(--space-10) auto 0; }
+      .results-grid { grid-template-columns:repeat(2,1fr); }
+      .solution-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:768px) {
+      .case-meta { flex-direction:column; gap:var(--space-4); }
+      .results-grid { grid-template-columns:1fr 1fr; }
+      .result-value { font-size:32px; }
+      .cta-card { padding:var(--space-12) var(--space-6); }
+      .cta-buttons { flex-direction:column; align-items:center; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-mark"><svg viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="7" height="7" rx="1.5" fill="#050505"/><rect x="10" y="1" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="1" y="10" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="10" y="10" width="7" height="7" rx="1.5" fill="#050505"/></svg></div>
+        <span class="nav-logo-text">MAHAKALA</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="services-local.html">Local Services</a></li>
+        <li><a href="services-commerce.html">Commerce</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav-right"><a href="contact.html" class="btn-primary-sm">Book a Call</a></div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="page-hero-bg">
+      <div class="orb orb-1" style="background:radial-gradient(circle,rgba(201,168,76,.4) 0%,transparent 70%)"></div>
+      <div class="orb orb-2" style="background:radial-gradient(circle,rgba(201,168,76,.2) 0%,transparent 70%)"></div>
+    </div>
+    <div class="container">
+      <div class="page-hero-content">
+        <p class="page-hero-label" style="color:var(--accent-gold)">Case Study</p>
+        <h1 class="page-hero-title">Measure Joy<span class="page-hero-title-accent" style="background:linear-gradient(135deg,#fff 30%,#e8d5a0 70%,#c9a84c 100%);-webkit-background-clip:text;background-clip:text">Reviving Y2K Tech.</span></h1>
+        <p class="page-hero-desc">How a curated vintage camera brand escaped eBay's seller fees and Shopify's limitations — and built a custom commerce engine that puts them in full control of their brand, margins, and growth.</p>
+        <div class="case-meta">
+          <div class="case-meta-item">
+            <span class="case-meta-label">Client</span>
+            <span class="case-meta-value">Measure Joy</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Industry</span>
+            <span class="case-meta-value">Vintage Tech / E-Commerce</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Track</span>
+            <span class="case-meta-value">B — Commerce Engine</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Platform</span>
+            <span class="case-meta-value">Custom Build (Next.js)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem -->
+  <section class="case-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label" style="color:var(--accent-gold)">The Problem</p>
+        <h2 class="section-title">Great product. <span class="section-title-accent">Wrong infrastructure.</span></h2>
+      </div>
+      <div class="case-content reveal">
+        <p>Measure Joy curates, restores, and sells vintage Y2K digital cameras — the kind of point-and-shoots that have become cultural artifacts. Every camera goes through a 12-point inspection. Every unit ships with a 90-day warranty. The product is premium. The experience should be too.</p>
+        <p>But the business was trapped on <strong>eBay</strong> — hemorrhaging revenue to seller fees, competing with low-quality listings, and building someone else's brand equity with every sale. The obvious alternative was Shopify, but for a boutique operation selling curated inventory (not mass-produced SKUs), <strong>Shopify's monthly fees, transaction costs, and theme limitations</strong> didn't make economic sense.</p>
+        <p>Measure Joy needed something different. A platform that matched the quality of their product — without the recurring platform tax.</p>
+      </div>
+
+      <div class="problem-grid reveal">
+        <div class="problem-card">
+          <span class="problem-icon">&#128176;</span>
+          <h3 class="problem-title">eBay Seller Fees</h3>
+          <p class="problem-desc">12.9% final value fees on every sale, plus insertion fees and promoted listing costs. On a $120 camera, eBay takes roughly $15 before shipping. That's margin evaporating on every transaction.</p>
+        </div>
+        <div class="problem-card">
+          <span class="problem-icon">&#127979;</span>
+          <h3 class="problem-title">Shopify Overhead</h3>
+          <p class="problem-desc">$39/mo minimum for a real store, plus 2.9% + 30¢ per transaction (or more without Shopify Payments). Theme customization is limited. Apps add cost. For a lean boutique operation, it's death by a thousand subscriptions.</p>
+        </div>
+        <div class="problem-card">
+          <span class="problem-icon">&#128683;</span>
+          <h3 class="problem-title">Zero Brand Control</h3>
+          <p class="problem-desc">On eBay, your brand is a listing among millions. On Shopify, your brand is a template among thousands. Neither platform lets you build the kind of immersive, curated shopping experience that vintage tech buyers expect.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Solution -->
+  <section class="case-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label" style="color:var(--accent-gold)">The Solution</p>
+        <h2 class="section-title">A custom <span class="section-title-accent">commerce engine.</span></h2>
+      </div>
+      <div class="case-content reveal">
+        <p>We built Measure Joy a fully custom e-commerce platform from the ground up. No themes. No marketplace middlemen. A bespoke storefront designed specifically for the curated vintage tech experience — fast, branded, and owned entirely by the business.</p>
+      </div>
+
+      <div class="solution-grid reveal">
+        <div class="solution-card">
+          <div class="solution-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3 class="solution-title">Custom Next.js Storefront</h3>
+          <p class="solution-desc">Server-side rendered, lightning-fast product pages. No theme bloat. Every pixel designed around the vintage camera browsing experience — from category filtering to product detail galleries.</p>
+        </div>
+        <div class="solution-card">
+          <div class="solution-icon">
+            <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          <h3 class="solution-title">Direct Payment Integration</h3>
+          <p class="solution-desc">Stripe API integration with no platform middleman. Lower transaction fees, direct payouts, and support for Apple Pay and Google Pay — maximizing conversion at checkout.</p>
+        </div>
+        <div class="solution-card">
+          <div class="solution-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="solution-title">Managed Infrastructure</h3>
+          <p class="solution-desc">Premium hosting with edge caching for sub-2-second load times. SSL, security patches, and performance monitoring — all managed by us so the team can focus on sourcing and restoring cameras.</p>
+        </div>
+        <div class="solution-card">
+          <div class="solution-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3 class="solution-title">Customer Accounts &amp; Auth</h3>
+          <p class="solution-desc">Secure authentication system so returning buyers can track orders, view purchase history, and check warranty status — building the kind of customer relationship eBay never allowed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section class="case-section" style="padding-top:0">
+    <div class="container">
+      <div class="case-quote reveal">
+        <blockquote>We were paying eBay thousands in fees every year and our customers didn't even know our brand name. Now we own the entire experience — and we keep the margin.</blockquote>
+        <cite><strong>Christian Velasquez</strong> — Founder, Measure Joy</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="case-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label" style="color:var(--accent-gold)">The Build</p>
+        <h2 class="section-title">From concept to <span class="section-title-accent">launch.</span></h2>
+      </div>
+      <div class="timeline reveal">
+        <div class="timeline-item">
+          <div class="timeline-week">Week 1</div>
+          <div class="timeline-dot-col">
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+          </div>
+          <div>
+            <div class="timeline-content-title">Discovery &amp; Architecture</div>
+            <div class="timeline-content-desc">Audited the eBay store, mapped product categories, defined the brand identity, and architected the custom platform stack.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-week">Week 2–3</div>
+          <div class="timeline-dot-col">
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+          </div>
+          <div>
+            <div class="timeline-content-title">Design &amp; Frontend Build</div>
+            <div class="timeline-content-desc">Custom UI/UX designed around the vintage browsing experience. Product cards, category pages, and responsive mobile layout.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-week">Week 3–4</div>
+          <div class="timeline-dot-col">
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+          </div>
+          <div>
+            <div class="timeline-content-title">Backend &amp; Integrations</div>
+            <div class="timeline-content-desc">Stripe payment integration, customer authentication, inventory management system, and order processing pipeline.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-week">Week 5</div>
+          <div class="timeline-dot-col">
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+          </div>
+          <div>
+            <div class="timeline-content-title">QA, Migration &amp; Launch</div>
+            <div class="timeline-content-desc">Product catalog migration, payment flow testing, performance optimization, and deployment to production on managed infrastructure.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="case-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label" style="color:var(--accent-gold)">The Results</p>
+        <h2 class="section-title">Numbers that <span class="section-title-accent">compound.</span></h2>
+      </div>
+      <div class="case-content reveal">
+        <p>By moving off eBay and onto a custom platform, Measure Joy eliminated marketplace fees, built direct customer relationships, and created a brand experience that matches the quality of their product. The results speak for themselves.</p>
+      </div>
+
+      <div class="results-grid reveal">
+        <div class="result-card">
+          <div class="result-value">$0</div>
+          <div class="result-label">Marketplace<br>seller fees</div>
+        </div>
+        <div class="result-card">
+          <div class="result-value">2,500+</div>
+          <div class="result-label">Customers<br>served</div>
+        </div>
+        <div class="result-card">
+          <div class="result-value">99%</div>
+          <div class="result-label">Positive<br>reviews</div>
+        </div>
+        <div class="result-card">
+          <div class="result-value">&lt;2s</div>
+          <div class="result-label">Page load<br>times</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What changed -->
+  <section class="case-section">
+    <div class="container">
+      <div class="case-content reveal">
+        <p style="text-align:center;max-width:640px;margin:0 auto"><strong>Before MAHAKALA:</strong> a brand buried in eBay listings, paying 13% on every sale, with zero control over the customer experience.<br><br><strong>After MAHAKALA:</strong> a premium branded storefront with direct Stripe payments, customer accounts, a 90-day warranty program, and full ownership of every customer relationship.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card reveal">
+        <h2 class="cta-title">Your brand deserves <span>its own engine.</span></h2>
+        <p class="cta-sub">Stop paying marketplace fees. Stop fighting template constraints. Let's build something that's yours.</p>
+        <div class="cta-buttons">
+          <a href="contact.html" class="btn-primary">Book Discovery Call</a>
+          <a href="services-commerce.html" class="btn-ghost">Explore Commerce Engine</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo-mark"><svg viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="7" height="7" rx="1.5" fill="#050505"/><rect x="10" y="1" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="1" y="10" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="10" y="10" width="7" height="7" rx="1.5" fill="#050505"/></svg></div>
+          <span class="footer-name">MAHAKALA</span>
+          <span class="footer-copy">The Art of Intelligence.</span>
+        </div>
+        <ul class="footer-links">
+          <li><a href="services-local.html">Local Services</a></li>
+          <li><a href="services-commerce.html">Commerce</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
