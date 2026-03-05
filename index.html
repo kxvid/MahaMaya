@@ -10,24 +10,119 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* ── Animated Background (homepage only) ── */
-    .hero-section { position: relative; width: 100%; min-height: 100vh; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
-    .hero-bg .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.45; will-change: transform; }
-    .orb-1 { width: 700px; height: 700px; background: radial-gradient(circle, #7b39fc 0%, transparent 70%); top: -15%; left: -10%; animation: float-1 14s ease-in-out infinite; }
-    .orb-2 { width: 600px; height: 600px; background: radial-gradient(circle, #4f1dba 0%, transparent 70%); top: 10%; right: -15%; animation: float-2 18s ease-in-out infinite; }
-    .orb-3 { width: 500px; height: 500px; background: radial-gradient(circle, #2d1a6e 0%, transparent 70%); bottom: -10%; left: 30%; animation: float-3 16s ease-in-out infinite; }
-    .orb-4 { width: 350px; height: 350px; background: radial-gradient(circle, #a855f7 0%, transparent 70%); top: 40%; left: 50%; opacity: 0.25; animation: float-4 20s ease-in-out infinite; }
+    /* ── Hero Section ── */
+    .hero-section { position:relative; width:100%; min-height:100vh; overflow:hidden; }
+
+    /* Parallax layers */
+    .hero-parallax { position:absolute; inset:0; z-index:0; overflow:hidden; }
+    .parallax-layer { position:absolute; inset:0; will-change:transform; }
+    .parallax-layer--deep { transform:translateZ(-3px) scale(4); }
+    .parallax-layer--mid { transform:translateZ(-1.5px) scale(2.5); }
+    .parallax-layer--near { transform:translateZ(-0.5px) scale(1.5); }
+
+    /* Orbs with parallax depth */
+    .hero-parallax .orb { position:absolute; border-radius:50%; filter:blur(120px); opacity:0.45; will-change:transform; }
+    .orb-1 { width:700px; height:700px; background:radial-gradient(circle,#7b39fc 0%,transparent 70%); top:-15%; left:-10%; animation:float-1 14s ease-in-out infinite; }
+    .orb-2 { width:600px; height:600px; background:radial-gradient(circle,#4f1dba 0%,transparent 70%); top:10%; right:-15%; animation:float-2 18s ease-in-out infinite; }
+    .orb-3 { width:500px; height:500px; background:radial-gradient(circle,#2d1a6e 0%,transparent 70%); bottom:-10%; left:30%; animation:float-3 16s ease-in-out infinite; }
+    .orb-4 { width:350px; height:350px; background:radial-gradient(circle,#a855f7 0%,transparent 70%); top:40%; left:50%; opacity:0.25; animation:float-4 20s ease-in-out infinite; }
     @keyframes float-1 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(80px,40px) scale(1.1)} 66%{transform:translate(-30px,80px) scale(.95)} }
     @keyframes float-2 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(-60px,50px) scale(.9)} 66%{transform:translate(40px,-30px) scale(1.08)} }
     @keyframes float-3 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(50px,-60px) scale(1.05)} 66%{transform:translate(-40px,-20px) scale(.92)} }
     @keyframes float-4 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-80px,60px) scale(1.15)} }
-    .hero-bg::after { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); background-size:200px; opacity:.4; pointer-events:none; }
+
+    /* Noise texture */
+    .hero-parallax::after { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); background-size:200px; opacity:.4; pointer-events:none; z-index:5; }
+
+    /* Grid overlay */
     .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px); background-size:64px 64px; mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 20%,transparent 70%); -webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 20%,transparent 70%); z-index:1; }
-    .hero-content-layer { position: relative; z-index: 2; }
+
+    .hero-content-layer { position:relative; z-index:10; }
+
+    /* ── 3D Hero Visual ── */
+    .hero-3d-wrap { perspective:1200px; display:flex; justify-content:center; margin-top:var(--space-16); padding:0 var(--space-6) var(--space-20); animation:fade-up .8s ease .5s both; }
+    .hero-3d-scene { width:900px; max-width:100%; aspect-ratio:16/10; position:relative; transform-style:preserve-3d; animation:hero-rotate 20s ease-in-out infinite; }
+
+    /* 5-keyframe 3D rotation loop */
+    @keyframes hero-rotate {
+      0%   { transform:rotateX(12deg) rotateY(-8deg) rotateZ(0deg); }
+      20%  { transform:rotateX(6deg) rotateY(5deg) rotateZ(1deg); }
+      40%  { transform:rotateX(-4deg) rotateY(10deg) rotateZ(-1deg); }
+      60%  { transform:rotateX(2deg) rotateY(-6deg) rotateZ(1.5deg); }
+      80%  { transform:rotateX(10deg) rotateY(-12deg) rotateZ(-0.5deg); }
+      100% { transform:rotateX(12deg) rotateY(-8deg) rotateZ(0deg); }
+    }
+
+    /* Base platform */
+    .hero-3d-platform { position:absolute; inset:0; border-radius:var(--radius-xl); background:rgba(10,10,10,0.6); border:1px solid var(--border-default); backdrop-filter:blur(8px); overflow:hidden; }
+    .hero-3d-platform::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(123,57,252,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(123,57,252,0.03) 1px,transparent 1px); background-size:40px 40px; }
+    .hero-3d-platform::after { content:''; position:absolute; inset:-1px; border-radius:21px; background:linear-gradient(135deg,rgba(123,57,252,.25),transparent 40%,transparent 60%,rgba(168,85,247,.2)); z-index:-1; mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); mask-composite:exclude; -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; padding:1px; }
+
+    /* Floating data layers */
+    .hero-3d-layer { position:absolute; border-radius:var(--radius-lg); border:1px solid; backdrop-filter:blur(12px); }
+
+    .hero-3d-layer--neural { width:260px; height:160px; top:12%; left:8%; background:rgba(123,57,252,0.06); border-color:rgba(123,57,252,0.15); transform:translateZ(60px); animation:layer-float-1 16s ease-in-out infinite; }
+    .hero-3d-layer--data { width:220px; height:140px; bottom:15%; right:8%; background:rgba(201,168,76,0.04); border-color:rgba(201,168,76,0.12); transform:translateZ(40px); animation:layer-float-2 18s ease-in-out infinite; }
+    .hero-3d-layer--metrics { width:200px; height:120px; top:20%; right:15%; background:rgba(52,211,153,0.04); border-color:rgba(52,211,153,0.1); transform:translateZ(80px); animation:layer-float-3 14s ease-in-out infinite; }
+    .hero-3d-layer--pulse { width:180px; height:100px; bottom:22%; left:12%; background:rgba(168,85,247,0.05); border-color:rgba(168,85,247,0.12); transform:translateZ(50px); animation:layer-float-4 20s ease-in-out infinite; }
+
+    @keyframes layer-float-1 { 0%,100%{transform:translateZ(60px) translateY(0)} 50%{transform:translateZ(60px) translateY(-12px)} }
+    @keyframes layer-float-2 { 0%,100%{transform:translateZ(40px) translateY(0)} 50%{transform:translateZ(40px) translateY(10px)} }
+    @keyframes layer-float-3 { 0%,100%{transform:translateZ(80px) translateY(0)} 50%{transform:translateZ(80px) translateY(-8px)} }
+    @keyframes layer-float-4 { 0%,100%{transform:translateZ(50px) translateY(0)} 50%{transform:translateZ(50px) translateY(14px)} }
+
+    /* Inner content of floating layers */
+    .layer-label { font-family:var(--font-body); font-weight:600; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:var(--space-3) var(--space-4); }
+    .layer-label--purple { color:var(--text-accent); }
+    .layer-label--gold { color:var(--accent-gold); }
+    .layer-label--green { color:var(--color-success); }
+    .layer-label--violet { color:#c084fc; }
+
+    /* Animated bars inside layers */
+    .layer-bars { display:flex; align-items:flex-end; gap:4px; padding:0 var(--space-4) var(--space-3); height:60px; }
+    .layer-bar { width:12px; border-radius:3px 3px 0 0; animation:bar-grow 3s ease-in-out infinite; }
+    .layer-bar:nth-child(1) { animation-delay:0s; }
+    .layer-bar:nth-child(2) { animation-delay:0.2s; }
+    .layer-bar:nth-child(3) { animation-delay:0.4s; }
+    .layer-bar:nth-child(4) { animation-delay:0.6s; }
+    .layer-bar:nth-child(5) { animation-delay:0.8s; }
+    .layer-bar:nth-child(6) { animation-delay:1.0s; }
+    .layer-bar:nth-child(7) { animation-delay:1.2s; }
+    .layer-bar:nth-child(8) { animation-delay:1.4s; }
+    @keyframes bar-grow { 0%,100%{height:30%} 50%{height:90%} }
+
+    .layer-bar--purple { background:linear-gradient(to top,rgba(123,57,252,0.3),rgba(123,57,252,0.8)); }
+    .layer-bar--gold { background:linear-gradient(to top,rgba(201,168,76,0.3),rgba(201,168,76,0.8)); }
+    .layer-bar--green { background:linear-gradient(to top,rgba(52,211,153,0.3),rgba(52,211,153,0.8)); }
+    .layer-bar--violet { background:linear-gradient(to top,rgba(192,132,252,0.3),rgba(192,132,252,0.8)); }
+
+    /* Pulse rings */
+    .layer-rings { position:relative; width:100%; height:70px; display:flex; align-items:center; justify-content:center; }
+    .pulse-ring { position:absolute; border-radius:50%; border:1px solid; animation:ring-pulse 3s ease-out infinite; }
+    .pulse-ring:nth-child(1) { width:20px; height:20px; }
+    .pulse-ring:nth-child(2) { width:40px; height:40px; animation-delay:0.5s; }
+    .pulse-ring:nth-child(3) { width:60px; height:60px; animation-delay:1s; }
+    @keyframes ring-pulse { 0%{opacity:.8;transform:scale(1)} 100%{opacity:0;transform:scale(1.8)} }
+    .pulse-ring--purple { border-color:rgba(123,57,252,0.4); }
+    .pulse-ring--violet { border-color:rgba(192,132,252,0.3); }
+
+    /* Data stream lines */
+    .layer-stream { display:flex; flex-direction:column; gap:6px; padding:var(--space-3) var(--space-4); }
+    .stream-line { height:3px; border-radius:2px; animation:stream-flow 2.5s ease-in-out infinite; }
+    .stream-line:nth-child(1) { width:80%; animation-delay:0s; }
+    .stream-line:nth-child(2) { width:60%; animation-delay:0.3s; }
+    .stream-line:nth-child(3) { width:90%; animation-delay:0.6s; }
+    .stream-line:nth-child(4) { width:45%; animation-delay:0.9s; }
+    @keyframes stream-flow { 0%{opacity:.2;transform:translateX(-10px)} 50%{opacity:1;transform:translateX(0)} 100%{opacity:.2;transform:translateX(10px)} }
+    .stream-line--gold { background:linear-gradient(90deg,transparent,rgba(201,168,76,0.6),transparent); }
+    .stream-line--green { background:linear-gradient(90deg,transparent,rgba(52,211,153,0.5),transparent); }
+
+    /* Center glow on platform */
+    .hero-3d-glow { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:300px; height:300px; border-radius:50%; background:radial-gradient(circle,rgba(123,57,252,0.15),transparent 70%); filter:blur(60px); animation:glow-breathe 4s ease-in-out infinite; }
+    @keyframes glow-breathe { 0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(1)} 50%{opacity:1;transform:translate(-50%,-50%) scale(1.2)} }
 
     /* Hero content */
-    .hero-center { display:flex; flex-direction:column; align-items:center; max-width:880px; margin:0 auto; padding:140px var(--space-6) 0; gap:var(--space-8); }
+    .hero-center { display:flex; flex-direction:column; align-items:center; max-width:880px; margin:0 auto; padding:120px var(--space-6) 0; gap:var(--space-8); }
     .hero-badge { display:inline-flex; align-items:center; gap:var(--space-2); padding:6px 16px 6px 10px; border-radius:var(--radius-full); border:1px solid var(--border-accent); background:var(--accent-subtle); font-family:var(--font-body); font-weight:600; font-size:13px; color:var(--text-accent); letter-spacing:0.02em; animation:fade-up .8s ease both; }
     .hero-badge-dot { width:8px; height:8px; border-radius:50%; background:var(--accent-primary); box-shadow:0 0 12px var(--accent-primary); animation:pulse-dot 2s ease-in-out infinite; }
     @keyframes pulse-dot { 0%,100%{opacity:1;box-shadow:0 0 12px var(--accent-primary)} 50%{opacity:.5;box-shadow:0 0 6px var(--accent-primary)} }
@@ -36,14 +131,6 @@
     .hero-h1-accent { font-family:var(--font-serif); font-style:italic; font-weight:400; font-size:clamp(40px,6vw,76px); line-height:1.1; letter-spacing:-0.02em; display:block; background:linear-gradient(135deg,#fff 30%,#c4a1ff 70%,#7b39fc 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
     .hero-sub { font-family:var(--font-body); font-weight:400; font-size:18px; line-height:1.6; color:var(--text-secondary); max-width:580px; text-align:center; margin-top:var(--space-5); animation:fade-up .8s ease .2s both; }
     .hero-ctas { display:flex; align-items:center; gap:var(--space-4); animation:fade-up .8s ease .3s both; }
-
-    /* Dashboard preview */
-    .dashboard-wrapper { display:flex; justify-content:center; margin-top:var(--space-20); padding:0 var(--space-6) var(--space-20); animation:fade-up .8s ease .5s both; }
-    .dashboard-outer { width:1100px; max-width:100%; border-radius:var(--radius-xl); background:var(--surface-subtle); border:1px solid var(--border-default); padding:var(--space-3); position:relative; }
-    .dashboard-outer::before { content:''; position:absolute; inset:-1px; border-radius:21px; background:linear-gradient(135deg,rgba(123,57,252,.2),transparent 40%,transparent 60%,rgba(168,85,247,.15)); z-index:-1; mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); mask-composite:exclude; -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; padding:1px; }
-    .dashboard-placeholder { width:100%; aspect-ratio:16/9; border-radius:var(--radius-md); background:linear-gradient(160deg,rgba(123,57,252,.08),rgba(20,15,35,.6) 40%,rgba(5,5,5,.8)); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
-    .dashboard-placeholder::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px); background-size:48px 48px; }
-    .dashboard-placeholder-text { font-family:var(--font-body); font-weight:500; font-size:13px; color:var(--text-muted); letter-spacing:3px; text-transform:uppercase; z-index:1; }
 
     /* ── Metrics ── */
     .metrics-section { padding:var(--space-16) 0; position:relative; }
@@ -158,12 +245,22 @@
       .process-grid { grid-template-columns:1fr; max-width:480px; margin:0 auto; }
       .testimonials-grid { grid-template-columns:1fr; max-width:480px; margin:0 auto; }
       .metrics-grid { grid-template-columns:repeat(2,1fr); }
+      .hero-3d-layer--neural { width:200px; height:130px; }
+      .hero-3d-layer--data { width:180px; height:120px; }
+      .hero-3d-layer--metrics { width:170px; height:110px; }
+      .hero-3d-layer--pulse { width:150px; height:90px; }
     }
     @media (max-width:768px) {
       .hero-center { padding:100px var(--space-5) 0; gap:var(--space-6); }
       .hero-sub { font-size:16px; }
       .hero-ctas { flex-direction:column; width:100%; max-width:320px; }
-      .dashboard-wrapper { margin-top:var(--space-12); padding-bottom:var(--space-12); }
+      .hero-3d-wrap { margin-top:var(--space-10); padding-bottom:var(--space-12); }
+      .hero-3d-scene { animation:hero-rotate 24s ease-in-out infinite; }
+      .hero-3d-layer--neural { width:140px; height:100px; top:8%; left:4%; }
+      .hero-3d-layer--data { width:130px; height:90px; }
+      .hero-3d-layer--metrics { width:120px; height:85px; }
+      .hero-3d-layer--pulse { width:110px; height:75px; }
+      .layer-label { font-size:9px; padding:var(--space-2) var(--space-3); }
       .cta-card { padding:var(--space-12) var(--space-6); }
       .cta-buttons { flex-direction:column; align-items:center; }
       .metrics-grid { grid-template-columns:1fr 1fr; }
@@ -175,43 +272,51 @@
   <!-- ═══════════════════════════════════════════
        HERO
   ═══════════════════════════════════════════ -->
+  <!-- ── Pill Navbar (fixed, floats above everything) ── -->
+  <div class="navbar-wrap">
+    <nav class="navbar">
+      <div class="nav-left">
+        <a href="index.html" class="nav-logo">
+          <div class="nav-logo-mark">
+            <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="7" height="7" rx="1.5" fill="#050505"/>
+              <rect x="10" y="1" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/>
+              <rect x="1" y="10" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/>
+              <rect x="10" y="10" width="7" height="7" rx="1.5" fill="#050505"/>
+            </svg>
+          </div>
+          <span class="nav-logo-text">MAHAKALA</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="services-local.html">Local Services</a></li>
+          <li><a href="services-commerce.html">Commerce</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-right">
+        <a href="contact.html" class="btn-primary-sm">Book a Call</a>
+      </div>
+    </nav>
+  </div>
+
   <section class="hero-section">
-    <div class="hero-bg">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-      <div class="orb orb-3"></div>
-      <div class="orb orb-4"></div>
+    <!-- Parallax background layers -->
+    <div class="hero-parallax">
+      <div class="parallax-layer parallax-layer--deep">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+      </div>
+      <div class="parallax-layer parallax-layer--mid">
+        <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
+      </div>
     </div>
     <div class="hero-grid"></div>
 
     <div class="hero-content-layer">
-      <nav class="navbar">
-        <div class="nav-left">
-          <a href="index.html" class="nav-logo">
-            <div class="nav-logo-mark">
-              <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="1" y="1" width="7" height="7" rx="1.5" fill="#050505"/>
-                <rect x="10" y="1" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/>
-                <rect x="1" y="10" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/>
-                <rect x="10" y="10" width="7" height="7" rx="1.5" fill="#050505"/>
-              </svg>
-            </div>
-            <span class="nav-logo-text">MAHAKALA</span>
-          </a>
-
-          <ul class="nav-links">
-            <li><a href="services-local.html">Local Services</a></li>
-            <li><a href="services-commerce.html">Commerce</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="nav-right">
-          <a href="contact.html" class="btn-primary-sm">Book a Call</a>
-        </div>
-      </nav>
-
       <div class="hero-center">
         <div class="hero-badge">
           <span class="hero-badge-dot"></span>
@@ -231,10 +336,60 @@
         </div>
       </div>
 
-      <div class="dashboard-wrapper">
-        <div class="dashboard-outer">
-          <div class="dashboard-placeholder">
-            <span class="dashboard-placeholder-text">Client Project Preview</span>
+      <!-- 3D Animated Hero Visual -->
+      <div class="hero-3d-wrap">
+        <div class="hero-3d-scene">
+          <div class="hero-3d-platform">
+            <div class="hero-3d-glow"></div>
+          </div>
+
+          <!-- Neural Network Layer -->
+          <div class="hero-3d-layer hero-3d-layer--neural">
+            <div class="layer-label layer-label--purple">Neural Engine</div>
+            <div class="layer-bars">
+              <div class="layer-bar layer-bar--purple"></div>
+              <div class="layer-bar layer-bar--purple"></div>
+              <div class="layer-bar layer-bar--purple"></div>
+              <div class="layer-bar layer-bar--purple"></div>
+              <div class="layer-bar layer-bar--purple"></div>
+              <div class="layer-bar layer-bar--purple"></div>
+              <div class="layer-bar layer-bar--purple"></div>
+              <div class="layer-bar layer-bar--purple"></div>
+            </div>
+          </div>
+
+          <!-- Data Flow Layer -->
+          <div class="hero-3d-layer hero-3d-layer--data">
+            <div class="layer-label layer-label--gold">Data Pipeline</div>
+            <div class="layer-stream">
+              <div class="stream-line stream-line--gold"></div>
+              <div class="stream-line stream-line--gold"></div>
+              <div class="stream-line stream-line--gold"></div>
+              <div class="stream-line stream-line--gold"></div>
+            </div>
+          </div>
+
+          <!-- Metrics Layer -->
+          <div class="hero-3d-layer hero-3d-layer--metrics">
+            <div class="layer-label layer-label--green">Growth Metrics</div>
+            <div class="layer-bars">
+              <div class="layer-bar layer-bar--green"></div>
+              <div class="layer-bar layer-bar--green"></div>
+              <div class="layer-bar layer-bar--green"></div>
+              <div class="layer-bar layer-bar--green"></div>
+              <div class="layer-bar layer-bar--green"></div>
+              <div class="layer-bar layer-bar--green"></div>
+            </div>
+          </div>
+
+          <!-- Pulse Layer -->
+          <div class="hero-3d-layer hero-3d-layer--pulse">
+            <div class="layer-label layer-label--violet">AI Signals</div>
+            <div class="layer-rings">
+              <div class="pulse-ring pulse-ring--purple"></div>
+              <div class="pulse-ring pulse-ring--violet"></div>
+              <div class="pulse-ring pulse-ring--purple"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -661,6 +816,30 @@
         document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
         if (!wasOpen) item.classList.add('open');
       });
+    });
+
+    // Parallax scroll effect
+    const deepLayer = document.querySelector('.parallax-layer--deep');
+    const midLayer = document.querySelector('.parallax-layer--mid');
+    const heroGrid = document.querySelector('.hero-grid');
+    const navbar = document.querySelector('.navbar');
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          if (deepLayer) deepLayer.style.transform = 'translateY(' + (scrollY * 0.3) + 'px)';
+          if (midLayer) midLayer.style.transform = 'translateY(' + (scrollY * 0.15) + 'px)';
+          if (heroGrid) heroGrid.style.transform = 'translateY(' + (scrollY * 0.08) + 'px)';
+          if (navbar) {
+            if (scrollY > 40) { navbar.classList.add('scrolled'); }
+            else { navbar.classList.remove('scrolled'); }
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     });
   </script>
 </body>

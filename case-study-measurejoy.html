@@ -91,21 +91,23 @@
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="nav-left">
-      <a href="index.html" class="nav-logo">
-        <div class="nav-logo-mark"><svg viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="7" height="7" rx="1.5" fill="#050505"/><rect x="10" y="1" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="1" y="10" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="10" y="10" width="7" height="7" rx="1.5" fill="#050505"/></svg></div>
-        <span class="nav-logo-text">MAHAKALA</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="services-local.html">Local Services</a></li>
-        <li><a href="services-commerce.html">Commerce</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-    <div class="nav-right"><a href="contact.html" class="btn-primary-sm">Book a Call</a></div>
-  </nav>
+  <div class="navbar-wrap">
+    <nav class="navbar">
+      <div class="nav-left">
+        <a href="index.html" class="nav-logo">
+          <div class="nav-logo-mark"><svg viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="7" height="7" rx="1.5" fill="#050505"/><rect x="10" y="1" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="1" y="10" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="10" y="10" width="7" height="7" rx="1.5" fill="#050505"/></svg></div>
+          <span class="nav-logo-text">MAHAKALA</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="services-local.html">Local Services</a></li>
+          <li><a href="services-commerce.html">Commerce</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="nav-right"><a href="contact.html" class="btn-primary-sm">Book a Call</a></div>
+    </nav>
+  </div>
 
   <!-- Hero -->
   <section class="page-hero">
@@ -362,6 +364,11 @@
       entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
     }, { threshold: 0.15 });
     revealEls.forEach(el => observer.observe(el));
+
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (navbar) { if (window.scrollY > 40) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); }
+    });
   </script>
 </body>
 </html>
