@@ -10,6 +10,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <style>
+    /* ── Founder section ── */
+    .founder-section { padding:var(--space-20) 0; position:relative; }
+    .founder-section::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:1px; background:linear-gradient(90deg,transparent,var(--border-default),transparent); }
+    .founder-grid { display:grid; grid-template-columns:280px 1fr; gap:var(--space-12); align-items:start; }
+    .founder-photo { width:280px; height:340px; border-radius:var(--radius-xl); background:var(--surface-elevated); border:1px solid var(--border-default); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:var(--space-3); position:relative; overflow:hidden; }
+    .founder-photo::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(123,57,252,.06),transparent 60%); }
+    .founder-photo-icon { width:64px; height:64px; border-radius:50%; background:var(--accent-subtle); border:1px solid var(--border-accent); display:flex; align-items:center; justify-content:center; }
+    .founder-photo-icon svg { width:28px; height:28px; stroke:var(--accent-primary); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+    .founder-photo-text { font-size:12px; color:var(--text-muted); letter-spacing:0.05em; }
+    .founder-info { display:flex; flex-direction:column; gap:var(--space-6); }
+    .founder-name { font-family:var(--font-display); font-weight:700; font-size:28px; letter-spacing:-0.03em; color:var(--text-primary); }
+    .founder-title { font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-accent); letter-spacing:0.03em; margin-top:var(--space-1); }
+    .founder-bio { font-size:17px; line-height:1.75; color:var(--text-secondary); }
+    .founder-bio strong { color:var(--text-primary); font-weight:600; }
+    .founder-linkedin { display:inline-flex; align-items:center; gap:var(--space-2); font-family:var(--font-body); font-weight:500; font-size:14px; color:var(--text-secondary); text-decoration:none; padding:var(--space-2) var(--space-4); border:1px solid var(--border-default); border-radius:var(--radius-sm); transition:all .25s; }
+    .founder-linkedin:hover { color:var(--text-primary); border-color:var(--border-hover); background:rgba(255,255,255,.04); }
+    .founder-linkedin svg { width:16px; height:16px; }
+    .founder-origin { margin-top:var(--space-4); }
+    .founder-origin-title { font-family:var(--font-display); font-weight:600; font-size:20px; color:var(--text-primary); letter-spacing:-0.02em; margin-bottom:var(--space-4); }
+    .founder-origin p { font-size:16px; line-height:1.7; color:var(--text-secondary); margin-bottom:var(--space-4); }
+    .founder-origin p:last-child { margin-bottom:0; }
+    .founder-origin strong { color:var(--text-primary); font-weight:600; }
+
+    @media (max-width:768px) {
+      .founder-grid { grid-template-columns:1fr; gap:var(--space-8); }
+      .founder-photo { width:200px; height:240px; margin:0 auto; }
+    }
+
     /* ── Philosophy grid ── */
     .philosophy-section { padding:var(--space-20) 0; position:relative; }
     .philosophy-section::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:1px; background:linear-gradient(90deg,transparent,var(--border-default),transparent); }
@@ -66,7 +94,12 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
-      <div class="nav-right"><a href="contact.html" class="btn-primary-sm">Book a Call</a></div>
+      <div class="nav-right">
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <a href="contact.html" class="btn-primary-sm">Book a Call</a>
+      </div>
     </nav>
   </div>
 
@@ -80,6 +113,42 @@
         <p class="page-hero-label">About</p>
         <h1 class="page-hero-title">The Art of<span class="page-hero-title-accent">Intelligence.</span></h1>
         <p class="page-hero-desc">MAHAKALA is a vertical AI growth agency. We bridge the gap between aesthetic excellence and technical infrastructure — transforming static businesses into automated, self-scaling digital entities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder -->
+  <section class="founder-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Founder</p>
+        <h2 class="section-title">The architect <span class="section-title-accent">behind it.</span></h2>
+      </div>
+      <div class="founder-grid reveal">
+        <div class="founder-photo">
+          <!-- TODO: Replace with real headshot — <img src="assets/founder.webp" alt="Founder headshot" /> -->
+          <div class="founder-photo-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <span class="founder-photo-text">[PHOTO]</span>
+        </div>
+        <div class="founder-info">
+          <div>
+            <div class="founder-name">Christian Velasquez</div>
+            <div class="founder-title">Founder &amp; Lead Architect</div>
+          </div>
+          <p class="founder-bio">I built my first e-commerce brand — <strong>MeasureJoy</strong> — from scratch, handling everything from product sourcing to the code behind the storefront. That process taught me that most businesses don't have a marketing problem. They have an infrastructure problem. The systems that capture leads, recover revenue, and compound growth are the same ones most agencies never build. So I started building them myself.</p>
+          <!-- TODO: Replace href with real LinkedIn URL -->
+          <a href="#" class="founder-linkedin">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <div class="founder-origin">
+            <h3 class="founder-origin-title">Why MAHAKALA</h3>
+            <p>MeasureJoy was the proof of concept. I built the fulfillment automation, the custom storefront, the recovery flows — and watched it outperform platforms that charge ten times the overhead. The realization was simple: <strong>this same infrastructure could transform any business that depends on digital presence to drive revenue.</strong></p>
+            <p>MAHAKALA exists to deploy that infrastructure for a select number of clients each quarter. Not an agency that ships templates. A systems firm that builds proprietary growth engines — and manages them so they actually perform.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -184,7 +253,7 @@
         <div class="footer-brand">
           <div class="footer-logo-mark"><svg viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="7" height="7" rx="1.5" fill="#050505"/><rect x="10" y="1" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="1" y="10" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="10" y="10" width="7" height="7" rx="1.5" fill="#050505"/></svg></div>
           <span class="footer-name">MAHAKALA</span>
-          <span class="footer-copy">The Art of Intelligence.</span>
+          <span class="footer-copy">Bespoke digital infrastructure for businesses that compound.</span>
         </div>
         <ul class="footer-links">
           <li><a href="services-local.html">Local Services</a></li>
@@ -192,6 +261,10 @@
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 MAHAKALA. All rights reserved.</span>
+        <span class="footer-location">Built with care in Los Angeles, CA</span>
       </div>
     </div>
   </footer>
@@ -207,6 +280,16 @@
     window.addEventListener('scroll', () => {
       if (navbar) { if (window.scrollY > 40) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); }
     });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinksEl = document.querySelector('.nav-links');
+    if (mobileMenuBtn && navLinksEl) {
+      mobileMenuBtn.addEventListener('click', () => navLinksEl.classList.toggle('open'));
+      navLinksEl.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => navLinksEl.classList.remove('open'));
+      });
+    }
   </script>
 </body>
 </html>
