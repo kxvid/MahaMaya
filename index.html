@@ -11,126 +11,135 @@
   <link rel="stylesheet" href="styles.css" />
   <style>
     /* ── Hero Section ── */
-    .hero-section { position:relative; width:100%; min-height:100vh; overflow:hidden; }
+    .hero-section { position:relative; width:100%; min-height:100vh; overflow:hidden; display:flex; flex-direction:column; }
 
-    /* Parallax layers */
+    /* Immersive background */
     .hero-parallax { position:absolute; inset:0; z-index:0; overflow:hidden; }
     .parallax-layer { position:absolute; inset:0; will-change:transform; }
-    .parallax-layer--deep { transform:translateZ(-3px) scale(4); }
-    .parallax-layer--mid { transform:translateZ(-1.5px) scale(2.5); }
-    .parallax-layer--near { transform:translateZ(-0.5px) scale(1.5); }
+    .parallax-layer--deep { }
+    .parallax-layer--mid { }
 
-    /* Orbs with parallax depth */
-    .hero-parallax .orb { position:absolute; border-radius:50%; filter:blur(120px); opacity:0.45; will-change:transform; }
-    .orb-1 { width:700px; height:700px; background:radial-gradient(circle,#7b39fc 0%,transparent 70%); top:-15%; left:-10%; animation:float-1 14s ease-in-out infinite; }
-    .orb-2 { width:600px; height:600px; background:radial-gradient(circle,#4f1dba 0%,transparent 70%); top:10%; right:-15%; animation:float-2 18s ease-in-out infinite; }
-    .orb-3 { width:500px; height:500px; background:radial-gradient(circle,#2d1a6e 0%,transparent 70%); bottom:-10%; left:30%; animation:float-3 16s ease-in-out infinite; }
-    .orb-4 { width:350px; height:350px; background:radial-gradient(circle,#a855f7 0%,transparent 70%); top:40%; left:50%; opacity:0.25; animation:float-4 20s ease-in-out infinite; }
-    @keyframes float-1 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(80px,40px) scale(1.1)} 66%{transform:translate(-30px,80px) scale(.95)} }
-    @keyframes float-2 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(-60px,50px) scale(.9)} 66%{transform:translate(40px,-30px) scale(1.08)} }
-    @keyframes float-3 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(50px,-60px) scale(1.05)} 66%{transform:translate(-40px,-20px) scale(.92)} }
-    @keyframes float-4 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-80px,60px) scale(1.15)} }
+    /* Large atmospheric orbs — immersive, cinematic depth */
+    .hero-parallax .orb { position:absolute; border-radius:50%; filter:blur(140px); will-change:transform; }
+    .orb-1 { width:900px; height:900px; background:radial-gradient(circle,rgba(123,57,252,0.35) 0%,transparent 70%); top:-30%; left:-15%; animation:float-1 18s ease-in-out infinite; }
+    .orb-2 { width:700px; height:700px; background:radial-gradient(circle,rgba(79,29,186,0.3) 0%,transparent 70%); top:5%; right:-20%; animation:float-2 22s ease-in-out infinite; }
+    .orb-3 { width:600px; height:600px; background:radial-gradient(circle,rgba(45,26,110,0.35) 0%,transparent 70%); bottom:-15%; left:25%; animation:float-3 20s ease-in-out infinite; }
+    .orb-4 { width:500px; height:500px; background:radial-gradient(circle,rgba(168,85,247,0.15) 0%,transparent 70%); top:35%; left:55%; animation:float-4 24s ease-in-out infinite; }
+    /* Warm accent orb for depth contrast */
+    .orb-5 { width:400px; height:400px; background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 70%); bottom:10%; right:10%; animation:float-5 26s ease-in-out infinite; }
+    @keyframes float-1 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(60px,30px) scale(1.08)} 66%{transform:translate(-20px,60px) scale(.96)} }
+    @keyframes float-2 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(-50px,40px) scale(.92)} 66%{transform:translate(30px,-20px) scale(1.06)} }
+    @keyframes float-3 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(40px,-50px) scale(1.04)} 66%{transform:translate(-30px,-15px) scale(.94)} }
+    @keyframes float-4 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-60px,40px) scale(1.12)} }
+    @keyframes float-5 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(40px,-30px) scale(1.08)} }
 
-    /* Noise texture */
-    .hero-parallax::after { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); background-size:200px; opacity:.4; pointer-events:none; z-index:5; }
+    /* Noise texture overlay */
+    .hero-parallax::after { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); background-size:200px; opacity:.35; pointer-events:none; z-index:5; }
 
-    /* Grid overlay */
-    .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px); background-size:64px 64px; mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 20%,transparent 70%); -webkit-mask-image:radial-gradient(ellipse 60% 50% at 50% 40%,black 20%,transparent 70%); z-index:1; }
+    /* Subtle grid */
+    .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px); background-size:80px 80px; mask-image:radial-gradient(ellipse 70% 60% at 50% 35%,black 10%,transparent 70%); -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 35%,black 10%,transparent 70%); z-index:1; }
 
-    .hero-content-layer { position:relative; z-index:10; }
+    /* Radial vignette — frames the hero like a spotlight */
+    .hero-vignette { position:absolute; inset:0; background:radial-gradient(ellipse 80% 70% at 50% 35%,transparent 40%,var(--surface-primary) 100%); z-index:2; pointer-events:none; }
 
-    /* ── 3D Hero Visual ── */
-    .hero-3d-wrap { perspective:1200px; display:flex; justify-content:center; margin-top:var(--space-16); padding:0 var(--space-6) var(--space-20); animation:fade-up .8s ease .5s both; }
-    .hero-3d-scene { width:900px; max-width:100%; aspect-ratio:16/10; position:relative; transform-style:preserve-3d; animation:hero-rotate 20s ease-in-out infinite; }
+    .hero-content-layer { position:relative; z-index:10; flex:1; display:flex; flex-direction:column; }
 
-    /* 5-keyframe 3D rotation loop */
-    @keyframes hero-rotate {
-      0%   { transform:rotateX(12deg) rotateY(-8deg) rotateZ(0deg); }
-      20%  { transform:rotateX(6deg) rotateY(5deg) rotateZ(1deg); }
-      40%  { transform:rotateX(-4deg) rotateY(10deg) rotateZ(-1deg); }
-      60%  { transform:rotateX(2deg) rotateY(-6deg) rotateZ(1.5deg); }
-      80%  { transform:rotateX(10deg) rotateY(-12deg) rotateZ(-0.5deg); }
-      100% { transform:rotateX(12deg) rotateY(-8deg) rotateZ(0deg); }
-    }
-
-    /* Base platform */
-    .hero-3d-platform { position:absolute; inset:0; border-radius:var(--radius-xl); background:rgba(10,10,10,0.6); border:1px solid var(--border-default); backdrop-filter:blur(8px); overflow:hidden; }
-    .hero-3d-platform::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(123,57,252,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(123,57,252,0.03) 1px,transparent 1px); background-size:40px 40px; }
-    .hero-3d-platform::after { content:''; position:absolute; inset:-1px; border-radius:21px; background:linear-gradient(135deg,rgba(123,57,252,.25),transparent 40%,transparent 60%,rgba(168,85,247,.2)); z-index:-1; mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); mask-composite:exclude; -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; padding:1px; }
-
-    /* Floating data layers */
-    .hero-3d-layer { position:absolute; border-radius:var(--radius-lg); border:1px solid; backdrop-filter:blur(12px); }
-
-    .hero-3d-layer--neural { width:260px; height:160px; top:12%; left:8%; background:rgba(123,57,252,0.06); border-color:rgba(123,57,252,0.15); transform:translateZ(60px); animation:layer-float-1 16s ease-in-out infinite; }
-    .hero-3d-layer--data { width:220px; height:140px; bottom:15%; right:8%; background:rgba(201,168,76,0.04); border-color:rgba(201,168,76,0.12); transform:translateZ(40px); animation:layer-float-2 18s ease-in-out infinite; }
-    .hero-3d-layer--metrics { width:200px; height:120px; top:20%; right:15%; background:rgba(52,211,153,0.04); border-color:rgba(52,211,153,0.1); transform:translateZ(80px); animation:layer-float-3 14s ease-in-out infinite; }
-    .hero-3d-layer--pulse { width:180px; height:100px; bottom:22%; left:12%; background:rgba(168,85,247,0.05); border-color:rgba(168,85,247,0.12); transform:translateZ(50px); animation:layer-float-4 20s ease-in-out infinite; }
-
-    @keyframes layer-float-1 { 0%,100%{transform:translateZ(60px) translateY(0)} 50%{transform:translateZ(60px) translateY(-12px)} }
-    @keyframes layer-float-2 { 0%,100%{transform:translateZ(40px) translateY(0)} 50%{transform:translateZ(40px) translateY(10px)} }
-    @keyframes layer-float-3 { 0%,100%{transform:translateZ(80px) translateY(0)} 50%{transform:translateZ(80px) translateY(-8px)} }
-    @keyframes layer-float-4 { 0%,100%{transform:translateZ(50px) translateY(0)} 50%{transform:translateZ(50px) translateY(14px)} }
-
-    /* Inner content of floating layers */
-    .layer-label { font-family:var(--font-body); font-weight:600; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; padding:var(--space-3) var(--space-4); }
-    .layer-label--purple { color:var(--text-accent); }
-    .layer-label--gold { color:var(--accent-gold); }
-    .layer-label--green { color:var(--color-success); }
-    .layer-label--violet { color:#c084fc; }
-
-    /* Animated bars inside layers */
-    .layer-bars { display:flex; align-items:flex-end; gap:4px; padding:0 var(--space-4) var(--space-3); height:60px; }
-    .layer-bar { width:12px; border-radius:3px 3px 0 0; animation:bar-grow 3s ease-in-out infinite; }
-    .layer-bar:nth-child(1) { animation-delay:0s; }
-    .layer-bar:nth-child(2) { animation-delay:0.2s; }
-    .layer-bar:nth-child(3) { animation-delay:0.4s; }
-    .layer-bar:nth-child(4) { animation-delay:0.6s; }
-    .layer-bar:nth-child(5) { animation-delay:0.8s; }
-    .layer-bar:nth-child(6) { animation-delay:1.0s; }
-    .layer-bar:nth-child(7) { animation-delay:1.2s; }
-    .layer-bar:nth-child(8) { animation-delay:1.4s; }
-    @keyframes bar-grow { 0%,100%{height:30%} 50%{height:90%} }
-
-    .layer-bar--purple { background:linear-gradient(to top,rgba(123,57,252,0.3),rgba(123,57,252,0.8)); }
-    .layer-bar--gold { background:linear-gradient(to top,rgba(201,168,76,0.3),rgba(201,168,76,0.8)); }
-    .layer-bar--green { background:linear-gradient(to top,rgba(52,211,153,0.3),rgba(52,211,153,0.8)); }
-    .layer-bar--violet { background:linear-gradient(to top,rgba(192,132,252,0.3),rgba(192,132,252,0.8)); }
-
-    /* Pulse rings */
-    .layer-rings { position:relative; width:100%; height:70px; display:flex; align-items:center; justify-content:center; }
-    .pulse-ring { position:absolute; border-radius:50%; border:1px solid; animation:ring-pulse 3s ease-out infinite; }
-    .pulse-ring:nth-child(1) { width:20px; height:20px; }
-    .pulse-ring:nth-child(2) { width:40px; height:40px; animation-delay:0.5s; }
-    .pulse-ring:nth-child(3) { width:60px; height:60px; animation-delay:1s; }
-    @keyframes ring-pulse { 0%{opacity:.8;transform:scale(1)} 100%{opacity:0;transform:scale(1.8)} }
-    .pulse-ring--purple { border-color:rgba(123,57,252,0.4); }
-    .pulse-ring--violet { border-color:rgba(192,132,252,0.3); }
-
-    /* Data stream lines */
-    .layer-stream { display:flex; flex-direction:column; gap:6px; padding:var(--space-3) var(--space-4); }
-    .stream-line { height:3px; border-radius:2px; animation:stream-flow 2.5s ease-in-out infinite; }
-    .stream-line:nth-child(1) { width:80%; animation-delay:0s; }
-    .stream-line:nth-child(2) { width:60%; animation-delay:0.3s; }
-    .stream-line:nth-child(3) { width:90%; animation-delay:0.6s; }
-    .stream-line:nth-child(4) { width:45%; animation-delay:0.9s; }
-    @keyframes stream-flow { 0%{opacity:.2;transform:translateX(-10px)} 50%{opacity:1;transform:translateX(0)} 100%{opacity:.2;transform:translateX(10px)} }
-    .stream-line--gold { background:linear-gradient(90deg,transparent,rgba(201,168,76,0.6),transparent); }
-    .stream-line--green { background:linear-gradient(90deg,transparent,rgba(52,211,153,0.5),transparent); }
-
-    /* Center glow on platform */
-    .hero-3d-glow { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:300px; height:300px; border-radius:50%; background:radial-gradient(circle,rgba(123,57,252,0.15),transparent 70%); filter:blur(60px); animation:glow-breathe 4s ease-in-out infinite; }
-    @keyframes glow-breathe { 0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(1)} 50%{opacity:1;transform:translate(-50%,-50%) scale(1.2)} }
-
-    /* Hero content */
-    .hero-center { display:flex; flex-direction:column; align-items:center; max-width:880px; margin:0 auto; padding:120px var(--space-6) 0; gap:var(--space-8); }
-    .hero-badge { display:inline-flex; align-items:center; gap:var(--space-2); padding:6px 16px 6px 10px; border-radius:var(--radius-full); border:1px solid var(--border-accent); background:var(--accent-subtle); font-family:var(--font-body); font-weight:600; font-size:13px; color:var(--text-accent); letter-spacing:0.02em; animation:fade-up .8s ease both; }
+    /* Hero content — generous whitespace, breathtaking typography */
+    .hero-center { display:flex; flex-direction:column; align-items:center; max-width:960px; margin:0 auto; padding:160px var(--space-6) 0; gap:var(--space-6); }
+    .hero-badge { display:inline-flex; align-items:center; gap:var(--space-2); padding:7px 18px 7px 12px; border-radius:var(--radius-full); border:1px solid var(--border-accent); background:var(--accent-subtle); font-family:var(--font-body); font-weight:600; font-size:13px; color:var(--text-accent); letter-spacing:0.03em; animation:hero-fade-up .9s cubic-bezier(.16,1,.3,1) both; backdrop-filter:blur(8px); }
     .hero-badge-dot { width:8px; height:8px; border-radius:50%; background:var(--accent-primary); box-shadow:0 0 12px var(--accent-primary); animation:pulse-dot 2s ease-in-out infinite; }
-    @keyframes pulse-dot { 0%,100%{opacity:1;box-shadow:0 0 12px var(--accent-primary)} 50%{opacity:.5;box-shadow:0 0 6px var(--accent-primary)} }
-    .hero-heading { text-align:center; animation:fade-up .8s ease .1s both; }
-    .hero-h1 { font-family:var(--font-display); font-weight:600; font-size:clamp(40px,6vw,76px); line-height:1.05; letter-spacing:-0.03em; color:var(--text-primary); }
-    .hero-h1-accent { font-family:var(--font-serif); font-style:italic; font-weight:400; font-size:clamp(40px,6vw,76px); line-height:1.1; letter-spacing:-0.02em; display:block; background:linear-gradient(135deg,#fff 30%,#c4a1ff 70%,#7b39fc 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    .hero-sub { font-family:var(--font-body); font-weight:400; font-size:18px; line-height:1.6; color:var(--text-secondary); max-width:580px; text-align:center; margin-top:var(--space-5); animation:fade-up .8s ease .2s both; }
-    .hero-ctas { display:flex; align-items:center; gap:var(--space-4); animation:fade-up .8s ease .3s both; }
+    @keyframes pulse-dot { 0%,100%{opacity:1;box-shadow:0 0 12px var(--accent-primary)} 50%{opacity:.4;box-shadow:0 0 6px var(--accent-primary)} }
+
+    .hero-heading { text-align:center; animation:hero-fade-up .9s cubic-bezier(.16,1,.3,1) .1s both; }
+    .hero-h1 { font-family:var(--font-display); font-weight:700; font-size:clamp(44px,7vw,88px); line-height:1.02; letter-spacing:-0.035em; color:var(--text-primary); }
+    .hero-h1-accent { font-family:var(--font-serif); font-style:italic; font-weight:400; font-size:clamp(44px,7vw,88px); line-height:1.08; letter-spacing:-0.02em; display:block; background:linear-gradient(135deg,#fff 20%,#c4a1ff 60%,#7b39fc 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .hero-sub { font-family:var(--font-body); font-weight:400; font-size:19px; line-height:1.65; color:var(--text-secondary); max-width:540px; text-align:center; animation:hero-fade-up .9s cubic-bezier(.16,1,.3,1) .2s both; }
+    .hero-ctas { display:flex; align-items:center; gap:var(--space-4); animation:hero-fade-up .9s cubic-bezier(.16,1,.3,1) .3s both; }
+
+    @keyframes hero-fade-up { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:translateY(0)} }
+
+    /* ── Floating Dashboard Mockup ── */
+    .hero-dashboard-wrap { perspective:1200px; display:flex; justify-content:center; margin-top:var(--space-16); padding:0 var(--space-6); padding-bottom:var(--space-20); animation:hero-fade-up 1s cubic-bezier(.16,1,.3,1) .45s both; }
+    .hero-dashboard { width:960px; max-width:100%; border-radius:var(--radius-xl); background:rgba(10,10,10,0.55); border:1px solid var(--border-default); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); overflow:hidden; transform:perspective(1200px) rotateX(4deg); transition:transform .6s cubic-bezier(.16,1,.3,1); position:relative; }
+    .hero-dashboard:hover { transform:perspective(1200px) rotateX(1deg) translateY(-4px); }
+
+    /* Gradient border glow */
+    .hero-dashboard::before { content:''; position:absolute; inset:-1px; border-radius:21px; background:linear-gradient(135deg,rgba(123,57,252,.3),transparent 35%,transparent 65%,rgba(168,85,247,.2)); z-index:-1; mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); mask-composite:exclude; -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; padding:1px; }
+
+    /* Bottom fade — dashboard melts into the page */
+    .hero-dashboard::after { content:''; position:absolute; bottom:0; left:0; right:0; height:120px; background:linear-gradient(to top,var(--surface-primary),transparent); z-index:20; pointer-events:none; }
+
+    /* Dashboard chrome — top bar */
+    .dashboard-chrome { display:flex; align-items:center; gap:var(--space-2); padding:var(--space-3) var(--space-5); border-bottom:1px solid var(--border-default); }
+    .chrome-dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.08); }
+    .chrome-dot:first-child { background:rgba(255,77,77,0.5); }
+    .chrome-dot:nth-child(2) { background:rgba(255,189,46,0.5); }
+    .chrome-dot:nth-child(3) { background:rgba(52,211,153,0.5); }
+    .chrome-url { margin-left:var(--space-4); font-family:var(--font-body); font-size:12px; color:var(--text-muted); letter-spacing:0.02em; flex:1; text-align:center; background:rgba(255,255,255,0.03); border-radius:var(--radius-sm); padding:5px var(--space-4); }
+
+    /* Dashboard body — grid layout */
+    .dashboard-body { display:grid; grid-template-columns:200px 1fr 220px; gap:0; min-height:380px; }
+
+    /* Sidebar */
+    .dashboard-sidebar { border-right:1px solid var(--border-default); padding:var(--space-5); display:flex; flex-direction:column; gap:var(--space-2); }
+    .sidebar-item { display:flex; align-items:center; gap:var(--space-3); padding:var(--space-2) var(--space-3); border-radius:var(--radius-sm); font-family:var(--font-body); font-size:13px; color:var(--text-muted); transition:all .2s; }
+    .sidebar-item--active { background:var(--accent-subtle); color:var(--text-accent); border:1px solid rgba(123,57,252,0.12); }
+    .sidebar-item svg { width:16px; height:16px; opacity:0.5; }
+    .sidebar-item--active svg { opacity:1; }
+    .sidebar-divider { height:1px; background:var(--border-default); margin:var(--space-2) 0; }
+
+    /* Main content area */
+    .dashboard-main { padding:var(--space-6); display:flex; flex-direction:column; gap:var(--space-5); }
+    .dashboard-greeting { font-family:var(--font-display); font-weight:600; font-size:20px; color:var(--text-primary); letter-spacing:-0.02em; }
+    .dashboard-greeting span { color:var(--text-accent); }
+
+    /* Stat row */
+    .dashboard-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-3); }
+    .stat-card { background:var(--surface-subtle); border:1px solid var(--border-default); border-radius:var(--radius-md); padding:var(--space-4); }
+    .stat-label { font-family:var(--font-body); font-size:11px; font-weight:500; color:var(--text-muted); letter-spacing:0.05em; text-transform:uppercase; margin-bottom:var(--space-1); }
+    .stat-value { font-family:var(--font-display); font-weight:700; font-size:24px; letter-spacing:-0.03em; color:var(--text-primary); }
+    .stat-value--purple { background:linear-gradient(135deg,#fff 40%,var(--accent-primary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .stat-value--gold { background:linear-gradient(135deg,#fff 40%,var(--accent-gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .stat-value--green { background:linear-gradient(135deg,#fff 40%,var(--color-success)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .stat-change { font-size:11px; color:var(--color-success); margin-top:2px; }
+
+    /* Chart area */
+    .dashboard-chart { flex:1; background:var(--surface-subtle); border:1px solid var(--border-default); border-radius:var(--radius-md); padding:var(--space-4) var(--space-5); position:relative; overflow:hidden; min-height:140px; }
+    .chart-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:var(--space-4); }
+    .chart-title { font-family:var(--font-body); font-size:13px; font-weight:600; color:var(--text-secondary); }
+    .chart-period { font-size:11px; color:var(--text-muted); background:rgba(255,255,255,0.04); padding:3px 10px; border-radius:var(--radius-full); border:1px solid var(--border-default); }
+    .chart-visual { position:relative; height:80px; display:flex; align-items:flex-end; gap:6px; }
+    .chart-bar { flex:1; border-radius:4px 4px 0 0; animation:chart-grow 2s ease-out both; background:linear-gradient(to top,rgba(123,57,252,0.2),rgba(123,57,252,0.6)); }
+    .chart-bar:nth-child(even) { background:linear-gradient(to top,rgba(123,57,252,0.15),rgba(123,57,252,0.4)); }
+    .chart-bar:nth-child(1) { height:40%; animation-delay:0.5s; }
+    .chart-bar:nth-child(2) { height:55%; animation-delay:0.6s; }
+    .chart-bar:nth-child(3) { height:35%; animation-delay:0.7s; }
+    .chart-bar:nth-child(4) { height:65%; animation-delay:0.8s; }
+    .chart-bar:nth-child(5) { height:50%; animation-delay:0.9s; }
+    .chart-bar:nth-child(6) { height:75%; animation-delay:1.0s; }
+    .chart-bar:nth-child(7) { height:60%; animation-delay:1.1s; }
+    .chart-bar:nth-child(8) { height:85%; animation-delay:1.2s; }
+    .chart-bar:nth-child(9) { height:70%; animation-delay:1.3s; }
+    .chart-bar:nth-child(10) { height:95%; animation-delay:1.4s; }
+    .chart-bar:nth-child(11) { height:80%; animation-delay:1.5s; }
+    .chart-bar:nth-child(12) { height:100%; animation-delay:1.6s; }
+    @keyframes chart-grow { from{transform:scaleY(0);opacity:0} to{transform:scaleY(1);opacity:1} }
+
+    /* Right panel */
+    .dashboard-panel { border-left:1px solid var(--border-default); padding:var(--space-5); display:flex; flex-direction:column; gap:var(--space-4); }
+    .panel-title { font-family:var(--font-body); font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); }
+    .panel-item { display:flex; align-items:center; gap:var(--space-3); padding:var(--space-2) 0; }
+    .panel-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+    .panel-dot--purple { background:var(--accent-primary); box-shadow:0 0 8px var(--accent-glow); }
+    .panel-dot--gold { background:var(--accent-gold); box-shadow:0 0 8px rgba(201,168,76,0.3); }
+    .panel-dot--green { background:var(--color-success); box-shadow:0 0 8px rgba(52,211,153,0.3); }
+    .panel-item-text { font-size:12px; color:var(--text-secondary); line-height:1.4; }
+    .panel-item-label { font-size:11px; color:var(--text-muted); }
+    .panel-item-value { font-family:var(--font-display); font-weight:600; font-size:13px; color:var(--text-primary); }
+
+    /* Live indicator */
+    .panel-live { display:inline-flex; align-items:center; gap:6px; font-size:11px; color:var(--color-success); font-weight:600; letter-spacing:0.05em; }
+    .panel-live-dot { width:6px; height:6px; border-radius:50%; background:var(--color-success); animation:pulse-dot 2s ease-in-out infinite; }
 
     /* ── Metrics ── */
     .metrics-section { padding:var(--space-16) 0; position:relative; }
@@ -245,22 +254,19 @@
       .process-grid { grid-template-columns:1fr; max-width:480px; margin:0 auto; }
       .testimonials-grid { grid-template-columns:1fr; max-width:480px; margin:0 auto; }
       .metrics-grid { grid-template-columns:repeat(2,1fr); }
-      .hero-3d-layer--neural { width:200px; height:130px; }
-      .hero-3d-layer--data { width:180px; height:120px; }
-      .hero-3d-layer--metrics { width:170px; height:110px; }
-      .hero-3d-layer--pulse { width:150px; height:90px; }
+      .dashboard-body { grid-template-columns:1fr; }
+      .dashboard-sidebar { display:none; }
+      .dashboard-panel { border-left:none; border-top:1px solid var(--border-default); }
     }
     @media (max-width:768px) {
-      .hero-center { padding:100px var(--space-5) 0; gap:var(--space-6); }
+      .hero-center { padding:120px var(--space-5) 0; gap:var(--space-5); }
       .hero-sub { font-size:16px; }
       .hero-ctas { flex-direction:column; width:100%; max-width:320px; }
-      .hero-3d-wrap { margin-top:var(--space-10); padding-bottom:var(--space-12); }
-      .hero-3d-scene { animation:hero-rotate 24s ease-in-out infinite; }
-      .hero-3d-layer--neural { width:140px; height:100px; top:8%; left:4%; }
-      .hero-3d-layer--data { width:130px; height:90px; }
-      .hero-3d-layer--metrics { width:120px; height:85px; }
-      .hero-3d-layer--pulse { width:110px; height:75px; }
-      .layer-label { font-size:9px; padding:var(--space-2) var(--space-3); }
+      .hero-dashboard-wrap { margin-top:var(--space-10); padding-bottom:var(--space-12); }
+      .hero-dashboard { transform:none; }
+      .hero-dashboard:hover { transform:translateY(-2px); }
+      .dashboard-stats { grid-template-columns:1fr; }
+      .dashboard-panel { display:none; }
       .cta-card { padding:var(--space-12) var(--space-6); }
       .cta-buttons { flex-direction:column; align-items:center; }
       .metrics-grid { grid-template-columns:1fr 1fr; }
@@ -303,7 +309,7 @@
   </div>
 
   <section class="hero-section">
-    <!-- Parallax background layers -->
+    <!-- Immersive parallax background -->
     <div class="hero-parallax">
       <div class="parallax-layer parallax-layer--deep">
         <div class="orb orb-1"></div>
@@ -312,9 +318,11 @@
       <div class="parallax-layer parallax-layer--mid">
         <div class="orb orb-3"></div>
         <div class="orb orb-4"></div>
+        <div class="orb orb-5"></div>
       </div>
     </div>
     <div class="hero-grid"></div>
+    <div class="hero-vignette"></div>
 
     <div class="hero-content-layer">
       <div class="hero-center">
@@ -325,10 +333,11 @@
 
         <div class="hero-heading">
           <h1 class="hero-h1">We build the system.<span class="hero-h1-accent">You own the growth.</span></h1>
-          <p class="hero-sub">
-            MAHAKALA is an AI growth agency that architects bespoke digital infrastructure — high-end design, API integrations, and AI automation — so your business scales while you sleep.
-          </p>
         </div>
+
+        <p class="hero-sub">
+          MAHAKALA architects bespoke digital infrastructure — premium design, API integrations, and AI automation — so your business scales while you sleep.
+        </p>
 
         <div class="hero-ctas">
           <a href="contact.html" class="btn-primary">Book Discovery Call</a>
@@ -336,59 +345,114 @@
         </div>
       </div>
 
-      <!-- 3D Animated Hero Visual -->
-      <div class="hero-3d-wrap">
-        <div class="hero-3d-scene">
-          <div class="hero-3d-platform">
-            <div class="hero-3d-glow"></div>
+      <!-- Floating Dashboard Mockup -->
+      <div class="hero-dashboard-wrap">
+        <div class="hero-dashboard">
+          <!-- Browser chrome -->
+          <div class="dashboard-chrome">
+            <div class="chrome-dot"></div>
+            <div class="chrome-dot"></div>
+            <div class="chrome-dot"></div>
+            <div class="chrome-url">app.mahakala.ai/dashboard</div>
           </div>
 
-          <!-- Neural Network Layer -->
-          <div class="hero-3d-layer hero-3d-layer--neural">
-            <div class="layer-label layer-label--purple">Neural Engine</div>
-            <div class="layer-bars">
-              <div class="layer-bar layer-bar--purple"></div>
-              <div class="layer-bar layer-bar--purple"></div>
-              <div class="layer-bar layer-bar--purple"></div>
-              <div class="layer-bar layer-bar--purple"></div>
-              <div class="layer-bar layer-bar--purple"></div>
-              <div class="layer-bar layer-bar--purple"></div>
-              <div class="layer-bar layer-bar--purple"></div>
-              <div class="layer-bar layer-bar--purple"></div>
+          <!-- Dashboard body -->
+          <div class="dashboard-body">
+            <!-- Sidebar -->
+            <div class="dashboard-sidebar">
+              <div class="sidebar-item sidebar-item--active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                Dashboard
+              </div>
+              <div class="sidebar-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+                Analytics
+              </div>
+              <div class="sidebar-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                AI Concierge
+              </div>
+              <div class="sidebar-divider"></div>
+              <div class="sidebar-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                Leads
+              </div>
+              <div class="sidebar-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                Settings
+              </div>
             </div>
-          </div>
 
-          <!-- Data Flow Layer -->
-          <div class="hero-3d-layer hero-3d-layer--data">
-            <div class="layer-label layer-label--gold">Data Pipeline</div>
-            <div class="layer-stream">
-              <div class="stream-line stream-line--gold"></div>
-              <div class="stream-line stream-line--gold"></div>
-              <div class="stream-line stream-line--gold"></div>
-              <div class="stream-line stream-line--gold"></div>
+            <!-- Main -->
+            <div class="dashboard-main">
+              <div class="dashboard-greeting">Good morning, <span>Client</span></div>
+
+              <div class="dashboard-stats">
+                <div class="stat-card">
+                  <div class="stat-label">Leads Today</div>
+                  <div class="stat-value stat-value--purple">47</div>
+                  <div class="stat-change">+23% vs last week</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-label">Revenue</div>
+                  <div class="stat-value stat-value--gold">$12.4k</div>
+                  <div class="stat-change">+18% vs last month</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-label">Conversion</div>
+                  <div class="stat-value stat-value--green">8.7%</div>
+                  <div class="stat-change">+2.1pp improvement</div>
+                </div>
+              </div>
+
+              <div class="dashboard-chart">
+                <div class="chart-header">
+                  <div class="chart-title">Growth Trajectory</div>
+                  <div class="chart-period">Last 12 weeks</div>
+                </div>
+                <div class="chart-visual">
+                  <div class="chart-bar"></div>
+                  <div class="chart-bar"></div>
+                  <div class="chart-bar"></div>
+                  <div class="chart-bar"></div>
+                  <div class="chart-bar"></div>
+                  <div class="chart-bar"></div>
+                  <div class="chart-bar"></div>
+                  <div class="chart-bar"></div>
+                  <div class="chart-bar"></div>
+                  <div class="chart-bar"></div>
+                  <div class="chart-bar"></div>
+                  <div class="chart-bar"></div>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <!-- Metrics Layer -->
-          <div class="hero-3d-layer hero-3d-layer--metrics">
-            <div class="layer-label layer-label--green">Growth Metrics</div>
-            <div class="layer-bars">
-              <div class="layer-bar layer-bar--green"></div>
-              <div class="layer-bar layer-bar--green"></div>
-              <div class="layer-bar layer-bar--green"></div>
-              <div class="layer-bar layer-bar--green"></div>
-              <div class="layer-bar layer-bar--green"></div>
-              <div class="layer-bar layer-bar--green"></div>
-            </div>
-          </div>
+            <!-- Right panel -->
+            <div class="dashboard-panel">
+              <div class="panel-title">Active Systems</div>
+              <div class="panel-live"><span class="panel-live-dot"></span> All systems operational</div>
 
-          <!-- Pulse Layer -->
-          <div class="hero-3d-layer hero-3d-layer--pulse">
-            <div class="layer-label layer-label--violet">AI Signals</div>
-            <div class="layer-rings">
-              <div class="pulse-ring pulse-ring--purple"></div>
-              <div class="pulse-ring pulse-ring--violet"></div>
-              <div class="pulse-ring pulse-ring--purple"></div>
+              <div class="panel-item">
+                <div class="panel-dot panel-dot--purple"></div>
+                <div>
+                  <div class="panel-item-value">AI Concierge</div>
+                  <div class="panel-item-label">142 conversations today</div>
+                </div>
+              </div>
+              <div class="panel-item">
+                <div class="panel-dot panel-dot--gold"></div>
+                <div>
+                  <div class="panel-item-value">Cart Recovery</div>
+                  <div class="panel-item-label">$3.2k recovered this week</div>
+                </div>
+              </div>
+              <div class="panel-item">
+                <div class="panel-dot panel-dot--green"></div>
+                <div>
+                  <div class="panel-item-value">SEO Engine</div>
+                  <div class="panel-item-label">12 pages indexed today</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -822,6 +886,7 @@
     const deepLayer = document.querySelector('.parallax-layer--deep');
     const midLayer = document.querySelector('.parallax-layer--mid');
     const heroGrid = document.querySelector('.hero-grid');
+    const heroVignette = document.querySelector('.hero-vignette');
     const navbar = document.querySelector('.navbar');
 
     let ticking = false;
@@ -829,9 +894,9 @@
       if (!ticking) {
         requestAnimationFrame(() => {
           const scrollY = window.scrollY;
-          if (deepLayer) deepLayer.style.transform = 'translateY(' + (scrollY * 0.3) + 'px)';
-          if (midLayer) midLayer.style.transform = 'translateY(' + (scrollY * 0.15) + 'px)';
-          if (heroGrid) heroGrid.style.transform = 'translateY(' + (scrollY * 0.08) + 'px)';
+          if (deepLayer) deepLayer.style.transform = 'translateY(' + (scrollY * 0.25) + 'px)';
+          if (midLayer) midLayer.style.transform = 'translateY(' + (scrollY * 0.12) + 'px)';
+          if (heroGrid) heroGrid.style.transform = 'translateY(' + (scrollY * 0.06) + 'px)';
           if (navbar) {
             if (scrollY > 40) { navbar.classList.add('scrolled'); }
             else { navbar.classList.remove('scrolled'); }
