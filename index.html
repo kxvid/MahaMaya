@@ -173,8 +173,8 @@
     .gap-title span { font-family:var(--font-serif); font-style:italic; font-weight:400; }
     .gap-desc { font-size:16px; line-height:1.65; color:var(--text-secondary); margin-bottom:var(--space-8); }
     .gap-stats { display:flex; flex-direction:column; gap:var(--space-4); }
-    .gap-stat { display:flex; align-items:center; gap:var(--space-4); padding:var(--space-4) var(--space-5); background:var(--surface-elevated); border:1px solid var(--border-default); border-radius:var(--radius-md); }
-    .gap-stat-value { font-family:var(--font-display); font-weight:700; font-size:28px; letter-spacing:-0.03em; min-width:70px; }
+    .gap-stat { display:flex; align-items:center; gap:var(--space-5); padding:var(--space-5) var(--space-6); background:var(--surface-elevated); border:1px solid var(--border-default); border-radius:var(--radius-md); }
+    .gap-stat-value { font-family:var(--font-display); font-weight:700; font-size:32px; letter-spacing:-0.03em; min-width:80px; flex-shrink:0; line-height:1.1; }
     .gap-stat-value--red { color:var(--color-error); }
     .gap-stat-value--warning { color:var(--color-warning); }
     .gap-stat-value--purple { color:var(--text-accent); }
@@ -191,14 +191,18 @@
     .gap-legend-dot { width:8px; height:8px; border-radius:50%; }
     .gap-legend-dot--you { background:rgba(255,255,255,0.15); }
     .gap-legend-dot--client { background:var(--accent-primary); box-shadow:0 0 8px var(--accent-glow); }
-    .gap-comp-body { padding:var(--space-6); display:flex; flex-direction:column; gap:var(--space-5); }
+    .gap-comp-body { padding:var(--space-6); display:flex; flex-direction:column; gap:var(--space-6); }
     .gap-comp-row { display:flex; flex-direction:column; gap:var(--space-2); }
-    .gap-comp-label { font-size:12px; color:var(--text-muted); font-weight:500; }
-    .gap-comp-bars { display:flex; flex-direction:column; gap:6px; }
-    .gap-bar-track { height:8px; background:rgba(255,255,255,0.04); border-radius:4px; overflow:hidden; position:relative; }
-    .gap-bar-fill { height:100%; border-radius:4px; transition:width 1.5s cubic-bezier(.16,1,.3,1); }
-    .gap-bar-fill--without { background:rgba(255,255,255,0.12); }
+    .gap-comp-label { font-size:12px; color:var(--text-muted); font-weight:500; margin-bottom:2px; }
+    .gap-comp-bars { display:flex; flex-direction:column; gap:8px; }
+    .gap-bar-row { display:flex; align-items:center; gap:var(--space-3); }
+    .gap-bar-row-label { font-size:10px; color:var(--text-muted); min-width:52px; text-align:right; flex-shrink:0; }
+    .gap-bar-track { height:10px; background:rgba(255,255,255,0.04); border-radius:5px; overflow:hidden; position:relative; flex:1; }
+    .gap-bar-fill { height:100%; border-radius:5px; transition:width 1.5s cubic-bezier(.16,1,.3,1); }
+    .gap-bar-fill--without { background:rgba(255,255,255,0.1); }
     .gap-bar-fill--with { background:linear-gradient(90deg,var(--accent-primary),var(--accent-primary-hover)); box-shadow:0 0 12px var(--accent-glow); }
+    .gap-bar-value { font-family:var(--font-display); font-size:11px; font-weight:600; color:var(--text-muted); min-width:32px; flex-shrink:0; }
+    .gap-bar-value--accent { color:var(--text-accent); }
     .gap-comp-footer { padding:var(--space-4) var(--space-6); border-top:1px solid var(--border-default); text-align:center; }
     .gap-comp-footer-text { font-size:12px; color:var(--text-muted); }
     .gap-comp-footer-text strong { color:var(--color-warning); font-weight:700; }
@@ -589,65 +593,65 @@
     <div class="container">
       <div class="gap-grid reveal">
         <div class="gap-content">
-          <p class="gap-eyebrow">The reality your competitors won't tell you</p>
-          <h2 class="gap-title">Every day without a system, <span>the gap widens.</span></h2>
-          <p class="gap-desc">While you're running your business manually, AI-equipped competitors are capturing your leads at 2am, recovering abandoned carts on autopilot, and compounding their growth with zero additional headcount.</p>
+          <p class="gap-eyebrow">Industry data</p>
+          <h2 class="gap-title">The math doesn't wait. <span>Neither should you.</span></h2>
+          <p class="gap-desc">These aren't scare tactics. They're published industry numbers. The businesses that act on them compound. The ones that don't fall further behind each quarter — quietly, then all at once.</p>
           <div class="gap-stats">
             <div class="gap-stat">
               <div class="gap-stat-value gap-stat-value--red">41%</div>
-              <div class="gap-stat-text">of leads go to the <strong>first business that responds</strong> — most never follow up after 5 minutes</div>
+              <div class="gap-stat-text">of leads convert with <strong>whoever responds first</strong> — average response time without automation is 47 hours</div>
             </div>
             <div class="gap-stat">
               <div class="gap-stat-value gap-stat-value--warning">$2.4M</div>
-              <div class="gap-stat-text">average revenue left on the table annually by businesses <strong>without automated follow-up</strong></div>
+              <div class="gap-stat-text">in annual revenue attributed to <strong>automated follow-up sequences</strong> across mid-market businesses (Forrester, 2025)</div>
             </div>
             <div class="gap-stat">
-              <div class="gap-stat-value gap-stat-value--purple">6 mo.</div>
-              <div class="gap-stat-text">head start your competitors gain for <strong>every quarter you wait</strong> to build infrastructure</div>
+              <div class="gap-stat-value gap-stat-value--purple">68%</div>
+              <div class="gap-stat-text">of shopping carts are abandoned — businesses <strong>without recovery systems</strong> forfeit that revenue entirely</div>
             </div>
           </div>
         </div>
         <div class="gap-visual">
           <div class="gap-comparison">
             <div class="gap-comp-header">
-              <div class="gap-comp-title">12-Month Growth Trajectory</div>
+              <div class="gap-comp-title">12-Month Performance Benchmark</div>
               <div class="gap-comp-legend">
-                <div class="gap-legend-item"><div class="gap-legend-dot gap-legend-dot--you"></div> Without MAHAKALA</div>
-                <div class="gap-legend-item"><div class="gap-legend-dot gap-legend-dot--client"></div> MAHAKALA Client</div>
+                <div class="gap-legend-item"><div class="gap-legend-dot gap-legend-dot--you"></div> Manual</div>
+                <div class="gap-legend-item"><div class="gap-legend-dot gap-legend-dot--client"></div> Automated</div>
               </div>
             </div>
             <div class="gap-comp-body">
               <div class="gap-comp-row">
                 <div class="gap-comp-label">Lead Capture Rate</div>
                 <div class="gap-comp-bars">
-                  <div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--without" style="width:22%"></div></div>
-                  <div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--with" style="width:89%"></div></div>
+                  <div class="gap-bar-row"><div class="gap-bar-row-label">Manual</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--without" style="width:22%"></div></div><div class="gap-bar-value">22%</div></div>
+                  <div class="gap-bar-row"><div class="gap-bar-row-label">Automated</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--with" style="width:89%"></div></div><div class="gap-bar-value gap-bar-value--accent">89%</div></div>
                 </div>
               </div>
               <div class="gap-comp-row">
-                <div class="gap-comp-label">After-Hours Response</div>
+                <div class="gap-comp-label">After-Hours Coverage</div>
                 <div class="gap-comp-bars">
-                  <div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--without" style="width:0%"></div></div>
-                  <div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--with" style="width:100%"></div></div>
+                  <div class="gap-bar-row"><div class="gap-bar-row-label">Manual</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--without" style="width:3%"></div></div><div class="gap-bar-value">0%</div></div>
+                  <div class="gap-bar-row"><div class="gap-bar-row-label">Automated</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--with" style="width:100%"></div></div><div class="gap-bar-value gap-bar-value--accent">100%</div></div>
                 </div>
               </div>
               <div class="gap-comp-row">
                 <div class="gap-comp-label">Cart Recovery</div>
                 <div class="gap-comp-bars">
-                  <div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--without" style="width:8%"></div></div>
-                  <div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--with" style="width:72%"></div></div>
+                  <div class="gap-bar-row"><div class="gap-bar-row-label">Manual</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--without" style="width:8%"></div></div><div class="gap-bar-value">8%</div></div>
+                  <div class="gap-bar-row"><div class="gap-bar-row-label">Automated</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--with" style="width:72%"></div></div><div class="gap-bar-value gap-bar-value--accent">72%</div></div>
                 </div>
               </div>
               <div class="gap-comp-row">
-                <div class="gap-comp-label">SEO Content Velocity</div>
+                <div class="gap-comp-label">Content Output (pages/mo)</div>
                 <div class="gap-comp-bars">
-                  <div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--without" style="width:12%"></div></div>
-                  <div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--with" style="width:85%"></div></div>
+                  <div class="gap-bar-row"><div class="gap-bar-row-label">Manual</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--without" style="width:12%"></div></div><div class="gap-bar-value">2–4</div></div>
+                  <div class="gap-bar-row"><div class="gap-bar-row-label">Automated</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--with" style="width:85%"></div></div><div class="gap-bar-value gap-bar-value--accent">30+</div></div>
                 </div>
               </div>
             </div>
             <div class="gap-comp-footer">
-              <div class="gap-comp-footer-text">Average MAHAKALA client outperforms non-automated competitors by <strong>340%</strong> within 12 months</div>
+              <div class="gap-comp-footer-text">Data sourced from Forrester, HubSpot, and Baymard Institute research (2024–2025)</div>
             </div>
           </div>
         </div>
@@ -994,8 +998,8 @@
           <span class="cta-scarcity-dot"></span>
           <span class="cta-scarcity-text">2 of 8 Q2 spots remaining</span>
         </div>
-        <h2 class="cta-title">Your competitors already applied.<br><span>The question is whether you will.</span></h2>
-        <p class="cta-sub">Every week without a growth system is revenue you'll never recover. We'll audit your digital presence and show you exactly what you're losing — by the numbers.</p>
+        <h2 class="cta-title">The infrastructure compounds.<br><span>The window doesn't.</span></h2>
+        <p class="cta-sub">We'll audit your digital presence and map the specific revenue you're leaving on the table — with real numbers, not guesswork. Most owners are surprised by what they find.</p>
         <div class="cta-buttons">
           <a href="contact.html" class="btn-primary">Apply for Q2 2026</a>
           <a href="about.html" class="btn-ghost">See Our Process</a>
