@@ -77,6 +77,9 @@
       </ul>
     </div>
     <div class="nav-right">
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
       <a href="contact.html" class="btn-primary-sm">Book a Call</a>
     </div>
   </nav>
@@ -217,7 +220,7 @@
         <div class="footer-brand">
           <div class="footer-logo-mark"><svg viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="7" height="7" rx="1.5" fill="#050505"/><rect x="10" y="1" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="1" y="10" width="7" height="7" rx="1.5" fill="#050505" opacity="0.4"/><rect x="10" y="10" width="7" height="7" rx="1.5" fill="#050505"/></svg></div>
           <span class="footer-name">MAHAKALA</span>
-          <span class="footer-copy">The Art of Intelligence.</span>
+          <span class="footer-copy">Bespoke digital infrastructure for businesses that compound.</span>
         </div>
         <ul class="footer-links">
           <li><a href="services-local.html">Local Services</a></li>
@@ -226,10 +229,24 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 MAHAKALA. All rights reserved.</span>
+        <span class="footer-location">Built with care in Los Angeles, CA</span>
+      </div>
     </div>
   </footer>
 
   <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinksEl = document.querySelector('.nav-links');
+    if (mobileMenuBtn && navLinksEl) {
+      mobileMenuBtn.addEventListener('click', () => navLinksEl.classList.toggle('open'));
+      navLinksEl.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => navLinksEl.classList.remove('open'));
+      });
+    }
+
     const revealEls = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });

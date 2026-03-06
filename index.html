@@ -4,7 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MAHAKALA — The Art of Intelligence</title>
-  <meta name="description" content="MAHAKALA is an AI growth agency that builds proprietary growth systems — high-end web design, API integrations, and vertically integrated AI." />
+  <meta name="description" content="Bespoke digital infrastructure for local services and DTC brands. Premium design, AI automation, and API integrations — engineered for compounding growth." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MAHAKALA — The Art of Intelligence" />
+  <meta property="og:description" content="Bespoke digital infrastructure for local services and DTC brands. Premium design, AI automation, and API integrations — engineered for compounding growth." />
+  <!-- TODO: Replace with actual branded OG image (1200x630, dark card with MAHAKALA logo + tagline) -->
+  <!-- <meta property="og:image" content="https://mahakala.ai/assets/og-card.png" /> -->
+  <meta property="og:url" content="https://mahakala.ai" />
+  <meta property="og:site_name" content="MAHAKALA" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MAHAKALA — The Art of Intelligence" />
+  <meta name="twitter:description" content="Bespoke digital infrastructure for local services and DTC brands. Premium design, AI automation, and API integrations — engineered for compounding growth." />
+  <!-- TODO: Same OG image as above -->
+  <!-- <meta name="twitter:image" content="https://mahakala.ai/assets/og-card.png" /> -->
+
+  <link rel="canonical" href="https://mahakala.ai" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -59,7 +77,8 @@
     @keyframes hero-fade-up { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:translateY(0)} }
 
     /* ── Floating Dashboard Mockup ── */
-    .hero-dashboard-wrap { perspective:1200px; display:flex; justify-content:center; margin-top:var(--space-16); padding:0 var(--space-6); padding-bottom:var(--space-20); animation:hero-fade-up 1s cubic-bezier(.16,1,.3,1) .45s both; }
+    .hero-dashboard-wrap { perspective:1200px; display:flex; flex-direction:column; align-items:center; margin-top:var(--space-16); padding:0 var(--space-6); padding-bottom:var(--space-20); animation:hero-fade-up 1s cubic-bezier(.16,1,.3,1) .45s both; }
+    .hero-dashboard-caption { font-family:var(--font-body); font-size:12px; color:var(--text-muted); margin-top:var(--space-4); letter-spacing:0.03em; }
     .hero-dashboard { width:960px; max-width:100%; border-radius:var(--radius-xl); background:rgba(10,10,10,0.55); border:1px solid var(--border-default); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); overflow:hidden; transform:perspective(1200px) rotateX(4deg); transition:transform .6s cubic-bezier(.16,1,.3,1); position:relative; }
     .hero-dashboard:hover { transform:perspective(1200px) rotateX(1deg) translateY(-4px); }
 
@@ -275,6 +294,10 @@
     .testimonial-avatar { width:40px; height:40px; border-radius:50%; background:var(--accent-subtle); border:1px solid var(--border-accent); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:700; font-size:14px; color:var(--accent-primary); }
     .testimonial-name { font-family:var(--font-display); font-weight:600; font-size:14px; color:var(--text-primary); }
     .testimonial-role { font-size:13px; color:var(--text-muted); }
+    .testimonial-card--upcoming { border-style:dashed; border-color:rgba(255,255,255,0.06); background:transparent; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:var(--space-3); min-height:260px; }
+    .testimonial-card--upcoming:hover { border-color:rgba(255,255,255,0.1); }
+    .testimonial-upcoming-badge { font-family:var(--font-body); font-weight:600; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); padding:6px 14px; border:1px solid var(--border-default); border-radius:var(--radius-full); }
+    .testimonial-upcoming-text { font-size:14px; color:var(--text-muted); line-height:1.5; max-width:220px; }
 
     /* ── Pricing ── */
     .pricing-section { padding:var(--space-20) 0; position:relative; }
@@ -347,17 +370,23 @@
     }
     @media (max-width:768px) {
       .hero-center { padding:120px var(--space-5) 0; gap:var(--space-5); }
+      .hero-h1, .hero-h1-accent { font-size:clamp(32px,8vw,44px); }
       .hero-sub { font-size:16px; }
       .hero-ctas { flex-direction:column; width:100%; max-width:320px; }
       .hero-dashboard-wrap { margin-top:var(--space-10); padding-bottom:var(--space-12); }
       .hero-dashboard { transform:none; }
       .hero-dashboard:hover { transform:translateY(-2px); }
+      .dashboard-main { padding:var(--space-4); }
+      .dashboard-greeting { font-size:16px; }
       .dashboard-stats { grid-template-columns:1fr; }
       .dashboard-panel { display:none; }
       .cta-card { padding:var(--space-12) var(--space-6); }
       .cta-buttons { flex-direction:column; align-items:center; }
       .metrics-grid { grid-template-columns:1fr 1fr; }
       .metric-value { font-size:36px; }
+      .gap-stat-value { font-size:24px; min-width:60px; }
+      .gap-bar-row-label { display:none; }
+      .gap-comp-bars { gap:4px; }
     }
   </style>
 </head>
@@ -390,6 +419,9 @@
       </div>
 
       <div class="nav-right">
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
         <a href="contact.html" class="btn-primary-sm">Book a Call</a>
       </div>
     </nav>
@@ -434,10 +466,10 @@
         <div class="hero-capacity">
           <div class="capacity-indicator">
             <div class="capacity-bar-wrap">
-              <div class="capacity-label">Q2 2026 Capacity</div>
-              <div class="capacity-bar"><div class="capacity-fill"></div></div>
+              <div class="capacity-label" data-capacity-label>Q2 2026 Capacity</div>
+              <div class="capacity-bar"><div class="capacity-fill" data-capacity-fill></div></div>
             </div>
-            <div class="capacity-text">2 spots remaining</div>
+            <div class="capacity-text" data-capacity-spots>2 spots remaining</div>
           </div>
           <div class="capacity-note">We onboard a maximum of 8 clients per quarter to maintain build quality.</div>
         </div>
@@ -451,7 +483,7 @@
             <div class="chrome-dot"></div>
             <div class="chrome-dot"></div>
             <div class="chrome-dot"></div>
-            <div class="chrome-url">app.mahakala.ai/dashboard</div>
+            <div class="chrome-url">dashboard.mahakala.ai</div>
           </div>
 
           <!-- Dashboard body -->
@@ -554,6 +586,7 @@
             </div>
           </div>
         </div>
+        <p class="hero-dashboard-caption">Client portal — currently in private beta</p>
       </div>
     </div>
   </section>
@@ -574,13 +607,13 @@
           <div class="urgency-icon urgency-icon--warning">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
-          <div class="urgency-text"><strong>14 businesses</strong> applied this month</div>
+          <div class="urgency-text">Applications reviewed on a <strong>rolling basis</strong></div>
         </div>
         <div class="urgency-item">
           <div class="urgency-icon urgency-icon--info">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
           </div>
-          <div class="urgency-text">Our clients average <strong>3.2x</strong> lead increase in 90 days</div>
+          <div class="urgency-text">Built to deliver <strong>measurable lead growth</strong> within 90 days</div>
         </div>
       </div>
     </div>
@@ -737,24 +770,6 @@
             <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
             <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
           </div>
-          <p class="testimonial-quote">"We were losing 40% of our leads after hours. MAHAKALA's AI concierge now captures every single one. Our booking rate tripled in the first quarter."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">DR</div>
-            <div>
-              <div class="testimonial-name">Dr. Rachel Kim</div>
-              <div class="testimonial-role">Elevate Aesthetics &amp; Wellness</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-stars">
-            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
-            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
-            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
-            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
-            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
-          </div>
           <p class="testimonial-quote">"We were paying eBay thousands in fees every year and our customers didn't even know our brand name. Now we own the entire experience — and we keep the margin."</p>
           <div class="testimonial-author">
             <div class="testimonial-avatar">CV</div>
@@ -769,22 +784,14 @@
           </a>
         </div>
 
-        <div class="testimonial-card">
-          <div class="testimonial-stars">
-            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
-            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
-            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
-            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
-            <svg viewBox="0 0 16 16"><path d="M8 0l2.5 5 5.5.8-4 3.9.9 5.3L8 12.5 3.1 15l.9-5.3-4-3.9L5.5 5z"/></svg>
-          </div>
-          <p class="testimonial-quote">"They didn't just build us a website. They built an entire digital infrastructure. Our DEXA bookings run on autopilot now."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">AS</div>
-            <div>
-              <div class="testimonial-name">Alex Stern</div>
-              <div class="testimonial-role">Operations Director, DexaFit OC</div>
-            </div>
-          </div>
+        <div class="testimonial-card testimonial-card--upcoming">
+          <div class="testimonial-upcoming-badge">Q2 2026 Client</div>
+          <p class="testimonial-upcoming-text">Case study in progress. Track A — local services build currently in onboarding.</p>
+        </div>
+
+        <div class="testimonial-card testimonial-card--upcoming">
+          <div class="testimonial-upcoming-badge">Q2 2026 Client</div>
+          <p class="testimonial-upcoming-text">Case study in progress. Track B — commerce engine build currently in development.</p>
         </div>
       </div>
     </div>
@@ -996,23 +1003,16 @@
       <div class="cta-card reveal">
         <div class="cta-scarcity">
           <span class="cta-scarcity-dot"></span>
-          <span class="cta-scarcity-text">2 of 8 Q2 spots remaining</span>
+          <span class="cta-scarcity-text" data-capacity-cta>2 of 8 Q2 2026 spots remaining</span>
         </div>
         <h2 class="cta-title">The infrastructure compounds.<br><span>The window doesn't.</span></h2>
         <p class="cta-sub">We'll audit your digital presence and map the specific revenue you're leaving on the table — with real numbers, not guesswork. Most owners are surprised by what they find.</p>
         <div class="cta-buttons">
-          <a href="contact.html" class="btn-primary">Apply for Q2 2026</a>
+          <a href="contact.html" class="btn-primary" data-capacity-apply>Apply for Q2 2026</a>
           <a href="about.html" class="btn-ghost">See Our Process</a>
         </div>
         <div class="cta-social-proof">
-          <div class="cta-avatars">
-            <div class="cta-avatar">RK</div>
-            <div class="cta-avatar">CV</div>
-            <div class="cta-avatar">AS</div>
-            <div class="cta-avatar">JM</div>
-            <div class="cta-avatar">TL</div>
-          </div>
-          <div class="cta-social-text"><strong>23 businesses</strong> applied this quarter</div>
+          <div class="cta-social-text">Applications reviewed on a rolling basis</div>
         </div>
       </div>
     </div>
@@ -1034,7 +1034,7 @@
             </svg>
           </div>
           <span class="footer-name">MAHAKALA</span>
-          <span class="footer-copy">The Art of Intelligence.</span>
+          <span class="footer-copy">Bespoke digital infrastructure for businesses that compound.</span>
         </div>
         <ul class="footer-links">
           <li><a href="services-local.html">Local Services</a></li>
@@ -1043,10 +1043,48 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 MAHAKALA. All rights reserved.</span>
+        <span class="footer-location">Built with care in Los Angeles, CA</span>
+      </div>
     </div>
   </footer>
 
   <script>
+    // ── Domain Configuration ──
+    // TODO: Update when mahakala.ai domain is connected to Vercel
+    // Current staging: Vercel preview deployment
+    // Target production: mahakala.ai
+    const SITE_URL = 'https://mahakala.ai';
+
+    // ── Capacity Config ──
+    // Update this single object to change all capacity/scarcity references site-wide.
+    const CAPACITY_CONFIG = {
+      spotsRemaining: 2,
+      totalSpots: 8,
+      quarter: 'Q2 2026',
+      isAccepting: true,
+    };
+
+    // Apply capacity config to DOM elements
+    document.querySelectorAll('[data-capacity-spots]').forEach(el => {
+      el.textContent = CAPACITY_CONFIG.spotsRemaining + ' spots remaining';
+    });
+    document.querySelectorAll('[data-capacity-label]').forEach(el => {
+      el.textContent = CAPACITY_CONFIG.quarter + ' Capacity';
+    });
+    document.querySelectorAll('[data-capacity-cta]').forEach(el => {
+      el.textContent = CAPACITY_CONFIG.spotsRemaining + ' of ' + CAPACITY_CONFIG.totalSpots + ' ' + CAPACITY_CONFIG.quarter + ' spots remaining';
+    });
+    document.querySelectorAll('[data-capacity-apply]').forEach(el => {
+      el.textContent = 'Apply for ' + CAPACITY_CONFIG.quarter;
+    });
+    const capacityFill = document.querySelector('[data-capacity-fill]');
+    if (capacityFill) {
+      const pct = ((CAPACITY_CONFIG.totalSpots - CAPACITY_CONFIG.spotsRemaining) / CAPACITY_CONFIG.totalSpots * 100);
+      capacityFill.style.width = pct + '%';
+    }
+
     // Scroll reveal
     const revealEls = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
@@ -1058,6 +1096,18 @@
       });
     }, { threshold: 0.15 });
     revealEls.forEach(el => observer.observe(el));
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    if (mobileMenuBtn && navLinks) {
+      mobileMenuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('open'));
+      });
+    }
 
     // FAQ accordion
     document.querySelectorAll('.faq-question').forEach(btn => {
