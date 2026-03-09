@@ -1,13 +1,20 @@
-# MAHAKALA Design System & Development Rules
+# KAYA Design System & Development Rules
 
 ## Brand Identity
 
-- **Name:** MAHAKALA (stylized: MAHAKĀLA)
+- **Name:** KAYA (stylized: KĀYA)
+- **Founded by:** Kov Rastogi
 - **Tagline:** The Art of Intelligence.
 - **Aesthetic:** Ultra-premium, dark/cyber, architectural precision ("The AKSHA philosophy")
 - **Mission:** Bridge aesthetic excellence and technical infrastructure. Transform static businesses into automated, self-scaling digital entities.
 - **Type:** AI Growth Agency (done-for-you services, not SaaS)
 - **Core Differentiator:** We build proprietary "Growth Systems" (WaaS + managed AI), not websites. Clients don't get CMS access — we control the environment.
+
+### Clients
+
+| Client | Owner | Description |
+|---|---|---|
+| Measure Joy | Christian Velasquez | Curated vintage camera brand. KAYA built a custom e-commerce platform for them. |
 
 ---
 
