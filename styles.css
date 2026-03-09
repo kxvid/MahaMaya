@@ -63,8 +63,8 @@ body { background: var(--surface-primary); color: var(--text-primary); font-fami
 .navbar.scrolled { background:rgba(10,10,10,0.85); border-color:var(--border-hover); box-shadow:0 8px 32px rgba(0,0,0,0.4),0 0 0 1px rgba(255,255,255,0.04); }
 .nav-left { display:flex; align-items:center; gap:var(--space-10); }
 .nav-logo { text-decoration:none; display:flex; align-items:center; gap:var(--space-3); }
-.nav-logo-mark { width:32px; height:32px; border-radius:var(--radius-sm); background:var(--text-primary); display:flex; align-items:center; justify-content:center; }
-.nav-logo-mark svg { width:18px; height:18px; }
+.nav-logo-mark { width:28px; height:28px; border-radius:6px; background:var(--accent-primary); display:flex; align-items:center; justify-content:center; }
+.nav-logo-mark span { font-family:var(--font-display); font-weight:700; font-size:14px; color:#fff; letter-spacing:0.05em; }
 .nav-logo-text { font-family:var(--font-display); font-weight:700; font-size:14px; letter-spacing:0.15em; color:var(--text-primary); }
 .nav-links { display:flex; align-items:center; gap:2px; list-style:none; }
 .nav-links a { font-family:var(--font-body); font-weight:500; font-size:13px; color:var(--text-secondary); text-decoration:none; padding:6px var(--space-3); border-radius:var(--radius-full); transition:color .2s,background .2s; }
@@ -92,8 +92,7 @@ body { background: var(--surface-primary); color: var(--text-primary); font-fami
 .footer { padding:var(--space-12) 0 var(--space-8); border-top:1px solid var(--border-default); }
 .footer-inner { display:flex; justify-content:space-between; align-items:center; }
 .footer-brand { display:flex; align-items:center; gap:var(--space-3); }
-.footer-logo-mark { width:24px; height:24px; border-radius:6px; background:var(--text-primary); display:flex; align-items:center; justify-content:center; }
-.footer-logo-mark svg { width:14px; height:14px; }
+.footer-logo-mark { width:22px; height:22px; border-radius:5px; background:var(--accent-primary); display:flex; align-items:center; justify-content:center; }
 .footer-name { font-family:var(--font-display); font-weight:700; font-size:13px; letter-spacing:0.12em; color:var(--text-primary); }
 .footer-copy { font-size:13px; color:var(--text-muted); }
 .footer-links { display:flex; gap:var(--space-6); list-style:none; }
