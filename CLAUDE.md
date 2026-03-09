@@ -1,10 +1,12 @@
-# KAYA Design System & Development Rules
+# Kala Studios Design System & Development Rules
 
 ## Brand Identity
 
-- **Name:** KAYA (stylized: KĀYA)
+- **Name:** Kala Studios (stylized: KALA STUDIOS)
 - **Founded by:** Kov Rastogi
-- **Tagline:** The Art of Intelligence.
+- **Tagline:** Bespoke Digital Infrastructure & AI Automation.
+- **Etymology:** "Kala" (Hindi/Sanskrit) means "Art" or "Skill." Its deeper roots in the 64 Kalās encompass everything from design and architecture to logic and mathematics.
+- **Domain:** kalastudio.ai
 - **Aesthetic:** Ultra-premium, dark/cyber, architectural precision ("The AKSHA philosophy")
 - **Mission:** Bridge aesthetic excellence and technical infrastructure. Transform static businesses into automated, self-scaling digital entities.
 - **Type:** AI Growth Agency (done-for-you services, not SaaS)
@@ -14,7 +16,7 @@
 
 | Client | Owner | Description |
 |---|---|---|
-| Measure Joy | Christian Velasquez | Curated vintage camera brand. KAYA built a custom e-commerce platform for them. |
+| Measure Joy | Christian Velasquez | Curated vintage camera brand. Kala Studios built a custom e-commerce platform for them. |
 
 ---
 
