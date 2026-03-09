@@ -1,8 +1,8 @@
-# MAHAKALA Design System & Development Rules
+# KAYA Design System & Development Rules
 
 ## Brand Identity
 
-- **Name:** MAHAKALA (stylized: MAHAKĀLA)
+- **Name:** KAYA (stylized: KĀYA)
 - **Founded by:** Kov Rastogi
 - **Tagline:** The Art of Intelligence.
 - **Aesthetic:** Ultra-premium, dark/cyber, architectural precision ("The AKSHA philosophy")
@@ -14,7 +14,7 @@
 
 | Client | Owner | Description |
 |---|---|---|
-| Measure Joy | Christian Velasquez | Curated vintage camera brand. MAHAKALA built a custom e-commerce platform for them. |
+| Measure Joy | Christian Velasquez | Curated vintage camera brand. KAYA built a custom e-commerce platform for them. |
 
 ---
 
