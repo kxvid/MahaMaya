@@ -160,17 +160,7 @@
     .panel-live { display:inline-flex; align-items:center; gap:6px; font-size:11px; color:var(--color-success); font-weight:600; letter-spacing:0.05em; }
     .panel-live-dot { width:6px; height:6px; border-radius:50%; background:var(--color-success); animation:pulse-dot 2s ease-in-out infinite; }
 
-    /* ── Capacity / Exclusivity Bar ── */
-    .hero-capacity { display:flex; flex-direction:column; align-items:center; gap:var(--space-3); animation:hero-fade-up .9s cubic-bezier(.16,1,.3,1) .38s both; margin-top:var(--space-2); }
-    .capacity-indicator { display:flex; align-items:center; gap:var(--space-4); background:rgba(255,255,255,0.02); border:1px solid var(--border-default); border-radius:var(--radius-full); padding:10px 24px; backdrop-filter:blur(8px); }
-    .capacity-bar-wrap { display:flex; flex-direction:column; gap:4px; }
-    .capacity-label { font-family:var(--font-body); font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); }
-    .capacity-bar { width:120px; height:6px; background:rgba(255,255,255,0.06); border-radius:3px; overflow:hidden; position:relative; }
-    .capacity-fill { height:100%; border-radius:3px; background:linear-gradient(90deg,var(--accent-primary),var(--color-warning)); width:82%; transition:width 1.5s cubic-bezier(.16,1,.3,1); }
-    .capacity-text { font-family:var(--font-display); font-weight:700; font-size:13px; color:var(--color-warning); letter-spacing:-0.02em; white-space:nowrap; }
-    .capacity-note { font-family:var(--font-body); font-size:12px; color:var(--text-muted); }
-
-    /* ── Urgency Ticker (below metrics) ── */
+    /* ── Highlights Bar ── */
     .urgency-section { padding:0 0 var(--space-12); position:relative; overflow:hidden; }
     .urgency-bar { display:flex; align-items:center; justify-content:center; gap:var(--space-10); padding:var(--space-4) 0; border-top:1px solid var(--border-default); border-bottom:1px solid var(--border-default); }
     .urgency-item { display:flex; align-items:center; gap:var(--space-3); white-space:nowrap; }
@@ -187,15 +177,15 @@
     .gap-section::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:1px; background:linear-gradient(90deg,transparent,var(--border-default),transparent); }
     .gap-grid { display:grid; grid-template-columns:1fr 1fr; gap:var(--space-8); align-items:center; }
     .gap-content { }
-    .gap-eyebrow { font-family:var(--font-body); font-weight:600; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--color-warning); margin-bottom:var(--space-4); }
+    .gap-eyebrow { font-family:var(--font-body); font-weight:600; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-accent); margin-bottom:var(--space-4); }
     .gap-title { font-family:var(--font-display); font-weight:600; font-size:clamp(24px,3.5vw,40px); letter-spacing:-0.03em; line-height:1.1; color:var(--text-primary); margin-bottom:var(--space-5); }
     .gap-title span { font-family:var(--font-serif); font-style:italic; font-weight:400; }
     .gap-desc { font-size:16px; line-height:1.65; color:var(--text-secondary); margin-bottom:var(--space-8); }
     .gap-stats { display:flex; flex-direction:column; gap:var(--space-4); }
     .gap-stat { display:flex; align-items:center; gap:var(--space-5); padding:var(--space-5) var(--space-6); background:var(--surface-elevated); border:1px solid var(--border-default); border-radius:var(--radius-md); }
     .gap-stat-value { font-family:var(--font-display); font-weight:700; font-size:32px; letter-spacing:-0.03em; min-width:80px; flex-shrink:0; line-height:1.1; }
-    .gap-stat-value--red { color:var(--color-error); }
-    .gap-stat-value--warning { color:var(--color-warning); }
+    .gap-stat-value--red { color:var(--text-accent); }
+    .gap-stat-value--warning { color:var(--text-accent); }
     .gap-stat-value--purple { color:var(--text-accent); }
     .gap-stat-text { font-size:14px; color:var(--text-secondary); line-height:1.4; }
     .gap-stat-text strong { color:var(--text-primary); }
@@ -224,12 +214,8 @@
     .gap-bar-value--accent { color:var(--text-accent); }
     .gap-comp-footer { padding:var(--space-4) var(--space-6); border-top:1px solid var(--border-default); text-align:center; }
     .gap-comp-footer-text { font-size:12px; color:var(--text-muted); }
-    .gap-comp-footer-text strong { color:var(--color-warning); font-weight:700; }
+    .gap-comp-footer-text strong { color:var(--text-secondary); font-weight:700; }
 
-    /* ── CTA Exclusivity additions ── */
-    .cta-scarcity { display:flex; align-items:center; justify-content:center; gap:var(--space-3); margin-bottom:var(--space-6); position:relative; z-index:1; }
-    .cta-scarcity-dot { width:8px; height:8px; border-radius:50%; background:var(--color-warning); box-shadow:0 0 12px rgba(251,191,36,0.4); animation:pulse-dot 2s ease-in-out infinite; }
-    .cta-scarcity-text { font-family:var(--font-body); font-size:13px; font-weight:600; color:var(--color-warning); letter-spacing:0.03em; }
     .cta-social-proof { display:flex; align-items:center; justify-content:center; gap:var(--space-3); margin-top:var(--space-5); position:relative; z-index:1; }
     .cta-avatars { display:flex; }
     .cta-avatar { width:28px; height:28px; border-radius:50%; border:2px solid var(--surface-elevated); background:var(--accent-subtle); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:700; font-size:9px; color:var(--accent-primary); margin-left:-8px; }
@@ -243,7 +229,6 @@
       .urgency-bar { flex-wrap:wrap; gap:var(--space-4) var(--space-8); justify-content:center; }
     }
     @media (max-width:768px) {
-      .capacity-indicator { flex-direction:column; padding:var(--space-3) var(--space-5); }
       .urgency-bar { flex-direction:column; align-items:center; gap:var(--space-3); }
     }
 
@@ -440,7 +425,7 @@
       <div class="hero-center">
         <div class="hero-badge">
           <span class="hero-badge-dot"></span>
-          Now Accepting Q2 Applications
+          Let's Build Something Beautiful
         </div>
 
         <div class="hero-heading">
@@ -448,23 +433,12 @@
         </div>
 
         <p class="hero-sub">
-          Kala Studios architects bespoke digital infrastructure for a select number of businesses per quarter. Premium design, API integrations, and AI automation — engineered so your business compounds while competitors plateau.
+          Kala Studios crafts bespoke digital infrastructure for growing businesses. Premium design, AI automation, and smart integrations — so you can focus on what you love while your online presence works for you.
         </p>
 
         <div class="hero-ctas">
-          <a href="contact.html" class="btn-primary">Apply for a Strategy Session</a>
-          <a href="#gap" class="btn-ghost">See What You're Missing</a>
-        </div>
-
-        <div class="hero-capacity">
-          <div class="capacity-indicator">
-            <div class="capacity-bar-wrap">
-              <div class="capacity-label" data-capacity-label>Q2 2026 Capacity</div>
-              <div class="capacity-bar"><div class="capacity-fill" data-capacity-fill></div></div>
-            </div>
-            <div class="capacity-text" data-capacity-spots>2 spots remaining</div>
-          </div>
-          <div class="capacity-note">We onboard a maximum of 8 clients per quarter to maintain build quality.</div>
+          <a href="contact.html" class="btn-primary">Book a Free Discovery Call</a>
+          <a href="#transformation" class="btn-ghost">See How It Works</a>
         </div>
       </div>
 
@@ -585,99 +559,99 @@
   </section>
 
   <!-- ═══════════════════════════════════════════
-       URGENCY TICKER
+       HIGHLIGHTS BAR
   ═══════════════════════════════════════════ -->
   <section class="urgency-section">
     <div class="container">
       <div class="urgency-bar reveal">
         <div class="urgency-item">
-          <div class="urgency-icon urgency-icon--danger">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <div class="urgency-icon urgency-icon--info">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
-          <div class="urgency-text"><strong>73%</strong> of local businesses lose leads after hours</div>
-        </div>
-        <div class="urgency-item">
-          <div class="urgency-icon urgency-icon--warning">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div class="urgency-text">Applications reviewed on a <strong>rolling basis</strong></div>
+          <div class="urgency-text">Hands-free — <strong>we handle everything</strong></div>
         </div>
         <div class="urgency-item">
           <div class="urgency-icon urgency-icon--info">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
           </div>
-          <div class="urgency-text">Built to deliver <strong>measurable lead growth</strong> within 90 days</div>
+          <div class="urgency-text">Built for <strong>steady, compounding growth</strong></div>
+        </div>
+        <div class="urgency-item">
+          <div class="urgency-icon urgency-icon--info">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="urgency-text"><strong>Your data, always yours</strong> — transparent from day one</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════
-       THE GAP — COMPETITOR FEAR / DATA
+       THE TRANSFORMATION — BEFORE & AFTER
   ═══════════════════════════════════════════ -->
-  <section class="gap-section" id="gap">
+  <section class="gap-section" id="transformation">
     <div class="container">
       <div class="gap-grid reveal">
         <div class="gap-content">
-          <p class="gap-eyebrow">Industry data</p>
-          <h2 class="gap-title">The math doesn't wait. <span>Neither should you.</span></h2>
-          <p class="gap-desc">These aren't scare tactics. They're published industry numbers. The businesses that act on them compound. The ones that don't fall further behind each quarter — quietly, then all at once.</p>
+          <p class="gap-eyebrow">The Makeover</p>
+          <h2 class="gap-title">Imagine your business <span>working while you rest.</span></h2>
+          <p class="gap-desc">Most business owners wear too many hats. We take the digital weight off your shoulders — a beautiful online presence, smart automation, and systems that grow with you. Here's what that looks like in practice.</p>
           <div class="gap-stats">
             <div class="gap-stat">
-              <div class="gap-stat-value gap-stat-value--red">41%</div>
-              <div class="gap-stat-text">of leads convert with <strong>whoever responds first</strong> — average response time without automation is 47 hours</div>
+              <div class="gap-stat-value gap-stat-value--purple">24/7</div>
+              <div class="gap-stat-text">Your AI concierge <strong>greets every visitor</strong> — answering questions and capturing leads even at 2 AM, so you never miss an opportunity</div>
             </div>
             <div class="gap-stat">
-              <div class="gap-stat-value gap-stat-value--warning">$2.4M</div>
-              <div class="gap-stat-text">in annual revenue attributed to <strong>automated follow-up sequences</strong> across mid-market businesses (Forrester, 2025)</div>
+              <div class="gap-stat-value gap-stat-value--purple">4x</div>
+              <div class="gap-stat-text">Average <strong>lead capture improvement</strong> when switching from a static contact form to an intelligent, conversational system</div>
             </div>
             <div class="gap-stat">
-              <div class="gap-stat-value gap-stat-value--purple">68%</div>
-              <div class="gap-stat-text">of shopping carts are abandoned — businesses <strong>without recovery systems</strong> forfeit that revenue entirely</div>
+              <div class="gap-stat-value gap-stat-value--purple">0 hrs</div>
+              <div class="gap-stat-text">Time you spend on <strong>website maintenance</strong> — we handle updates, hosting, security, and performance so you can focus on your craft</div>
             </div>
           </div>
         </div>
         <div class="gap-visual">
           <div class="gap-comparison">
             <div class="gap-comp-header">
-              <div class="gap-comp-title">12-Month Performance Benchmark</div>
+              <div class="gap-comp-title">Your Digital Makeover</div>
               <div class="gap-comp-legend">
-                <div class="gap-legend-item"><div class="gap-legend-dot gap-legend-dot--you"></div> Manual</div>
-                <div class="gap-legend-item"><div class="gap-legend-dot gap-legend-dot--client"></div> Automated</div>
+                <div class="gap-legend-item"><div class="gap-legend-dot gap-legend-dot--you"></div> Before</div>
+                <div class="gap-legend-item"><div class="gap-legend-dot gap-legend-dot--client"></div> After</div>
               </div>
             </div>
             <div class="gap-comp-body">
               <div class="gap-comp-row">
                 <div class="gap-comp-label">Lead Capture Rate</div>
                 <div class="gap-comp-bars">
-                  <div class="gap-bar-row"><div class="gap-bar-row-label">Manual</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--without" style="width:22%"></div></div><div class="gap-bar-value">22%</div></div>
-                  <div class="gap-bar-row"><div class="gap-bar-row-label">Automated</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--with" style="width:89%"></div></div><div class="gap-bar-value gap-bar-value--accent">89%</div></div>
+                  <div class="gap-bar-row"><div class="gap-bar-row-label">Before</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--without" style="width:22%"></div></div><div class="gap-bar-value">22%</div></div>
+                  <div class="gap-bar-row"><div class="gap-bar-row-label">After</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--with" style="width:89%"></div></div><div class="gap-bar-value gap-bar-value--accent">89%</div></div>
                 </div>
               </div>
               <div class="gap-comp-row">
                 <div class="gap-comp-label">After-Hours Coverage</div>
                 <div class="gap-comp-bars">
-                  <div class="gap-bar-row"><div class="gap-bar-row-label">Manual</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--without" style="width:3%"></div></div><div class="gap-bar-value">0%</div></div>
-                  <div class="gap-bar-row"><div class="gap-bar-row-label">Automated</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--with" style="width:100%"></div></div><div class="gap-bar-value gap-bar-value--accent">100%</div></div>
+                  <div class="gap-bar-row"><div class="gap-bar-row-label">Before</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--without" style="width:3%"></div></div><div class="gap-bar-value">0%</div></div>
+                  <div class="gap-bar-row"><div class="gap-bar-row-label">After</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--with" style="width:100%"></div></div><div class="gap-bar-value gap-bar-value--accent">100%</div></div>
                 </div>
               </div>
               <div class="gap-comp-row">
                 <div class="gap-comp-label">Cart Recovery</div>
                 <div class="gap-comp-bars">
-                  <div class="gap-bar-row"><div class="gap-bar-row-label">Manual</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--without" style="width:8%"></div></div><div class="gap-bar-value">8%</div></div>
-                  <div class="gap-bar-row"><div class="gap-bar-row-label">Automated</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--with" style="width:72%"></div></div><div class="gap-bar-value gap-bar-value--accent">72%</div></div>
+                  <div class="gap-bar-row"><div class="gap-bar-row-label">Before</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--without" style="width:8%"></div></div><div class="gap-bar-value">8%</div></div>
+                  <div class="gap-bar-row"><div class="gap-bar-row-label">After</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--with" style="width:72%"></div></div><div class="gap-bar-value gap-bar-value--accent">72%</div></div>
                 </div>
               </div>
               <div class="gap-comp-row">
                 <div class="gap-comp-label">Content Output (pages/mo)</div>
                 <div class="gap-comp-bars">
-                  <div class="gap-bar-row"><div class="gap-bar-row-label">Manual</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--without" style="width:12%"></div></div><div class="gap-bar-value">2–4</div></div>
-                  <div class="gap-bar-row"><div class="gap-bar-row-label">Automated</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--with" style="width:85%"></div></div><div class="gap-bar-value gap-bar-value--accent">30+</div></div>
+                  <div class="gap-bar-row"><div class="gap-bar-row-label">Before</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--without" style="width:12%"></div></div><div class="gap-bar-value">2–4</div></div>
+                  <div class="gap-bar-row"><div class="gap-bar-row-label">After</div><div class="gap-bar-track"><div class="gap-bar-fill gap-bar-fill--with" style="width:85%"></div></div><div class="gap-bar-value gap-bar-value--accent">30+</div></div>
                 </div>
               </div>
             </div>
             <div class="gap-comp-footer">
-              <div class="gap-comp-footer-text">Data sourced from Forrester, HubSpot, and Baymard Institute research (2024–2025)</div>
+              <div class="gap-comp-footer-text">Based on average client results and industry benchmarks (Forrester, HubSpot, 2024–2025)</div>
             </div>
           </div>
         </div>
@@ -693,7 +667,7 @@
       <div class="section-header reveal">
         <p class="section-label">What We Build</p>
         <h2 class="section-title">Two tracks. <span class="section-title-accent">One system.</span></h2>
-        <p class="section-subtitle">We operate across two verticals — local service automation and AI-powered e-commerce — each engineered for compounding growth.</p>
+        <p class="section-subtitle">Whether you run a local practice or an online store, we tailor everything to your business — and manage it all for you.</p>
       </div>
 
       <div class="services-grid">
@@ -705,7 +679,7 @@
           </div>
           <p class="service-label">Track A</p>
           <h3 class="service-title">Local Service Infrastructure</h3>
-          <p class="service-desc">For premium clinics, med spas, and boutique services. Intelligent storefronts that capture and qualify leads while you sleep.</p>
+          <p class="service-desc">For clinics, med spas, salons, and boutique services. A beautiful online home that welcomes visitors and turns them into happy customers.</p>
           <ul class="service-features">
             <li>Bespoke landing pages with premium hosting</li>
             <li>Custom AI concierge — 24/7 lead capture</li>
@@ -727,7 +701,7 @@
           </div>
           <p class="service-label">Track B</p>
           <h3 class="service-title">The Commerce Engine</h3>
-          <p class="service-desc">For boutique DTC brands requiring secure, high-volume transactions. Custom architecture built for conversion, not templates.</p>
+          <p class="service-desc">For boutique DTC brands who want a storefront as unique as their products. Custom-built, not templated — designed to delight your customers.</p>
           <ul class="service-features">
             <li>Headless or custom-built e-commerce architecture</li>
             <li>Stripe, PayPal, Apple Pay API integrations</li>
@@ -798,7 +772,7 @@
       <div class="section-header reveal">
         <p class="section-label">Investment</p>
         <h2 class="section-title">Transparent <span class="section-title-accent">pricing.</span></h2>
-        <p class="section-subtitle">No hidden fees. No CMS access to break. We build it, manage it, and guarantee performance. Accepted clients only.</p>
+        <p class="section-subtitle">No hidden fees. No surprise charges. We build it, manage it, and keep it running beautifully — you just focus on your business.</p>
       </div>
 
       <div class="pricing-track reveal">
@@ -916,7 +890,7 @@
         <div class="process-step">
           <div class="process-num">01</div>
           <h3 class="process-step-title">Discovery &amp; Architecture</h3>
-          <p class="process-step-desc">We audit your current digital presence, map revenue leaks, and architect a system tailored to your vertical.</p>
+          <p class="process-step-desc">We learn about your business, your goals, and your customers — then design a system that fits like a glove.</p>
         </div>
         <div class="process-step">
           <div class="process-num">02</div>
@@ -947,7 +921,7 @@
             <span>Why can't I edit my own website?</span>
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
-          <div class="faq-answer">Because we guarantee performance, SEO integrity, and security. Giving CMS access introduces risk — broken layouts, slow load times, security vulnerabilities. We handle all updates for you, typically within 24 hours of a request.</div>
+          <div class="faq-answer">So you never have to worry about it. We keep your site fast, secure, and looking perfect at all times. Need a change? Just let us know and we'll have it live within 24 hours — no learning curves, no accidentally breaking something.</div>
         </div>
         <div class="faq-item">
           <button class="faq-question">
@@ -994,18 +968,14 @@
   <section class="cta-section" id="contact">
     <div class="container">
       <div class="cta-card reveal">
-        <div class="cta-scarcity">
-          <span class="cta-scarcity-dot"></span>
-          <span class="cta-scarcity-text" data-capacity-cta>2 of 8 Q2 2026 spots remaining</span>
-        </div>
-        <h2 class="cta-title">The infrastructure compounds.<br><span>The window doesn't.</span></h2>
-        <p class="cta-sub">We'll audit your digital presence and map the specific revenue you're leaving on the table — with real numbers, not guesswork. Most owners are surprised by what they find.</p>
+        <h2 class="cta-title">Ready for your <span>digital makeover?</span></h2>
+        <p class="cta-sub">Book a free discovery call. We'll walk through your current setup, explore what's possible, and give you an honest recommendation — no pressure, no hard sell.</p>
         <div class="cta-buttons">
-          <a href="contact.html" class="btn-primary" data-capacity-apply>Apply for Q2 2026</a>
-          <a href="about.html" class="btn-ghost">See Our Process</a>
+          <a href="contact.html" class="btn-primary">Book a Free Call</a>
+          <a href="about.html" class="btn-ghost">Learn About Us First</a>
         </div>
         <div class="cta-social-proof">
-          <div class="cta-social-text">Applications reviewed on a rolling basis</div>
+          <div class="cta-social-text">We take on a small number of clients each quarter to give every project the care it deserves.</div>
         </div>
       </div>
     </div>
@@ -1020,7 +990,7 @@
         <div class="footer-brand">
           <div class="footer-logo-mark"><span style="font-family:var(--font-display);font-weight:700;font-size:11px;color:#fff;letter-spacing:0.05em;">K</span></div>
           <span class="footer-name">Kala Studios</span>
-          <span class="footer-copy">Bespoke digital infrastructure for businesses that compound.</span>
+          <span class="footer-copy">Bespoke digital infrastructure, crafted with care.</span>
         </div>
         <ul class="footer-links">
           <li><a href="services-local.html">Local Services</a></li>
@@ -1042,34 +1012,6 @@
     // Current staging: Vercel preview deployment
     // Target production: kalastudio.ai
     const SITE_URL = 'https://kalastudio.ai';
-
-    // ── Capacity Config ──
-    // Update this single object to change all capacity/scarcity references site-wide.
-    const CAPACITY_CONFIG = {
-      spotsRemaining: 2,
-      totalSpots: 8,
-      quarter: 'Q2 2026',
-      isAccepting: true,
-    };
-
-    // Apply capacity config to DOM elements
-    document.querySelectorAll('[data-capacity-spots]').forEach(el => {
-      el.textContent = CAPACITY_CONFIG.spotsRemaining + ' spots remaining';
-    });
-    document.querySelectorAll('[data-capacity-label]').forEach(el => {
-      el.textContent = CAPACITY_CONFIG.quarter + ' Capacity';
-    });
-    document.querySelectorAll('[data-capacity-cta]').forEach(el => {
-      el.textContent = CAPACITY_CONFIG.spotsRemaining + ' of ' + CAPACITY_CONFIG.totalSpots + ' ' + CAPACITY_CONFIG.quarter + ' spots remaining';
-    });
-    document.querySelectorAll('[data-capacity-apply]').forEach(el => {
-      el.textContent = 'Apply for ' + CAPACITY_CONFIG.quarter;
-    });
-    const capacityFill = document.querySelector('[data-capacity-fill]');
-    if (capacityFill) {
-      const pct = ((CAPACITY_CONFIG.totalSpots - CAPACITY_CONFIG.spotsRemaining) / CAPACITY_CONFIG.totalSpots * 100);
-      capacityFill.style.width = pct + '%';
-    }
 
     // Scroll reveal
     const revealEls = document.querySelectorAll('.reveal');
